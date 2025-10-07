@@ -1,6 +1,7 @@
 # build output
 dist
 .vite
+*/routeTree.gen.ts
 
 # dependencies
 node_modules

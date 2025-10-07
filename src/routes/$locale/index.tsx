@@ -2,9 +2,9 @@ import { createFileRoute, redirect } from '@tanstack/react-router';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { DefaultLocale, SupportedLocale } from '../../core/constants';
+import { DefaultLocale, SupportedLocale } from '@/core/constants';
 
-import type { Locale } from '../../core/types';
+import type { Locale } from '@/core/types';
 
 export const Route = createFileRoute('/$locale/')({
   beforeLoad: ({ params }) => {
