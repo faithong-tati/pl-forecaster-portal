@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { createFileRoute, redirect } from '@tanstack/react-router';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -27,5 +28,5 @@ function LocaleHome() {
     document.documentElement.lang = locale;
   }, [i18n, locale]);
 
-  return <div>{t('title')}</div>;
+  return <Typography variant="h6">{t('title')}</Typography>;
 }
