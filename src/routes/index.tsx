@@ -1,10 +1,9 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { memo } from 'react';
+import { createFileRoute, redirect } from '@tanstack/react-router';
+
+import { DefaultLocale } from '../core/constants';
 
 export const Route = createFileRoute('/')({
-  component: memo(Index),
+  beforeLoad: () => {
+    throw redirect({ to: `/${DefaultLocale}` });
+  },
 });
-
-function Index() {
-  return <div>Temp Index</div>;
-}
