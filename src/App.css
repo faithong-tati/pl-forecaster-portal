@@ -1,0 +1,8 @@
+:root {
+  --font-ibm-thai: 'IBM Plex Sans Thai', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
