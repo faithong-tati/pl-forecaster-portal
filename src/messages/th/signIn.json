@@ -7,6 +7,16 @@
       "email": "Email",
       "password": "Password"
     },
+    "errors": {
+      "email": {
+        "invalid": "Invalid Email",
+        "required": "Email is required"
+      },
+      "password": {
+        "invalid": "Invalid Password",
+        "required": "Password is required"
+      }
+    },
     "buttons": {
       "submit": "Sign In"
     },

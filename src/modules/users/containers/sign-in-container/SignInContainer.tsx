@@ -1,3 +1,4 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
@@ -10,23 +11,36 @@ import {
   Typography,
 } from '@mui/material';
 import { memo, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import Button from '@/core/components/button';
+import FormGenerator from '@/core/components/form-generator';
 import { GoogleIcon } from '@/core/components/icon';
 import Image from '@/core/components/image';
-import InputText from '@/core/components/input-text';
 import rem from '@/core/utils/rem';
 import SignInLogoCard from '@/modules/users/components/sign-in-logo-card';
 import useSignIn from '@/modules/users/hooks/use-sign-in';
 
+import { Schema } from './schema';
 import { Styles } from './styles';
+
+import type { SchemaFormData } from './schema';
 
 function SignInContainer() {
   const { t } = useTranslation('signIn');
   const { t: tCore } = useTranslation('core');
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const { onGoogleLogin } = useSignIn();
+  const { onSignInWithGoogle, onSignInWithEmail } = useSignIn();
+  // form
+  const methods = useForm<SchemaFormData>({
+    resolver: zodResolver(Schema),
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+    defaultValues: { email: '', password: '' },
+  });
+
+  const { control, handleSubmit, clearErrors } = methods;
 
   return (
     <Stack sx={Styles.primaryStack}>
@@ -73,7 +87,7 @@ function SignInContainer() {
                     variant="outlined"
                     startIcon={<GoogleIcon />}
                     size="large"
-                    onClick={() => onGoogleLogin()}
+                    onClick={() => onSignInWithGoogle()}
                   >
                     {t('form.fields.google')}
                   </Button>
@@ -87,37 +101,60 @@ function SignInContainer() {
                   <Divider sx={{ flex: 1 }} />
                 </Stack>
 
-                <InputText
-                  fullWidth
-                  label={t('form.fields.email')}
-                  type="email"
-                  autoComplete="email"
-                />
+                <FormProvider {...methods}>
+                  <form noValidate onSubmit={handleSubmit(onSignInWithEmail)}>
+                    <Stack spacing={rem(24)}>
+                      <FormGenerator<SchemaFormData>
+                        control={control}
+                        items={[
+                          {
+                            name: 'email',
+                            component: 'input-text',
+                            type: 'email',
+                            label: t('form.fields.email'),
+                            t,
+                            onChange: () => clearErrors('email'),
+                          },
+                          {
+                            name: 'password',
+                            component: 'input-text',
+                            type: showPassword ? 'text' : 'password',
+                            label: t('form.fields.password'),
+                            t,
+                            onChange: () => clearErrors('password'),
+                            slotProps: {
+                              input: {
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <IconButton
+                                      edge="end"
+                                      onClick={() => setShowPassword((s) => !s)}
+                                    >
+                                      {showPassword ? (
+                                        <VisibilityOff />
+                                      ) : (
+                                        <Visibility />
+                                      )}
+                                    </IconButton>
+                                  </InputAdornment>
+                                ),
+                              },
+                            },
+                          },
+                        ]}
+                      />
 
-                <InputText
-                  fullWidth
-                  label={t('form.fields.password')}
-                  type={showPassword ? 'text' : 'password'}
-                  autoComplete="current-password"
-                  slotProps={{
-                    input: {
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            edge="end"
-                            onClick={() => setShowPassword((s) => !s)}
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    },
-                  }}
-                />
-
-                <Button fullWidth variant="contained" size="large">
-                  {t('form.buttons.submit')}
-                </Button>
+                      <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        size="large"
+                      >
+                        {t('form.buttons.submit')}
+                      </Button>
+                    </Stack>
+                  </form>
+                </FormProvider>
               </Stack>
             </Stack>
           </Grid>

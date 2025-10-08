@@ -5,7 +5,8 @@ import type {
 import type { UserModel } from '@/core/types/models';
 
 export interface GetUserByIdParams {
-  id: number;
+  providerRef: string;
+  id?: number;
 }
 
 export type GetUserByIdResponse = UserModel;
