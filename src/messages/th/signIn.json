@@ -1,0 +1,29 @@
+{
+  "form": {
+    "title": "Sign In",
+    "subtitle": "Welcome back! Sign in to continue to the Forecaster Portal",
+    "fields": {
+      "google": "Google",
+      "email": "Email",
+      "password": "Password"
+    },
+    "errors": {
+      "email": {
+        "invalid": "Invalid Email",
+        "required": "Email is required"
+      },
+      "password": {
+        "invalid": "Invalid Password",
+        "required": "Password is required"
+      }
+    },
+    "buttons": {
+      "submit": "Sign In"
+    },
+    "orContinueWith": "Or Continue With"
+  },
+  "logo": {
+    "title": "Smarter planning for every TAO BIN locations",
+    "subtitle": "Stay ahead with daily cost analysis and weekly profit forecasts"
+  }
+}

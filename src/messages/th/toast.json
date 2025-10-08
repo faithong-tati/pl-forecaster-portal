@@ -1,0 +1,6 @@
+{
+  "signIn": {
+    "success": "Sign In Successfully",
+    "failed": "Sign In Failed"
+  }
+}
