@@ -13,7 +13,8 @@
     "lint": "eslint . --ext .js,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.ts,.tsx --fix && prettier --write \"{src,apps,libs,test}/**/*.{js,ts,tsx,css}\"",
     "prepare": "husky",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "json-server": "npx json-server db.json --port 3001"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
@@ -21,10 +22,13 @@
     "@mui/icons-material": "7.3.4",
     "@mui/material": "7.3.4",
     "@react-oauth/google": "0.12.2",
+    "@tanstack/react-query": "5.90.2",
     "@tanstack/react-router": "1.132.47",
     "@tanstack/react-router-devtools": "1.132.47",
+    "axios": "1.12.2",
     "i18next": "25.5.3",
     "js-cookie": "3.0.5",
+    "json-server": "1.0.0-beta.3",
     "jwt-decode": "4.0.0",
     "nanoid": "5.1.6",
     "react": "19.1.1",

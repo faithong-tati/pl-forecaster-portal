@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "providerRef": "superadmin@example.com",
+      "email": "superadmin@example.com",
+      "name": "superadmin",
+      "imageUrl": "https://stickershop.line-scdn.net/stickershop/v1/product/19020868/LINEStorePC/main.png?v=1"
+    }
+  ]
+}
