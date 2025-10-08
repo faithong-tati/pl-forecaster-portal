@@ -18,6 +18,7 @@ import Image from '@/core/components/image';
 import InputText from '@/core/components/input-text';
 import rem from '@/core/utils/rem';
 import SignInLogoCard from '@/modules/users/components/sign-in-logo-card';
+import useSignIn from '@/modules/users/hooks/use-sign-in';
 
 import { Styles } from './styles';
 
@@ -25,6 +26,7 @@ function SignInContainer() {
   const { t } = useTranslation('signIn');
   const { t: tCore } = useTranslation('core');
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { onGoogleLogin } = useSignIn();
 
   return (
     <Stack sx={Styles.primaryStack}>
@@ -71,6 +73,7 @@ function SignInContainer() {
                     variant="outlined"
                     startIcon={<GoogleIcon />}
                     size="large"
+                    onClick={() => onGoogleLogin()}
                   >
                     {t('form.fields.google')}
                   </Button>

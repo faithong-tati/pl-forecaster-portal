@@ -12,9 +12,9 @@ export function setCookie({ key, value, expires }: SetCookieParams) {
   Cookies.set(key, encode(value), { expires, sameSite: 'Lax', secure: true });
 }
 
-export function getCookie(key: string) {
+export function getCookie(key: string): string {
   try {
-    return decode(Cookies.get(key));
+    return decode<string>(Cookies.get(key)) ?? '';
   } catch {
     return '';
   }

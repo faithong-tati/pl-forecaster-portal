@@ -1,6 +1,6 @@
 export interface UserModel {
   email: string;
-  id: number;
+  id: string;
   imageUrl: string;
   providerRef: string;
   username: string;

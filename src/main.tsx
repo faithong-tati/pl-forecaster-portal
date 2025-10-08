@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client';
 import { Environment } from '@/core/constants';
 import theme from '@/core/lib/theme';
 import AuthProvider from '@/core/providers/auth-provider';
+import ToastProvider from '@/core/providers/toast-provider';
 
 import App from './App';
 
@@ -18,7 +19,9 @@ createRoot(document.getElementById('root')!).render(
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={new QueryClient()}>
           <AuthProvider>
-            <App />
+            <ToastProvider>
+              <App />
+            </ToastProvider>
           </AuthProvider>
         </QueryClientProvider>
       </ThemeProvider>
