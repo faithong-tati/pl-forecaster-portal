@@ -1,9 +1,8 @@
-import type { Control, Path } from 'react-hook-form';
+import type { Path } from 'react-hook-form';
 
 type ComponentType = 'input-text';
 
 export interface FormGeneratorProps<T extends Record<string, unknown>> {
-  control: Control<T>;
   items: Array<{
     name: Path<T>;
     component: ComponentType;

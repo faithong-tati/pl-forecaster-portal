@@ -37,9 +37,16 @@ export default function useSignIn() {
         await postUserApi(payload);
       }
 
+      setCookie({ key: CookieAuth, value: deviceUid });
+
       toast.onOpen('signIn.success', 'success');
+
+      navigate({
+        to: `/$locale${Routes.dashboard.path}`,
+        params: { locale: i18n.language },
+      });
     },
-    [deviceUid, postUserApi, toast],
+    [deviceUid, i18n.language, navigate, postUserApi, toast],
   );
 
   const onSignInWithGoogle = useGoogleLogin({
@@ -54,13 +61,6 @@ export default function useSignIn() {
         providerRef: deviceUid,
         imageUrl: profile.picture,
         username: profile.sub,
-      });
-
-      setCookie({ key: CookieAuth, value: deviceUid });
-
-      navigate({
-        to: `/$locale${Routes.dashboard.path}`,
-        params: { locale: i18n.language },
       });
     },
     onError: () => {
@@ -77,13 +77,8 @@ export default function useSignIn() {
           'https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png',
         username: data.email,
       });
-
-      navigate({
-        to: `/$locale${Routes.dashboard.path}`,
-        params: { locale: i18n.language },
-      });
     },
-    [checkOrCreateUse, deviceUid, i18n.language, navigate],
+    [checkOrCreateUse, deviceUid],
   );
 
   return {

@@ -1,24 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import {
-  Divider,
-  Grid,
-  IconButton,
-  InputAdornment,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material';
-import { memo, useState } from 'react';
+import { Divider, Grid, Paper, Stack, Typography } from '@mui/material';
+import { memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import Button from '@/core/components/button';
-import FormGenerator from '@/core/components/form-generator';
 import { GoogleIcon } from '@/core/components/icon';
 import Image from '@/core/components/image';
 import rem from '@/core/utils/rem';
+import FormSignIn from '@/modules/users/components/form-sign-in';
 import SignInLogoCard from '@/modules/users/components/sign-in-logo-card';
 import useSignIn from '@/modules/users/hooks/use-sign-in';
 
@@ -30,7 +20,6 @@ import type { SchemaFormData } from './schema';
 function SignInContainer() {
   const { t } = useTranslation('signIn');
   const { t: tCore } = useTranslation('core');
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const { onSignInWithGoogle, onSignInWithEmail } = useSignIn();
   // form
   const methods = useForm<SchemaFormData>({
@@ -40,7 +29,7 @@ function SignInContainer() {
     defaultValues: { email: '', password: '' },
   });
 
-  const { control, handleSubmit, clearErrors } = methods;
+  const { handleSubmit } = methods;
 
   return (
     <Stack sx={Styles.primaryStack}>
@@ -103,56 +92,7 @@ function SignInContainer() {
 
                 <FormProvider {...methods}>
                   <form noValidate onSubmit={handleSubmit(onSignInWithEmail)}>
-                    <Stack spacing={rem(24)}>
-                      <FormGenerator<SchemaFormData>
-                        control={control}
-                        items={[
-                          {
-                            name: 'email',
-                            component: 'input-text',
-                            type: 'email',
-                            label: t('form.fields.email'),
-                            t,
-                            onChange: () => clearErrors('email'),
-                          },
-                          {
-                            name: 'password',
-                            component: 'input-text',
-                            type: showPassword ? 'text' : 'password',
-                            label: t('form.fields.password'),
-                            t,
-                            onChange: () => clearErrors('password'),
-                            slotProps: {
-                              input: {
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      edge="end"
-                                      onClick={() => setShowPassword((s) => !s)}
-                                    >
-                                      {showPassword ? (
-                                        <VisibilityOff />
-                                      ) : (
-                                        <Visibility />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                ),
-                              },
-                            },
-                          },
-                        ]}
-                      />
-
-                      <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        size="large"
-                      >
-                        {t('form.buttons.submit')}
-                      </Button>
-                    </Stack>
+                    <FormSignIn />
                   </form>
                 </FormProvider>
               </Stack>
