@@ -8,9 +8,12 @@ import type { DataTableHeadProps } from './types';
 function DataTableHead({ table }: DataTableHeadProps) {
   return (
     <TableHead>
-      {table.getHeaderGroups().map((hg) => (
-        <TableRow key={hg.id} sx={{ '& th': { whiteSpace: 'nowrap' } }}>
-          {hg.headers.map((header) => {
+      {table.getHeaderGroups().map((headerGroup) => (
+        <TableRow
+          key={headerGroup.id}
+          sx={{ '& th': { whiteSpace: 'nowrap' } }}
+        >
+          {headerGroup.headers.map((header) => {
             const canSort = header.column.getCanSort();
             const sorted = header.column.getIsSorted();
 
@@ -21,6 +24,7 @@ function DataTableHead({ table }: DataTableHeadProps) {
                   bgcolor: (theme) => theme.palette.secondary.main,
                   fontWeight: 700,
                   height: rem(50),
+                  minWidth: header.column.columnDef.minSize,
                 }}
               >
                 {canSort ? (

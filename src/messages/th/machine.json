@@ -13,7 +13,7 @@
       "createdAt": "Created At",
       "updatedAt": "Updated At",
       "name": "Name",
-      "location": "Location Type",
+      "locationType": "Location Type",
       "expectedSalesPerDay": "Expected Sales Per Day",
       "averageProfitMarginPercentage": "Average Profit Margin Percentage",
       "rentCostPerDay": "Rent Cost Per Day",
@@ -59,6 +59,7 @@
   },
   "options": {
     "locationType": {
+      "all": "All",
       "school": "School",
       "hospital": "Hospital",
       "shoppingMall": "Shopping Mall"

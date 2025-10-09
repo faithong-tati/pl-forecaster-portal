@@ -45,6 +45,7 @@ function DataTableBody({ table }: DataTableBodyProps) {
           key={row.id}
           hover
           sx={{
+            'height': rem(50),
             '&:nth-of-type(even)': {
               bgcolor: (theme) => theme.palette.action.hover,
             },

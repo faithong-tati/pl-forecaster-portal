@@ -9,5 +9,31 @@
       "createdAt": "2025-10-09T10:31:41.743Z"
     }
   ],
-  "machines": []
+  "machines": [
+    {
+      "id": "1",
+      "name": "Machine 001",
+      "averageProfitMarginPercentage": "0.41",
+      "createdAt": "2025-10-09T10:31:41.743Z",
+      "createdBy": "Super Admin",
+      "electricCostPerTempPerDay": "1772.34",
+      "expectedSalesPerDay": "1000",
+      "locationType": "SCHOOL",
+      "rentCostPerDay": "14451.56",
+      "updatedAt": "2025-10-09T10:31:41.743Z",
+      "updatedBy": "Super Admin"
+    },{
+      "id": "2",
+      "name": "Machine 002",
+      "averageProfitMarginPercentage": "0.41",
+      "createdAt": "2025-10-09T10:31:41.743Z",
+      "createdBy": "Super Admin",
+      "electricCostPerTempPerDay": "12.34",
+      "expectedSalesPerDay": "100",
+      "locationType": "HOSPITAL",
+      "rentCostPerDay": "14.56",
+      "updatedAt": "2025-10-09T10:31:41.743Z",
+      "updatedBy": "Super Admin"
+    }
+  ]
 }

@@ -19,9 +19,11 @@ import DataTablePagination from './DataTablePagination';
 import type { ClientDataTableProps } from './types';
 
 function ClientDataTable({
+  columnFilters,
   columns,
   globalFilter,
   rows,
+  setColumnFilters,
   setGlobalFilter,
 }: ClientDataTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -34,8 +36,14 @@ function ClientDataTable({
   const table = useReactTable({
     data: rows,
     columns,
-    state: { sorting, pagination: { pageIndex, pageSize }, globalFilter },
+    state: {
+      sorting,
+      pagination: { pageIndex, pageSize },
+      globalFilter,
+      columnFilters,
+    },
     onGlobalFilterChange: setGlobalFilter,
+    onColumnFiltersChange: setColumnFilters,
     onSortingChange: setSorting,
     onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
