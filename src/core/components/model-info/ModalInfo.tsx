@@ -64,18 +64,13 @@ function ModalInfo({
 
       <DialogActions>
         <Stack direction="row" width="100%" gap={rem(16)}>
-          <Button
-            fullWidth
-            variant="outlined"
-            color="error"
-            onClick={onClickSecondaryButton}
-          >
+          <Button fullWidth variant="outlined" onClick={onClickSecondaryButton}>
             {secondaryButtonText || t('buttons.cancel')}
           </Button>
           <Button
             fullWidth
             variant="contained"
-            color="error"
+            color="primary"
             disabled={isLoading}
             onClick={onClickPrimaryButton}
           >

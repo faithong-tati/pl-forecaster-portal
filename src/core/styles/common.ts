@@ -1,4 +1,4 @@
-import { Dialog, Paper, styled } from '@mui/material';
+import { Dialog, IconButton, Paper, styled } from '@mui/material';
 
 import rem from '@/core/utils/rem';
 
@@ -46,5 +46,17 @@ export const BaseDialog = styled(Dialog)<DialogProps>(() => ({
   },
   '& .MuiDialogActions-root': {
     padding: 0,
+  },
+}));
+
+export const ButtonIcon = styled(IconButton, {
+  shouldForwardProp: (prop) => prop !== 'none',
+})<{ disabled?: boolean }>(({ disabled, theme }) => ({
+  'fill': theme.palette.secondary.main,
+  'pointerEvents': disabled ? 'none' : 'auto',
+  '& .MuiSvgIcon-root': {
+    ...(disabled && {
+      fill: theme.palette.text.disabled,
+    }),
   },
 }));

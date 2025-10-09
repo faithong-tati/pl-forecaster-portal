@@ -7,7 +7,7 @@ function Snackbar({ onClose, severity, message, ...props }: SnackbarProps) {
   return (
     <MuiSnackBar
       {...props}
-      autoHideDuration={5000}
+      autoHideDuration={3000}
       onClose={onClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
     >

@@ -9,6 +9,7 @@ const AuthContext = createContext<IAuthContext>({
     username: null,
   },
   setAuthState: () => {},
+  user: null,
 });
 
 export default AuthContext;

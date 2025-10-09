@@ -1,24 +1,34 @@
 import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useImmer } from 'use-immer';
 
 import { Routes } from '@/core/constants';
+import { CookieAuth } from '@/core/lib/constants';
+import { deleteCookie } from '@/core/lib/helpers';
+import { useToast } from '@/core/providers/toast-provider/useToast';
 import {
   CollapsedWidth,
   ExpandedWidth,
 } from '@/modules/templates/components/sidebar/constants';
 
 export default function useSidebar() {
-  const [open, setOpen] = useState<boolean>(false);
+  const toast = useToast();
   const { t, i18n } = useTranslation('sidebar');
   const routerState = useRouterState();
   const navigate = useNavigate();
+  // state
+  const [state, setState] = useImmer({
+    isOpenSideBar: false,
+    isOpenConfirmSignOutModal: false,
+  });
+
   // const
   const width = useMemo(() => {
-    return open ? ExpandedWidth : CollapsedWidth;
-  }, [open]);
+    return state.isOpenSideBar ? ExpandedWidth : CollapsedWidth;
+  }, [state.isOpenSideBar]);
 
   const items = useMemo(() => {
     return [
@@ -45,14 +55,38 @@ export default function useSidebar() {
     ];
   }, [i18n.language, navigate, routerState.location.pathname, t]);
 
-  const toggleDrawer = useCallback(() => {
-    setOpen((x) => !x);
-  }, []);
+  // event
+  const onToggleDrawer = useCallback(() => {
+    setState((draft) => {
+      draft.isOpenSideBar = !draft.isOpenSideBar;
+    });
+  }, [setState]);
+
+  const onSignOut = useCallback(() => {
+    try {
+      deleteCookie(CookieAuth);
+
+      setState((draft) => {
+        draft.isOpenConfirmSignOutModal = false;
+      });
+
+      toast.onOpen('signOut.success', 'success');
+
+      navigate({
+        to: `/$locale${Routes.signIn.path}`,
+        params: { locale: i18n.language },
+      });
+    } catch {
+      toast.onOpen('signOut.failed', 'error');
+    }
+  }, [i18n.language, navigate, setState, toast]);
 
   return {
-    open,
+    state,
+    setState,
     width,
     items,
-    toggleDrawer,
+    onToggleDrawer,
+    onSignOut,
   };
 }

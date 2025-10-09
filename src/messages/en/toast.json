@@ -2,5 +2,9 @@
   "signIn": {
     "success": "Sign In Successfully",
     "failed": "Sign In Failed"
+  },
+  "signOut": {
+    "success": "Sign Out Successfully",
+    "failed": "Sign Out Failed"
   }
 }

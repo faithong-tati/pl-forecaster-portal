@@ -1,8 +1,12 @@
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { Box } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import TextTruncate from '@/core/components/text-truncate';
 import { formatDisplayDate } from '@/core/lib/helpers/format';
+import { ButtonIcon } from '@/core/styles/common';
 import { LocationType } from '@/core/types/models/machine.model';
 import { formatNumber } from '@/core/utils';
 import { useGetMachines } from '@/modules/machines/hooks/api/use-get-machines';
@@ -122,6 +126,26 @@ export default function useTableMachines() {
         minSize: 170,
         cell: ({ getValue }) => {
           return <TextTruncate>{getValue<string>() || '-'}</TextTruncate>;
+        },
+      },
+      {
+        accessorKey: 'id',
+        header: '',
+        minSize: 40,
+        cell: () => {
+          return (
+            <Box>
+              <ButtonIcon>
+                <EditIcon sx={{ color: (theme) => theme.palette.info.main }} />
+              </ButtonIcon>
+
+              <ButtonIcon>
+                <DeleteIcon
+                  sx={{ color: (theme) => theme.palette.error.main }}
+                />
+              </ButtonIcon>
+            </Box>
+          );
         },
       },
     ];

@@ -21,8 +21,10 @@
       "locationType": "SCHOOL",
       "rentCostPerDay": "14451.56",
       "updatedAt": "2025-10-09T10:31:41.743Z",
-      "updatedBy": "Super Adminnnnnnnnnnnn"
-    },{
+      "updatedBy": "Super Adminnnnnnnnnnnn",
+      "createdByUserId": "f15a"
+    },
+    {
       "id": "2",
       "name": "Machine 002",
       "averageProfitMarginPercentage": "0.41",
@@ -33,7 +35,8 @@
       "locationType": "HOSPITAL",
       "rentCostPerDay": "14.56",
       "updatedAt": "2025-10-09T10:31:41.743Z",
-      "updatedBy": "Super Admin"
+      "updatedBy": "Super Admin",
+      "createdByUserId": "f15a"
     }
   ]
 }

@@ -5,6 +5,7 @@ import AuthContext from '@/core/contexts/auth-context';
 import { CookieAuth } from '@/core/lib/constants';
 import { getCookie } from '@/core/lib/helpers';
 import { useDeviceUid } from '@/core/lib/hooks/use-device-uid';
+import { useGetUserById } from '@/modules/users/hooks/api/use-get-user-by-id';
 
 import type { AuthProviderState } from './types';
 import type { PropsWithChildren } from 'react';
@@ -16,8 +17,11 @@ function AuthProvider({ children }: PropsWithChildren) {
     username: null,
   });
 
+  // hook
   const { deviceUid } = useDeviceUid();
   const cookieDeviceUid = getCookie(CookieAuth);
+  // async hook
+  const { data } = useGetUserById({ providerRef: deviceUid });
 
   useEffect(() => {
     setAuthState((draft) => {
@@ -34,7 +38,9 @@ function AuthProvider({ children }: PropsWithChildren) {
   }, [cookieDeviceUid, deviceUid, setAuthState]);
 
   return (
-    <AuthContext.Provider value={{ authState, setAuthState }}>
+    <AuthContext.Provider
+      value={{ authState, setAuthState, user: data ?? null }}
+    >
       {children}
     </AuthContext.Provider>
   );

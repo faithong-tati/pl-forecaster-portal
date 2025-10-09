@@ -10,6 +10,7 @@ export interface MachineModel {
   averageProfitMarginPercentage: string;
   createdAt: string;
   createdBy: string;
+  createdByUserId: string;
   electricCostPerTempPerDay: string;
   expectedSalesPerDay: string;
   id: string;
