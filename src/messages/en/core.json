@@ -3,5 +3,9 @@
   "table": {
     "displayItems": "Showing {{from}} to {{to}} of {{total}} items",
     "itemsPerPage": "Items per page"
+  },
+  "buttons": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   }
 }

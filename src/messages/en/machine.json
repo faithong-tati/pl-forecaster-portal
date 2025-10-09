@@ -1,0 +1,67 @@
+{
+  "table": {
+    "title": "Machine Management",
+    "notFound": "Machine Not Found",
+    "buttons": {
+      "add": "Add Machine"
+    },
+    "filters": {
+      "search": "Search",
+      "locationType": "Location Type"
+    },
+    "columns": {
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "name": "Name",
+      "location": "Location Type",
+      "expectedSalesPerDay": "Expected Sales Per Day",
+      "averageProfitMarginPercentage": "Average Profit Margin Percentage",
+      "rentCostPerDay": "Rent Cost Per Day",
+      "electricCostPerTempPerDay": "Electric Cost Per Temp Per Day"
+    },
+    "modals": {
+      "upsert": {
+        "addTitle": "Add Machine",
+        "editTitle": "Edit Machine",
+        "fields": {
+          "name": "Name",
+          "location": "Location Type",
+          "expectedSalesPerDay": "Expected Sales Per Day",
+          "averageProfitMarginPercentage": "Average Profit Margin Percentage",
+          "rentCostPerDay": "Rent Cost Per Day",
+          "electricCostPerTempPerDay": "Electric Cost Per Temp Per Day"
+        },
+        "errors": {
+          "name": {
+            "empty": "Name is required"
+          },
+          "location": {
+            "empty": "Location Type is required"
+          },
+          "expectedSalesPerDay": {
+            "empty": "Expected Sales Per Day is required"
+          },
+          "averageProfitMarginPercentage": {
+            "empty": "Average Profit Margin Percentage is required"
+          },
+          "rentCostPerDay": {
+            "empty": "Rent Cost Per Day is required"
+          },
+          "electricCostPerTempPerDay": {
+            "empty": "Electric Cost Per Temp Per Da is required"
+          }
+        }
+      },
+      "delete": {
+        "title": "Are you sure you want to delete this machine ?"
+      }
+    }
+  },
+  "options": {
+    "locationType": {
+      "school": "School",
+      "hospital": "Hospital",
+      "shoppingMall": "Shopping Mall"
+    }
+  }
+}

@@ -1,13 +1,14 @@
 import { Paper, Table, TableContainer } from '@mui/material';
 import {
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   PaginationState,
   SortingState,
   useReactTable,
 } from '@tanstack/react-table';
-import { memo, useState } from 'react';
+import { useState } from 'react';
 
 import rem from '@/core/utils/rem';
 
@@ -17,7 +18,12 @@ import DataTablePagination from './DataTablePagination';
 
 import type { ClientDataTableProps } from './types';
 
-function ClientDataTable({ rows, columns }: ClientDataTableProps) {
+function ClientDataTable({
+  columns,
+  globalFilter,
+  rows,
+  setGlobalFilter,
+}: ClientDataTableProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -28,12 +34,15 @@ function ClientDataTable({ rows, columns }: ClientDataTableProps) {
   const table = useReactTable({
     data: rows,
     columns,
-    state: { sorting, pagination: { pageIndex, pageSize } },
+    state: { sorting, pagination: { pageIndex, pageSize }, globalFilter },
+    onGlobalFilterChange: setGlobalFilter,
     onSortingChange: setSorting,
     onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    globalFilterFn: 'includesString',
   });
 
   return (
@@ -55,4 +64,4 @@ function ClientDataTable({ rows, columns }: ClientDataTableProps) {
   );
 }
 
-export default memo(ClientDataTable);
+export default ClientDataTable;

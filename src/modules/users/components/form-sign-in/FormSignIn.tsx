@@ -20,6 +20,7 @@ function FormSignIn() {
         items={[
           {
             name: 'email',
+            required: true,
             component: 'input-text',
             type: 'email',
             label: t('form.fields.email'),
@@ -28,6 +29,7 @@ function FormSignIn() {
           },
           {
             name: 'password',
+            required: true,
             component: 'input-text',
             type: showPassword ? 'text' : 'password',
             label: t('form.fields.password'),

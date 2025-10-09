@@ -22,7 +22,7 @@ function FormGenerator<T extends Record<string, unknown>>({
               render={({ field, fieldState }) => (
                 <InputText
                   {...field}
-                  required
+                  required={item.required}
                   fullWidth
                   label={item.label}
                   type={item.type}
@@ -33,7 +33,7 @@ function FormGenerator<T extends Record<string, unknown>>({
                   onChange={(e) => {
                     field.onChange(e);
 
-                    item.onChange?.();
+                    item.onChange?.(e);
                   }}
                   slotProps={item.slotProps ?? undefined}
                 />

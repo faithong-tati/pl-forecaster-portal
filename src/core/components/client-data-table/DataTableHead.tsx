@@ -1,6 +1,5 @@
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { flexRender } from '@tanstack/react-table';
-import { memo } from 'react';
 
 import rem from '@/core/utils/rem';
 
@@ -50,4 +49,4 @@ function DataTableHead({ table }: DataTableHeadProps) {
   );
 }
 
-export default memo(DataTableHead);
+export default DataTableHead;

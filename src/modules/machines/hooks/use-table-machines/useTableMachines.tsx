@@ -1,10 +1,11 @@
 import dayjs from 'dayjs';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 import type { TableMachineColumnDef } from '@/modules/machines/containers/table-machines-container/types';
 import type { ColumnDef } from '@tanstack/react-table';
 
 export default function useTableMachines() {
+  const [globalFilter, setGlobalFilter] = useState<string>('');
   const rows = Array.from({ length: 148 }).map((_, i) => ({
     averageProfitMarginPercentage: '0.4',
     createdAt: dayjs().toISOString(),
@@ -40,5 +41,8 @@ export default function useTableMachines() {
   return {
     rows,
     columns,
+
+    globalFilter,
+    setGlobalFilter,
   };
 }
