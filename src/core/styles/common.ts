@@ -16,7 +16,7 @@ export const Panel = styled(Paper)<PaperProps>(() => ({
   flexDirection: 'column',
   gap: rem(32),
   width: '100%',
-  height: '100%'
+  height: '100%',
 }));
 
 type CoreSx = 'hoverIcon';
@@ -26,7 +26,7 @@ export const CoreSx: SxInlineStyles<CoreSx> = {
     'transition': 'transform 0.1s ease',
     '&:hover': {
       transform: 'scale(1.2)',
-      color: 'primary.main',
+      color: (theme) => theme.palette.primary.main,
     },
   },
 };

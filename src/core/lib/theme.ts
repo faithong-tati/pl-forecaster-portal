@@ -18,7 +18,7 @@ const theme = responsiveFontSizes(
     },
     palette: {
       primary: { main: '#523d2e' },
-      secondary: { main: '#f0e3dd' },
+      secondary: { main: '#d0d1d2' },
       background: { default: '#ffffff', paper: '#eef2f6' },
     },
   }),

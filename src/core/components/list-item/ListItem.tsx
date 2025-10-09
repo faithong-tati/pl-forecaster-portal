@@ -24,10 +24,10 @@ function ListItem({ icon, label, open, isActive, onClick }: ListItemProps) {
             '& .MuiListItemIcon-root': {
               transition: 'transform 0.1s ease',
               transform: 'scale(1.2)',
-              color: 'primary.main',
+              color: (theme) => theme.palette.primary.main,
             },
             '& .MuiTypography-root': {
-              color: 'primary.main',
+              color: (theme) => theme.palette.primary.main,
               fontWeight: 600,
             },
           },

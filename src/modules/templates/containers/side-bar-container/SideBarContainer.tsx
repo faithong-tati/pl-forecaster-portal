@@ -25,7 +25,12 @@ function SideBarContainer() {
           </Stack>
 
           <Divider sx={{ alignContent: 'center' }}>
-            <CoffeeIcon sx={{ display: 'flex', color: 'secondary.main' }} />
+            <CoffeeIcon
+              sx={{
+                display: 'flex',
+                color: (theme) => theme.palette.secondary.main,
+              }}
+            />
           </Divider>
 
           <Outlet />

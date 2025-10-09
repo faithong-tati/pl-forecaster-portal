@@ -26,7 +26,7 @@ function Drawer({ open, children, ...props }: DrawerProps) {
             borderTopRightRadius: rem(16),
             borderBottomRightRadius: rem(16),
             boxShadow: `${rem(0)} ${rem(16)} ${rem(32)} rgba(0,0,0,0.2)`,
-            bgcolor: 'background.default',
+            bgcolor: (theme) => theme.palette.background.default,
             transition: (theme) =>
               theme.transitions.create('width', {
                 duration: theme.transitions.duration.standard,
