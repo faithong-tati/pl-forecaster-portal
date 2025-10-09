@@ -12,7 +12,7 @@
   "machines": [
     {
       "id": "1",
-      "name": "Machine 001",
+      "name": "Machine hellooooooo 001",
       "averageProfitMarginPercentage": "0.41",
       "createdAt": "2025-10-09T10:31:41.743Z",
       "createdBy": "Super Admin",
@@ -21,7 +21,7 @@
       "locationType": "SCHOOL",
       "rentCostPerDay": "14451.56",
       "updatedAt": "2025-10-09T10:31:41.743Z",
-      "updatedBy": "Super Admin"
+      "updatedBy": "Super Adminnnnnnnnnnnn"
     },{
       "id": "2",
       "name": "Machine 002",

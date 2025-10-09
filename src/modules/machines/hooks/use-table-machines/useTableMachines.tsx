@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import TextTruncate from '@/core/components/text-truncate';
 import { formatDisplayDate } from '@/core/lib/helpers/format';
 import { LocationType } from '@/core/types/models/machine.model';
 import { formatNumber } from '@/core/utils';
@@ -29,27 +30,11 @@ export default function useTableMachines() {
   const columns = useMemo<Array<ColumnDef<TableMachineColumnDef>>>(() => {
     return [
       {
-        accessorKey: 'createdAt',
-        header: t('table.columns.createdAt'),
-        minSize: 170,
-        cell: ({ getValue }) => {
-          return formatDisplayDate(getValue<string>(), i18n.language as Locale);
-        },
-      },
-      {
-        accessorKey: 'updatedAt',
-        header: t('table.columns.updatedAt'),
-        minSize: 170,
-        cell: ({ getValue }) => {
-          return formatDisplayDate(getValue<string>(), i18n.language as Locale);
-        },
-      },
-      {
         accessorKey: 'name',
         header: t('table.columns.name'),
         minSize: 170,
         cell: ({ getValue }) => {
-          return getValue<string>() || '-';
+          return <TextTruncate>{getValue<string>() || '-'}</TextTruncate>;
         },
       },
       {
@@ -62,35 +47,81 @@ export default function useTableMachines() {
 
           if (!targetOption) return '-';
 
-          return targetOption.label;
+          return <TextTruncate>{targetOption.label}</TextTruncate>;
         },
       },
       {
         accessorKey: 'expectedSalesPerDay',
         header: t('table.columns.expectedSalesPerDay'),
         cell: ({ getValue }) => {
-          return formatNumber(getValue<string>() || 0);
+          return (
+            <TextTruncate>{formatNumber(getValue<string>() || 0)}</TextTruncate>
+          );
         },
       },
       {
         accessorKey: 'averageProfitMarginPercentage',
         header: t('table.columns.averageProfitMarginPercentage'),
         cell: ({ getValue }) => {
-          return formatNumber(getValue<string>() || 0, 2);
+          return (
+            <TextTruncate>
+              {formatNumber(getValue<string>() || 0, 2)}
+            </TextTruncate>
+          );
         },
       },
       {
         accessorKey: 'rentCostPerDay',
         header: t('table.columns.rentCostPerDay'),
         cell: ({ getValue }) => {
-          return formatNumber(getValue<string>() || 0, 2);
+          return (
+            <TextTruncate>
+              {formatNumber(getValue<string>() || 0, 2)}
+            </TextTruncate>
+          );
         },
       },
       {
         accessorKey: 'electricCostPerTempPerDay',
         header: t('table.columns.electricCostPerTempPerDay'),
         cell: ({ getValue }) => {
-          return formatNumber(getValue<string>() || 0, 2);
+          return (
+            <TextTruncate>
+              {formatNumber(getValue<string>() || 0, 2)}
+            </TextTruncate>
+          );
+        },
+      },
+      {
+        accessorKey: 'createdAt',
+        header: t('table.columns.createdAt'),
+        minSize: 170,
+        cell: ({ getValue }) => {
+          return formatDisplayDate(getValue<string>(), i18n.language as Locale);
+        },
+      },
+      {
+        accessorKey: 'createdBy',
+        header: t('table.columns.createdBy'),
+        minSize: 170,
+        cell: ({ getValue }) => {
+          return <TextTruncate>{getValue<string>() || '-'}</TextTruncate>;
+        },
+      },
+      {
+        accessorKey: 'updatedAt',
+        header: t('table.columns.updatedAt'),
+        minSize: 170,
+        cell: ({ getValue }) => {
+          return formatDisplayDate(getValue<string>(), i18n.language as Locale);
+        },
+      },
+      {
+        accessorKey: 'updatedBy',
+        header: t('table.columns.updatedBy'),
+        minSize: 170,
+        cell: ({ getValue }) => {
+          return <TextTruncate>{getValue<string>() || '-'}</TextTruncate>;
         },
       },
     ];

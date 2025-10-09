@@ -52,7 +52,15 @@ function DataTableBody({ table }: DataTableBodyProps) {
           }}
         >
           {row.getVisibleCells().map((cell) => (
-            <TableCell key={cell.id}>
+            <TableCell
+              key={cell.id}
+              sx={{
+                maxWidth: cell.column.getSize(),
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
               {flexRender(
                 cell.column.columnDef.cell ?? ((info) => info.getValue()),
                 cell.getContext(),

@@ -12,6 +12,8 @@
     "columns": {
       "createdAt": "Created At",
       "updatedAt": "Updated At",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
       "name": "Name",
       "locationType": "Location Type",
       "expectedSalesPerDay": "Expected Sales Per Day",
