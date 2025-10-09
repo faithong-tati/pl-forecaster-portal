@@ -68,6 +68,7 @@ function ModalInfo({
             {secondaryButtonText || t('buttons.cancel')}
           </Button>
           <Button
+            type="button"
             fullWidth
             variant="contained"
             color="primary"

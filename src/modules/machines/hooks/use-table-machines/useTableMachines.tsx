@@ -1,14 +1,16 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/material';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useImmer } from 'use-immer';
 
 import TextTruncate from '@/core/components/text-truncate';
 import { formatDisplayDate } from '@/core/lib/helpers/format';
 import { ButtonIcon } from '@/core/styles/common';
 import { LocationType } from '@/core/types/models/machine.model';
 import { formatNumber } from '@/core/utils';
+import { CreateSchemaFormData } from '@/modules/machines/containers/table-machines-container/schema';
 import { useGetMachines } from '@/modules/machines/hooks/api/use-get-machines';
 import useOptions from '@/modules/machines/hooks/use-options';
 
@@ -26,6 +28,13 @@ export default function useTableMachines() {
       value: '',
     },
   ]);
+
+  // modal state
+  const [modalState, setModalState] = useImmer({
+    isOpenCreateModal: false,
+    isOpenEditModal: false,
+    isOpenDeleteModal: false,
+  });
 
   // async hooks
   const { data } = useGetMachines();
@@ -151,14 +160,24 @@ export default function useTableMachines() {
     ];
   }, [i18n.language, locationTypeOptions, t]);
 
+  // event
+  const onSubmitCreate = useCallback(async (data: CreateSchemaFormData) => {
+    console.log(data);
+  }, []);
+
   return {
     rows: data ?? [],
     columns,
     locationTypeOptions,
 
+    modalState,
+    setModalState,
+
     globalFilter,
     columnFilters,
     setGlobalFilter,
     setColumnFilters,
+
+    onSubmitCreate,
   };
 }

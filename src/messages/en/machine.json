@@ -35,22 +35,22 @@
         },
         "errors": {
           "name": {
-            "empty": "Name is required"
+            "required": "Name is required"
           },
-          "location": {
-            "empty": "Location Type is required"
+          "locationType": {
+            "required": "Location Type is required"
           },
           "expectedSalesPerDay": {
-            "empty": "Expected Sales Per Day is required"
+            "required": "Expected Sales Per Day is required"
           },
           "averageProfitMarginPercentage": {
-            "empty": "Average Profit Margin Percentage is required"
+            "required": "Average Profit Margin Percentage is required"
           },
           "rentCostPerDay": {
-            "empty": "Rent Cost Per Day is required"
+            "required": "Rent Cost Per Day is required"
           },
           "electricCostPerTempPerDay": {
-            "empty": "Electric Cost Per Temp Per Da is required"
+            "required": "Electric Cost Per Temp Per Da is required"
           }
         }
       },
