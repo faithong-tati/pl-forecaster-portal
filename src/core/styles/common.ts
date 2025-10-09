@@ -1,9 +1,9 @@
-import { Paper, styled } from '@mui/material';
+import { Dialog, Paper, styled } from '@mui/material';
 
 import rem from '@/core/utils/rem';
 
 import type { SxInlineStyles } from '@/core/types';
-import type { PaperProps } from '@mui/material';
+import type { DialogProps, PaperProps } from '@mui/material';
 
 export const Panel = styled(Paper)<PaperProps>(() => ({
   borderRadius: rem(16),
@@ -30,3 +30,21 @@ export const CoreSx: SxInlineStyles<CoreSx> = {
     },
   },
 };
+
+export const BaseDialog = styled(Dialog)<DialogProps>(() => ({
+  '& .MuiDialog-paper': {
+    borderRadius: rem(24),
+    padding: rem(36),
+    gap: rem(24),
+    width: rem(460),
+  },
+  '& .MuiDialogTitle-root': {
+    padding: 0,
+  },
+  '& .MuiDialogContent-root': {
+    padding: 0,
+  },
+  '& .MuiDialogActions-root': {
+    padding: 0,
+  },
+}));
