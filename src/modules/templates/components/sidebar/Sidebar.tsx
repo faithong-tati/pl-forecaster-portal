@@ -63,6 +63,7 @@ function Sidebar() {
                 open={open}
                 label={item.label}
                 icon={item.icon}
+                onClick={item.onClick}
               />
             ))}
           </List>
@@ -76,6 +77,7 @@ function Sidebar() {
                 open={open}
                 label={t('signOut')}
                 icon={<LogoutRounded />}
+                onClick={() => {}}
               />
             </List>
           </Footer>

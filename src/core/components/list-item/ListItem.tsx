@@ -12,7 +12,7 @@ import rem from '@/core/utils/rem';
 
 import type { ListItemProps } from './types';
 
-function ListItem({ icon, label, open, isActive }: ListItemProps) {
+function ListItem({ icon, label, open, isActive, onClick }: ListItemProps) {
   return (
     <Tooltip title={open ? '' : label} placement="right">
       <ListItemButton
@@ -32,6 +32,7 @@ function ListItem({ icon, label, open, isActive }: ListItemProps) {
             },
           },
         }}
+        onClick={onClick}
       >
         <ListItemIcon sx={{ minWidth: 40, ...CoreSx.hoverIcon }}>
           {icon}

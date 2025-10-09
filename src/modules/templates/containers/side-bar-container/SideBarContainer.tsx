@@ -2,6 +2,7 @@ import { Box, CssBaseline, Stack } from '@mui/material';
 import { Outlet } from '@tanstack/react-router';
 import { memo } from 'react';
 
+import rem from '@/core/utils/rem';
 import Sidebar from '@/modules/templates/components/sidebar';
 
 function SideBarContainer() {
@@ -12,7 +13,9 @@ function SideBarContainer() {
       <Box display="flex" minHeight="100dvh">
         <Sidebar />
 
-        <Outlet />
+        <Stack p={rem(32)} width="100%">
+          <Outlet />
+        </Stack>
       </Box>
     </Stack>
   );

@@ -5,4 +5,7 @@ export const Routes = {
   dashboard: {
     path: '/portal/dashboard',
   },
+  machines: {
+    path: '/portal/machines',
+  },
 };

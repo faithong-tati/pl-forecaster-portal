@@ -1,6 +1,6 @@
 import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import { useRouterState } from '@tanstack/react-router';
+import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -12,8 +12,9 @@ import {
 
 export default function useSidebar() {
   const [open, setOpen] = useState<boolean>(false);
-  const { t } = useTranslation('sidebar');
+  const { t, i18n } = useTranslation('sidebar');
   const routerState = useRouterState();
+  const navigate = useNavigate();
   // const
   const width = useMemo(() => {
     return open ? ExpandedWidth : CollapsedWidth;
@@ -25,10 +26,24 @@ export default function useSidebar() {
         icon: <DashboardIcon />,
         label: t('dashboard'),
         isActive: routerState.location.pathname.includes(Routes.dashboard.path),
+        onClick: () =>
+          navigate({
+            to: `/$locale${Routes.dashboard.path}`,
+            params: { locale: i18n.language },
+          }),
       },
-      { icon: <CoffeeMakerIcon />, label: t('machineMaker'), isActive: false },
+      {
+        icon: <CoffeeMakerIcon />,
+        label: t('machineMaker'),
+        isActive: routerState.location.pathname.includes(Routes.machines.path),
+        onClick: () =>
+          navigate({
+            to: `/$locale${Routes.machines.path}`,
+            params: { locale: i18n.language },
+          }),
+      },
     ];
-  }, [routerState.location.pathname, t]);
+  }, [i18n.language, navigate, routerState.location.pathname, t]);
 
   const toggleDrawer = useCallback(() => {
     setOpen((x) => !x);
