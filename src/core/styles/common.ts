@@ -16,6 +16,7 @@ export const Panel = styled(Paper)<PaperProps>(() => ({
   flexDirection: 'column',
   gap: rem(32),
   width: '100%',
+  height: '100%'
 }));
 
 type CoreSx = 'hoverIcon';
