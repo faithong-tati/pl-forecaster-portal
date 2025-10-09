@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, memo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import InputText from '@/core/components/input-text';
@@ -46,4 +46,4 @@ function FormGenerator<T extends Record<string, unknown>>({
   );
 }
 
-export default FormGenerator;
+export default memo(FormGenerator);

@@ -1,4 +1,5 @@
 import { Alert, Snackbar as MuiSnackBar } from '@mui/material';
+import { memo } from 'react';
 
 import type { SnackbarProps } from './types';
 
@@ -22,4 +23,4 @@ function Snackbar({ onClose, severity, message, ...props }: SnackbarProps) {
   );
 }
 
-export default Snackbar;
+export default memo(Snackbar);

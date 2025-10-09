@@ -3,6 +3,6 @@ export const Routes = {
     path: '/sign-in',
   },
   dashboard: {
-    path: '/dashboard',
+    path: '/portal/dashboard',
   },
 };

@@ -2,6 +2,7 @@ import { Paper, styled } from '@mui/material';
 
 import rem from '@/core/utils/rem';
 
+import type { SxInlineStyles } from '@/core/types';
 import type { PaperProps } from '@mui/material';
 
 export const Panel = styled(Paper)<PaperProps>(() => ({
@@ -16,3 +17,15 @@ export const Panel = styled(Paper)<PaperProps>(() => ({
   gap: rem(32),
   width: '100%',
 }));
+
+type CoreSx = 'hoverIcon';
+
+export const CoreSx: SxInlineStyles<CoreSx> = {
+  hoverIcon: {
+    'transition': 'transform 0.1s ease',
+    '&:hover': {
+      transform: 'scale(1.2)',
+      color: 'primary.main',
+    },
+  },
+};

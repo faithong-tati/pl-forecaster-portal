@@ -11,8 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
-import { Route as LocalecoreDashboardIndexRouteImport } from './routes/$locale/(core)/dashboard/index'
+import { Route as LocalecorePortalRouteImport } from './routes/$locale/(core)/portal'
 import { Route as LocaleauthSignInIndexRouteImport } from './routes/$locale/(auth)/sign-in/index'
+import { Route as LocalecorePortalDashboardIndexRouteImport } from './routes/$locale/(core)/portal/dashboard/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,55 +25,74 @@ const LocaleIndexRoute = LocaleIndexRouteImport.update({
   path: '/$locale/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LocalecoreDashboardIndexRoute =
-  LocalecoreDashboardIndexRouteImport.update({
-    id: '/$locale/(core)/dashboard/',
-    path: '/$locale/dashboard/',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const LocalecorePortalRoute = LocalecorePortalRouteImport.update({
+  id: '/$locale/(core)/portal',
+  path: '/$locale/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LocaleauthSignInIndexRoute = LocaleauthSignInIndexRouteImport.update({
   id: '/$locale/(auth)/sign-in/',
   path: '/$locale/sign-in/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocalecorePortalDashboardIndexRoute =
+  LocalecorePortalDashboardIndexRouteImport.update({
+    id: '/dashboard/',
+    path: '/dashboard/',
+    getParentRoute: () => LocalecorePortalRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/portal': typeof LocalecorePortalRouteWithChildren
   '/$locale/sign-in': typeof LocaleauthSignInIndexRoute
-  '/$locale/dashboard': typeof LocalecoreDashboardIndexRoute
+  '/$locale/portal/dashboard': typeof LocalecorePortalDashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/portal': typeof LocalecorePortalRouteWithChildren
   '/$locale/sign-in': typeof LocaleauthSignInIndexRoute
-  '/$locale/dashboard': typeof LocalecoreDashboardIndexRoute
+  '/$locale/portal/dashboard': typeof LocalecorePortalDashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/(core)/portal': typeof LocalecorePortalRouteWithChildren
   '/$locale/(auth)/sign-in/': typeof LocaleauthSignInIndexRoute
-  '/$locale/(core)/dashboard/': typeof LocalecoreDashboardIndexRoute
+  '/$locale/(core)/portal/dashboard/': typeof LocalecorePortalDashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$locale' | '/$locale/sign-in' | '/$locale/dashboard'
+  fullPaths:
+    | '/'
+    | '/$locale'
+    | '/$locale/portal'
+    | '/$locale/sign-in'
+    | '/$locale/portal/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$locale' | '/$locale/sign-in' | '/$locale/dashboard'
+  to:
+    | '/'
+    | '/$locale'
+    | '/$locale/portal'
+    | '/$locale/sign-in'
+    | '/$locale/portal/dashboard'
   id:
     | '__root__'
     | '/'
     | '/$locale/'
+    | '/$locale/(core)/portal'
     | '/$locale/(auth)/sign-in/'
-    | '/$locale/(core)/dashboard/'
+    | '/$locale/(core)/portal/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
+  LocalecorePortalRoute: typeof LocalecorePortalRouteWithChildren
   LocaleauthSignInIndexRoute: typeof LocaleauthSignInIndexRoute
-  LocalecoreDashboardIndexRoute: typeof LocalecoreDashboardIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -91,11 +111,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/$locale/(core)/dashboard/': {
-      id: '/$locale/(core)/dashboard/'
-      path: '/$locale/dashboard'
-      fullPath: '/$locale/dashboard'
-      preLoaderRoute: typeof LocalecoreDashboardIndexRouteImport
+    '/$locale/(core)/portal': {
+      id: '/$locale/(core)/portal'
+      path: '/$locale/portal'
+      fullPath: '/$locale/portal'
+      preLoaderRoute: typeof LocalecorePortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$locale/(auth)/sign-in/': {
@@ -105,14 +125,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleauthSignInIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/(core)/portal/dashboard/': {
+      id: '/$locale/(core)/portal/dashboard/'
+      path: '/dashboard'
+      fullPath: '/$locale/portal/dashboard'
+      preLoaderRoute: typeof LocalecorePortalDashboardIndexRouteImport
+      parentRoute: typeof LocalecorePortalRoute
+    }
   }
 }
+
+interface LocalecorePortalRouteChildren {
+  LocalecorePortalDashboardIndexRoute: typeof LocalecorePortalDashboardIndexRoute
+}
+
+const LocalecorePortalRouteChildren: LocalecorePortalRouteChildren = {
+  LocalecorePortalDashboardIndexRoute: LocalecorePortalDashboardIndexRoute,
+}
+
+const LocalecorePortalRouteWithChildren =
+  LocalecorePortalRoute._addFileChildren(LocalecorePortalRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LocaleIndexRoute: LocaleIndexRoute,
+  LocalecorePortalRoute: LocalecorePortalRouteWithChildren,
   LocaleauthSignInIndexRoute: LocaleauthSignInIndexRoute,
-  LocalecoreDashboardIndexRoute: LocalecoreDashboardIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
