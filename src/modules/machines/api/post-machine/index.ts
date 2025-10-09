@@ -1,0 +1,1 @@
+export { postMachine } from './postMachine';

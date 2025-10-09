@@ -1,17 +1,22 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/material';
-import { useCallback, useMemo, useState } from 'react';
+import dayjs from 'dayjs';
+import { useCallback, useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useImmer } from 'use-immer';
 
 import TextTruncate from '@/core/components/text-truncate';
+import AuthContext from '@/core/contexts/auth-context';
 import { formatDisplayDate } from '@/core/lib/helpers/format';
+import { useDeviceUid } from '@/core/lib/hooks/use-device-uid';
+import { useToast } from '@/core/providers/toast-provider/useToast';
 import { ButtonIcon } from '@/core/styles/common';
 import { LocationType } from '@/core/types/models/machine.model';
 import { formatNumber } from '@/core/utils';
 import { CreateSchemaFormData } from '@/modules/machines/containers/table-machines-container/schema';
 import { useGetMachines } from '@/modules/machines/hooks/api/use-get-machines';
+import { usePostMachine } from '@/modules/machines/hooks/api/use-post-machine';
 import useOptions from '@/modules/machines/hooks/use-options';
 
 import type { Locale } from '@/core/types';
@@ -19,7 +24,10 @@ import type { TableMachineColumnDef } from '@/modules/machines/containers/table-
 import type { ColumnDef, ColumnFiltersState } from '@tanstack/react-table';
 
 export default function useTableMachines() {
+  const { user } = useContext(AuthContext);
+  const { deviceUid } = useDeviceUid();
   const { t, i18n } = useTranslation('machine');
+  const toast = useToast();
   // state
   const [globalFilter, setGlobalFilter] = useState<string>('');
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([
@@ -37,7 +45,22 @@ export default function useTableMachines() {
   });
 
   // async hooks
-  const { data } = useGetMachines();
+  const { data, refetch } = useGetMachines();
+  const { mutateAsync: postMachineApi } = usePostMachine({
+    onSuccess: () => {
+      setModalState((draft) => {
+        draft.isOpenCreateModal = false;
+      });
+
+      refetch();
+
+      toast.onOpen('createMachine.success', 'success');
+    },
+    onError: () => {
+      toast.onOpen('createMachine.failed', 'error');
+    },
+  });
+
   // const
   const { locationTypeOptions } = useOptions();
   const columns = useMemo<Array<ColumnDef<TableMachineColumnDef>>>(() => {
@@ -161,9 +184,20 @@ export default function useTableMachines() {
   }, [i18n.language, locationTypeOptions, t]);
 
   // event
-  const onSubmitCreate = useCallback(async (data: CreateSchemaFormData) => {
-    console.log(data);
-  }, []);
+  const onSubmitCreate = useCallback(
+    async (data: CreateSchemaFormData) => {
+      await postMachineApi({
+        ...data,
+        createdAt: dayjs().toISOString(),
+        updatedAt: dayjs().toISOString(),
+        createdBy: user?.username ?? deviceUid,
+        updatedBy: user?.username ?? deviceUid,
+        createdByUserId: user?.id ?? '',
+        updatedByUserId: user?.id ?? '',
+      });
+    },
+    [deviceUid, postMachineApi, user?.id, user?.username],
+  );
 
   return {
     rows: data ?? [],

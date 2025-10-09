@@ -14,11 +14,9 @@ export const CreateSchema = z.object({
   locationType: z
     .string()
     .min(1, { message: 'table.modals.upsert.errors.locationType.required' }),
-  expectedSalesPerDay: z
-    .string()
-    .min(1, {
-      message: 'table.modals.upsert.errors.expectedSalesPerDay.required',
-    }),
+  expectedSalesPerDay: z.string().min(1, {
+    message: 'table.modals.upsert.errors.expectedSalesPerDay.required',
+  }),
   averageProfitMarginPercentage: z.string().min(1, {
     message:
       'table.modals.upsert.errors.averageProfitMarginPercentage.required',

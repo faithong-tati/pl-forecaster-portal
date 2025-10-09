@@ -19,4 +19,5 @@ export interface MachineModel {
   rentCostPerDay: string;
   updatedAt: string;
   updatedBy: string;
+  updatedByUserId: string;
 }

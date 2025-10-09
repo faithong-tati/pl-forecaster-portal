@@ -22,7 +22,8 @@
       "rentCostPerDay": "14451.56",
       "updatedAt": "2025-10-09T10:31:41.743Z",
       "updatedBy": "Super Adminnnnnnnnnnnn",
-      "createdByUserId": "f15a"
+      "createdByUserId": "f15a",
+      "updatedByUserId": "f15a"
     },
     {
       "id": "2",
@@ -36,7 +37,38 @@
       "rentCostPerDay": "14.56",
       "updatedAt": "2025-10-09T10:31:41.743Z",
       "updatedBy": "Super Admin",
-      "createdByUserId": "f15a"
+      "createdByUserId": "f15a",
+      "updatedByUserId": "f15a"
+    },
+    {
+      "id": "c00c",
+      "name": "jajaja",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "1",
+      "averageProfitMarginPercentage": "1",
+      "rentCostPerDay": "1",
+      "electricCostPerTempPerDay": "1",
+      "createdAt": "2025-10-09T19:01:24.569Z",
+      "updatedAt": "2025-10-09T19:01:24.569Z",
+      "createdBy": "superadmin@example.com",
+      "updatedBy": "superadmin@example.com",
+      "createdByUserId": "f15a",
+      "updatedByUserId": "f15a"
+    },
+    {
+      "id": "389b",
+      "name": "ffff",
+      "locationType": "SCHOOL",
+      "expectedSalesPerDay": "1",
+      "averageProfitMarginPercentage": "1",
+      "rentCostPerDay": "1",
+      "electricCostPerTempPerDay": "1",
+      "createdAt": "2025-10-09T19:04:39.455Z",
+      "updatedAt": "2025-10-09T19:04:39.455Z",
+      "createdBy": "superadmin@example.com",
+      "updatedBy": "superadmin@example.com",
+      "createdByUserId": "f15a",
+      "updatedByUserId": "f15a"
     }
   ]
 }
