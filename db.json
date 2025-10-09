@@ -1,3 +1,13 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "f15a",
+      "email": "superadmin@example.com",
+      "providerRef": "8FUtM4ByQWnz",
+      "imageUrl": "https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png",
+      "username": "superadmin@example.com",
+      "createdAt": "2025-10-09T10:31:41.743Z"
+    }
+  ],
+  "machines": []
 }

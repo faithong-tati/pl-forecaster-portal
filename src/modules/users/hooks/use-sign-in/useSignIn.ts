@@ -1,5 +1,6 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import { useNavigate } from '@tanstack/react-router';
+import dayjs from 'dayjs';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -61,6 +62,7 @@ export default function useSignIn() {
         providerRef: deviceUid,
         imageUrl: profile.picture,
         username: profile.sub,
+        createdAt: dayjs().toISOString(),
       });
     },
     onError: () => {
@@ -76,6 +78,7 @@ export default function useSignIn() {
         imageUrl:
           'https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png',
         username: data.email,
+        createdAt: dayjs().toISOString(),
       });
     },
     [checkOrCreateUse, deviceUid],

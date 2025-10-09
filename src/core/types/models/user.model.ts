@@ -1,4 +1,5 @@
 export interface UserModel {
+  createdAt: string;
   email: string;
   id: string;
   imageUrl: string;
