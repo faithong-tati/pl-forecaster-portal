@@ -2,5 +2,21 @@
   "signIn": {
     "success": "Sign In Successfully",
     "failed": "Sign In Failed"
+  },
+  "signOut": {
+    "success": "Sign Out Successfully",
+    "failed": "Sign Out Failed"
+  },
+  "createMachine": {
+    "success": "Create Machine Successfully",
+    "failed": "Create Machine Failed"
+  },
+  "updateMachine": {
+    "success": "Update Machine Successfully",
+    "failed": "Update Machine Failed"
+  },
+  "deleteMachine": {
+    "success": "Delete Machine Successfully",
+    "failed": "Delete Machine Failed"
   }
 }

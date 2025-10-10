@@ -1,0 +1,58 @@
+import { Stack } from '@mui/material';
+import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import FormGenerator from '@/core/components/form-generator';
+import rem from '@/core/utils/rem';
+import useOptions from '@/modules/machines/hooks/use-options';
+
+import type { FormSearchMachinesProps } from './types';
+import type { ChangeEvent } from 'react';
+
+function FormSearchMachines({
+  columnFilters,
+  setGlobalFilter,
+  setColumnFilters,
+}: FormSearchMachinesProps) {
+  const { t } = useTranslation('machine');
+  const { locationTypeOptions } = useOptions();
+
+  return (
+    <Stack direction="row" gap={rem(16)}>
+      <FormGenerator
+        items={[
+          {
+            name: 'search',
+            component: 'input-text',
+            type: 'text',
+            label: t('table.filters.search'),
+            t,
+            onChange: (
+              e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+            ) => {
+              setGlobalFilter(e.target.value);
+            },
+          },
+          {
+            name: 'locationType',
+            component: 'input-select',
+            type: 'text',
+            label: t('table.filters.locationType'),
+            t,
+            options: locationTypeOptions,
+            onChange: (value: string) => {
+              const newValue = { id: 'locationType', value };
+              const updatedFilter = columnFilters.map((item) =>
+                item.id === newValue.id ? newValue : item,
+              );
+
+              setColumnFilters(updatedFilter);
+            },
+          },
+        ]}
+      />
+    </Stack>
+  );
+}
+
+export default memo(FormSearchMachines);

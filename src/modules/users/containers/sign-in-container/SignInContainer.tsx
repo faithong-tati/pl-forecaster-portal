@@ -56,9 +56,7 @@ function SignInContainer() {
                     sx={Styles.smallLogo}
                   />
 
-                  <Typography variant="h6" fontWeight={700}>
-                    {tCore('system')}
-                  </Typography>
+                  <Typography variant="h6">{tCore('system')}</Typography>
                 </Stack>
 
                 <Stack spacing={0.5}>

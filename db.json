@@ -1,3 +1,29 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "f15a",
+      "email": "superadmin@example.com",
+      "providerRef": "8FUtM4ByQWnz",
+      "imageUrl": "https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png",
+      "username": "superadmin@example.com",
+      "createdAt": "2025-10-09T10:31:41.743Z"
+    }
+  ],
+  "machines": [
+    {
+      "id": "875d",
+      "name": "Test",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "22",
+      "averageProfitMarginPercentage": "22",
+      "rentCostPerDay": "22",
+      "electricCostPerTempPerDay": "222",
+      "createdAt": "2025-10-10T09:19:06.453Z",
+      "updatedAt": "2025-10-10T09:19:12.424Z",
+      "createdBy": "superadmin@example.com",
+      "updatedBy": "superadmin@example.com",
+      "createdByUserId": "f15a",
+      "updatedByUserId": "f15a"
+    }
+  ]
 }

@@ -1,8 +1,9 @@
-import { Paper, styled } from '@mui/material';
+import { Dialog, IconButton, Paper, styled } from '@mui/material';
 
 import rem from '@/core/utils/rem';
 
-import type { PaperProps } from '@mui/material';
+import type { SxInlineStyles } from '@/core/types';
+import type { DialogProps, PaperProps } from '@mui/material';
 
 export const Panel = styled(Paper)<PaperProps>(() => ({
   borderRadius: rem(16),
@@ -15,4 +16,47 @@ export const Panel = styled(Paper)<PaperProps>(() => ({
   flexDirection: 'column',
   gap: rem(32),
   width: '100%',
+  height: '100%',
+}));
+
+type CoreSx = 'hoverIcon';
+
+export const CoreSx: SxInlineStyles<CoreSx> = {
+  hoverIcon: {
+    'transition': 'transform 0.1s ease',
+    '&:hover': {
+      transform: 'scale(1.2)',
+      color: (theme) => theme.palette.primary.main,
+    },
+  },
+};
+
+export const BaseDialog = styled(Dialog)<DialogProps>(() => ({
+  '& .MuiDialog-paper': {
+    borderRadius: rem(24),
+    padding: rem(36),
+    gap: rem(24),
+    width: rem(460),
+  },
+  '& .MuiDialogTitle-root': {
+    padding: 0,
+  },
+  '& .MuiDialogContent-root': {
+    padding: 0,
+  },
+  '& .MuiDialogActions-root': {
+    padding: 0,
+  },
+}));
+
+export const ButtonIcon = styled(IconButton, {
+  shouldForwardProp: (prop) => prop !== 'none',
+})<{ disabled?: boolean }>(({ disabled, theme }) => ({
+  'fill': theme.palette.secondary.main,
+  'pointerEvents': disabled ? 'none' : 'auto',
+  '& .MuiSvgIcon-root': {
+    ...(disabled && {
+      fill: theme.palette.text.disabled,
+    }),
+  },
 }));

@@ -9,7 +9,7 @@ const theme = responsiveFontSizes(
       h3: { fontWeight: 500 },
       h4: { fontWeight: 500 },
       h5: { fontWeight: 500 },
-      h6: { fontWeight: 500 },
+      h6: { fontWeight: 700 },
       subtitle1: { fontWeight: 400 },
       subtitle2: { fontWeight: 400 },
       body1: { fontWeight: 400 },
@@ -18,7 +18,7 @@ const theme = responsiveFontSizes(
     },
     palette: {
       primary: { main: '#523d2e' },
-      secondary: { main: '#f0e3dd' },
+      secondary: { main: '#d0d1d2' },
       background: { default: '#ffffff', paper: '#eef2f6' },
     },
   }),

@@ -1,3 +1,3 @@
-export type { Locale } from './common';
+export type { BaseComponentProps, Locale, OptionT } from './common';
 
 export type { SxInlineStyles } from './component';

@@ -7,7 +7,7 @@ type SxKeys = 'primaryStack' | 'backgroundStack' | 'paper' | 'smallLogo';
 export const Styles: SxInlineStyles<SxKeys> = {
   primaryStack: {
     minHeight: '100dvh',
-    bgcolor: 'background.default',
+    bgcolor: (theme) => theme.palette.background.default,
     display: 'grid',
     placeItems: 'center',
   },

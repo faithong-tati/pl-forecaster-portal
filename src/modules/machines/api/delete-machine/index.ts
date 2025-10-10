@@ -1,0 +1,1 @@
+export { deleteMachine } from './deleteMachine';

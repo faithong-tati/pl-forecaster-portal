@@ -1,4 +1,5 @@
 import { Alert, Snackbar as MuiSnackBar } from '@mui/material';
+import { memo } from 'react';
 
 import type { SnackbarProps } from './types';
 
@@ -6,7 +7,7 @@ function Snackbar({ onClose, severity, message, ...props }: SnackbarProps) {
   return (
     <MuiSnackBar
       {...props}
-      autoHideDuration={5000}
+      autoHideDuration={3000}
       onClose={onClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
     >
@@ -22,4 +23,4 @@ function Snackbar({ onClose, severity, message, ...props }: SnackbarProps) {
   );
 }
 
-export default Snackbar;
+export default memo(Snackbar);

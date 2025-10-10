@@ -1,4 +1,4 @@
-import type { BaseComponentProps } from '@/core/types/common';
+import type { BaseComponentProps } from '@/core/types';
 import type {
   AlertColor,
   SnackbarProps as MuiSnackbarProps,

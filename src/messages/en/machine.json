@@ -1,0 +1,72 @@
+{
+  "table": {
+    "title": "Machine Management",
+    "notFound": "Machine Not Found",
+    "buttons": {
+      "add": "Add Machine"
+    },
+    "filters": {
+      "search": "Search",
+      "locationType": "Location Type"
+    },
+    "columns": {
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "name": "Name",
+      "locationType": "Location Type",
+      "expectedSalesPerDay": "Expected Sales Per Day",
+      "averageProfitMarginPercentage": "Average Profit Margin Percentage",
+      "rentCostPerDay": "Rent Cost Per Day",
+      "electricCostPerTempPerDay": "Electric Cost Per Temp Per Day"
+    },
+    "modals": {
+      "upsert": {
+        "addTitle": "Add Machine",
+        "editTitle": "Edit Machine",
+        "fields": {
+          "name": "Name",
+          "location": "Location Type",
+          "expectedSalesPerDay": "Expected Sales Per Day",
+          "averageProfitMarginPercentage": "Average Profit Margin Percentage",
+          "rentCostPerDay": "Rent Cost Per Day",
+          "electricCostPerTempPerDay": "Electric Cost Per Temp Per Day"
+        },
+        "errors": {
+          "name": {
+            "required": "Name is required"
+          },
+          "locationType": {
+            "required": "Location Type is required"
+          },
+          "expectedSalesPerDay": {
+            "required": "Expected Sales Per Day is required"
+          },
+          "averageProfitMarginPercentage": {
+            "required": "Average Profit Margin Percentage is required"
+          },
+          "rentCostPerDay": {
+            "required": "Rent Cost Per Day is required"
+          },
+          "electricCostPerTempPerDay": {
+            "required": "Electric Cost Per Temp Per Da is required"
+          }
+        }
+      },
+      "delete": {
+        "title": "Are you sure you want to delete this machine ?",
+        "name": "Name",
+        "locationType": "Location Type"
+      }
+    }
+  },
+  "options": {
+    "locationType": {
+      "all": "All",
+      "school": "School",
+      "hospital": "Hospital",
+      "shoppingMall": "Shopping Mall"
+    }
+  }
+}

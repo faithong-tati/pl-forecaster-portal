@@ -9,8 +9,6 @@ import Button from '@/core/components/button';
 import FormGenerator from '@/core/components/form-generator';
 import rem from '@/core/utils/rem';
 
-import type { SchemaFormData } from '@/modules/users/hooks/use-sign-in/schema';
-
 function FormSignIn() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { t } = useTranslation('signIn');
@@ -18,10 +16,11 @@ function FormSignIn() {
 
   return (
     <Stack spacing={rem(24)}>
-      <FormGenerator<SchemaFormData>
+      <FormGenerator
         items={[
           {
             name: 'email',
+            required: true,
             component: 'input-text',
             type: 'email',
             label: t('form.fields.email'),
@@ -30,6 +29,7 @@ function FormSignIn() {
           },
           {
             name: 'password',
+            required: true,
             component: 'input-text',
             type: showPassword ? 'text' : 'password',
             label: t('form.fields.password'),
