@@ -1,7 +1,8 @@
 {
   "table": {
     "title": "Machine Management",
-    "notFound": "Machine Not Found",
+    "notFound": "Machine not found",
+    "noData": "No machines added yet",
     "buttons": {
       "add": "Add Machine"
     },

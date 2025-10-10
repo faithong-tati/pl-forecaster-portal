@@ -10,14 +10,14 @@ import useOptions from '@/modules/machines/hooks/use-options';
 import { rankingConfig, swapItems } from './helpers';
 import { Styles } from './styles';
 
-import type { RankingProps } from './types';
+import type { SalesRankingProps } from './types';
 
-function Ranking({ items }: RankingProps) {
+function SalesRanking({ items }: SalesRankingProps) {
   const { locationTypeOptions } = useOptions();
 
   return (
     <Stack direction="row" width="100%" mt={rem(40)}>
-      <Grid container spacing={rem(32)} width="100%">
+      <Grid container spacing={rem(16)} width="100%">
         {swapItems(items).map((item) => {
           const locationType = locationTypeOptions.find(
             (option) => option.value === item.locationType,
@@ -56,12 +56,22 @@ function Ranking({ items }: RankingProps) {
 
                 <Divider />
 
-                <Grid container>
+                <Grid container mt="auto">
                   {config.stat.map((sc) => (
-                    <Grid key={sc.label} size={{ xs: 6 }}>
-                      <Stack alignItems={sc.alignItems} gap={rem(4)}>
+                    <Grid key={sc.label} size={{ xs: 12 }}>
+                      <Stack
+                        direction="row"
+                        gap={rem(8)}
+                        justifyContent="center"
+                        alignItems="center"
+                      >
+                        <Typography
+                          variant={item.rank === 1 ? 'h5' : 'body1'}
+                          fontWeight={700}
+                        >
+                          {sc.value}
+                        </Typography>
                         <Typography variant="body2">{sc.label}</Typography>
-                        <Typography fontWeight={700}>{sc.value}</Typography>
                       </Stack>
                     </Grid>
                   ))}
@@ -75,4 +85,4 @@ function Ranking({ items }: RankingProps) {
   );
 }
 
-export default memo(Ranking);
+export default memo(SalesRanking);

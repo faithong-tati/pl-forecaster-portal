@@ -13,12 +13,13 @@ export const Styles: SxInlineStyles<SxKeys> = {
       transform: 'translateY(-8px)',
       boxShadow: (theme) => theme.shadows[4],
     },
+    padding: rem(16)
   },
   medalIcon: {
-    width: rem(80),
+    width: rem(60),
     mx: 'auto',
     position: 'absolute',
-    top: -50,
+    top: -40,
     left: `50%`,
     right: `50%`,
     transform: 'translateX(-50%)',

@@ -58,7 +58,7 @@ function ClientDataTable({
       <TableContainer sx={{ maxHeight: 600 }}>
         <Table stickyHeader size="small" aria-label="notification-grid">
           <DataTableHead table={table} />
-          <DataTableBody table={table} />
+          <DataTableBody table={table} rows={rows} />
         </Table>
       </TableContainer>
 
