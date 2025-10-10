@@ -1,11 +1,9 @@
 import { memo } from 'react';
 
+import DashboardContainer from '@/modules/dashboard/containers/dashboard-container';
+
 function PageDashboard() {
-  return (
-    <div>
-      <div>PageDashboard</div>
-    </div>
-  );
+  return <DashboardContainer />;
 }
 
 export default memo(PageDashboard);

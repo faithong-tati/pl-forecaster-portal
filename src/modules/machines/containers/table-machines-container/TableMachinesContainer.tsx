@@ -92,7 +92,10 @@ function TableMachinesContainer() {
         }}
         title={upsertModalConfig.title}
         fixHeight={false}
-        onClickPrimaryButton={handleSubmit(upsertModalConfig.onSubmit)}
+        onClickPrimaryButton={() => {
+          handleSubmit(upsertModalConfig.onSubmit)();
+          reset();
+        }}
         onClickSecondaryButton={() => {
           onCloseModal();
           reset();

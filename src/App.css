@@ -6,3 +6,10 @@ body {
   padding: 0;
   margin: 0;
 }
+
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

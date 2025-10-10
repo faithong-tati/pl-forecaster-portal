@@ -1,10 +1,10 @@
-export const LocationType = {
-  HOSPITAL: 'HOSPITAL',
-  SCHOOL: 'SCHOOL',
-  SHOPPING_MALL: 'SHOPPING_MALL',
-};
+export enum LocationType {
+  HOSPITAL = 'HOSPITAL',
+  SCHOOL = 'SCHOOL',
+  SHOPPING_MALL = 'SHOPPING_MALL',
+}
 
-export type LocationType = (typeof LocationType)[keyof typeof LocationType];
+export type ILocationType = `${LocationType}`;
 
 export interface MachineModel {
   averageProfitMarginPercentage: string;
@@ -14,7 +14,7 @@ export interface MachineModel {
   electricCostPerTempPerDay: string;
   expectedSalesPerDay: string;
   id: string;
-  locationType: LocationType;
+  locationType: string;
   name: string;
   rentCostPerDay: string;
   updatedAt: string;
