@@ -1,5 +1,5 @@
 import core from './th/core.json';
-import dashboard from './th/dashboard.json'
+import dashboard from './th/dashboard.json';
 import machine from './th/machine.json';
 import sidebar from './th/sidebar.json';
 import signIn from './th/signIn.json';

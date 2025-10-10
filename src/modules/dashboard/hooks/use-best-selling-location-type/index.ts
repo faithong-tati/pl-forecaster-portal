@@ -1,1 +1,1 @@
-export { default } from './useBestSellingLocationType'
+export { default } from './useBestSellingLocationType';

@@ -1,9 +1,9 @@
-import { Dialog, IconButton, Paper, styled } from '@mui/material';
+import { Dialog, IconButton, Paper, Stack, styled } from '@mui/material';
 
 import rem from '@/core/utils/rem';
 
 import type { SxInlineStyles } from '@/core/types';
-import type { DialogProps, PaperProps } from '@mui/material';
+import type { DialogProps, PaperProps, StackProps } from '@mui/material';
 
 export const Panel = styled(Paper)<PaperProps>(() => ({
   borderRadius: rem(16),
@@ -59,4 +59,11 @@ export const ButtonIcon = styled(IconButton, {
       fill: theme.palette.text.disabled,
     }),
   },
+}));
+
+export const BorderStack = styled(Stack)<StackProps>(({ theme }) => ({
+  border: `1px solid ${theme.palette.grey[200]}`,
+  borderRadius: rem(8),
+  padding: rem(32),
+  gap: rem(32),
 }));

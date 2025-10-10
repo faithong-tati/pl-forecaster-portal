@@ -2,9 +2,9 @@ import type {
   UseCustomQueryOptions,
   UseCustomQueryResult,
 } from '@/core/types/api';
-import type { UserModel } from '@/core/types/models';
+import type { MachineModel } from '@/core/types/models';
 
-export type GetMachinesResponse = UserModel;
+export type GetMachinesResponse = MachineModel[];
 
 export type QueryOptionsGetMachines =
   UseCustomQueryOptions<GetMachinesResponse>;
