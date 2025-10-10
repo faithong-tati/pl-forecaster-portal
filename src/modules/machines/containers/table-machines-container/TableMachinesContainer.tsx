@@ -92,18 +92,12 @@ function TableMachinesContainer() {
         }}
         title={upsertModalConfig.title}
         fixHeight={false}
-        onClickPrimaryButton={() => {
-          handleSubmit(upsertModalConfig.onSubmit)();
-          reset();
-        }}
-        onClickSecondaryButton={() => {
-          onCloseModal();
-          reset();
-        }}
+        onClickPrimaryButton={handleSubmit(upsertModalConfig.onSubmit)}
+        onClickSecondaryButton={onCloseModal}
       >
         <FormProvider {...upsertMethods}>
           <form noValidate>
-            <FormUpsertMachines />
+            <FormUpsertMachines reset={reset} />
           </form>
         </FormProvider>
       </ModalInfo>

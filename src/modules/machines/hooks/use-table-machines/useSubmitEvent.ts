@@ -80,10 +80,25 @@ export function useSubmitEvent() {
   });
 
   // event
+  const checkDuplicate = useCallback(
+    (machineName: string) => {
+      return data?.find((datum) => datum.name === machineName);
+    },
+    [data],
+  );
+
   const onSubmitCreate = useCallback(
-    async (data: UpsertSchemaFormData) => {
+    async (formData: UpsertSchemaFormData) => {
+      const found = checkDuplicate(formData.name);
+
+      if (found) {
+        toast.onOpen('duplicateMachine.failed', 'error');
+
+        return;
+      }
+
       await postMachineApi({
-        ...data,
+        ...formData,
         createdAt: dayjs().toISOString(),
         updatedAt: dayjs().toISOString(),
         createdBy: user?.username ?? deviceUid,
@@ -92,19 +107,36 @@ export function useSubmitEvent() {
         updatedByUserId: user?.id ?? '',
       });
     },
-    [deviceUid, postMachineApi, user?.id, user?.username],
+    [
+      checkDuplicate,
+      deviceUid,
+      postMachineApi,
+      toast,
+      user?.id,
+      user?.username,
+    ],
   );
 
   const onSubmitUpdate = useCallback(
-    async (data: UpsertSchemaFormData) => {
+    async (formData: UpsertSchemaFormData) => {
       if (!getMachine?.id) {
         toast.onOpen('editMachine.failed', 'error');
 
         return;
       }
 
+      const existingMachine = checkDuplicate(formData.name);
+      const found =
+        existingMachine && existingMachine.id !== modalState.currentId;
+
+      if (found) {
+        toast.onOpen('duplicateMachine.failed', 'error');
+
+        return;
+      }
+
       await patchMachineApi({
-        ...data,
+        ...formData,
         id: getMachine?.id ?? '',
         updatedAt: dayjs().toISOString(),
         updatedBy: user?.username ?? deviceUid,
@@ -112,8 +144,10 @@ export function useSubmitEvent() {
       });
     },
     [
+      checkDuplicate,
       deviceUid,
       getMachine?.id,
+      modalState.currentId,
       patchMachineApi,
       toast,
       user?.id,
