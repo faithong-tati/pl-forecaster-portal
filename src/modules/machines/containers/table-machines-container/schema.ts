@@ -7,7 +7,7 @@ export const GetSchema = z.object({
 
 export type GetSchemaFormData = z.infer<typeof GetSchema>;
 
-export const CreateSchema = z.object({
+export const UpsertSchema = z.object({
   name: z
     .string()
     .min(1, { message: 'table.modals.upsert.errors.name.required' }),
@@ -29,4 +29,4 @@ export const CreateSchema = z.object({
   }),
 });
 
-export type CreateSchemaFormData = z.infer<typeof CreateSchema>;
+export type UpsertSchemaFormData = z.infer<typeof UpsertSchema>;

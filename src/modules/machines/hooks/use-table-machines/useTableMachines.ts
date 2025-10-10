@@ -1,0 +1,152 @@
+import dayjs from 'dayjs';
+import { useCallback, useContext, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useImmer } from 'use-immer';
+
+import AuthContext from '@/core/contexts/auth-context';
+import { useDeviceUid } from '@/core/lib/hooks/use-device-uid';
+import { useToast } from '@/core/providers/toast-provider/useToast';
+import { UpsertSchemaFormData } from '@/modules/machines/containers/table-machines-container/schema';
+import { useGetMachineById } from '@/modules/machines/hooks/api/use-get-machine-by-id';
+import { useGetMachines } from '@/modules/machines/hooks/api/use-get-machines';
+import { usePatchMachine } from '@/modules/machines/hooks/api/use-patch-machine';
+import { usePostMachine } from '@/modules/machines/hooks/api/use-post-machine';
+
+import { useColumn } from './useColumn';
+
+import type { UseTableMachinesState } from './types';
+import type { ColumnFiltersState } from '@tanstack/react-table';
+
+export default function useTableMachines() {
+  const { user } = useContext(AuthContext);
+  const { deviceUid } = useDeviceUid();
+  const { t } = useTranslation('machine');
+  const toast = useToast();
+  // state
+  const [globalFilter, setGlobalFilter] = useState<string>('');
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([
+    {
+      id: 'locationType',
+      value: '',
+    },
+  ]);
+
+  // modal state
+  const [modalState, setModalState] = useImmer<UseTableMachinesState>({
+    isOpenCreateModal: false,
+    isOpenEditModal: false,
+    isOpenDeleteModal: false,
+    currentId: '',
+  });
+
+  const onCloseModal = useCallback(() => {
+    setModalState((draft) => {
+      draft.currentId = '';
+      draft.isOpenCreateModal = false;
+      draft.isOpenEditModal = false;
+      draft.isOpenDeleteModal = false;
+    });
+  }, [setModalState]);
+
+  // async hooks
+  const { data, refetch } = useGetMachines();
+  // * to prevent stale and ensure accurate data
+  const { data: getMachine } = useGetMachineById(
+    { id: modalState.currentId },
+    { enabled: !!modalState.currentId },
+  );
+
+  const { mutateAsync: postMachineApi } = usePostMachine({
+    onSuccess: () => {
+      onCloseModal();
+      refetch();
+
+      toast.onOpen('createMachine.success', 'success');
+    },
+    onError: () => {
+      toast.onOpen('createMachine.failed', 'error');
+    },
+  });
+
+  const { mutateAsync: patchMachineApi } = usePatchMachine({
+    onSuccess: () => {
+      onCloseModal();
+      refetch();
+
+      toast.onOpen('editMachine.success', 'success');
+    },
+    onError: () => {
+      toast.onOpen('editMachine.failed', 'error');
+    },
+  });
+
+  // const
+  const { columns } = useColumn({ setModalState });
+  // event
+  const onSubmitCreate = useCallback(
+    async (data: UpsertSchemaFormData) => {
+      await postMachineApi({
+        ...data,
+        createdAt: dayjs().toISOString(),
+        updatedAt: dayjs().toISOString(),
+        createdBy: user?.username ?? deviceUid,
+        updatedBy: user?.username ?? deviceUid,
+        createdByUserId: user?.id ?? '',
+        updatedByUserId: user?.id ?? '',
+      });
+    },
+    [deviceUid, postMachineApi, user?.id, user?.username],
+  );
+
+  const onSubmitUpdate = useCallback(
+    async (data: UpsertSchemaFormData) => {
+      await patchMachineApi({
+        ...data,
+        id: getMachine?.id ?? '',
+        updatedAt: dayjs().toISOString(),
+        updatedBy: user?.username ?? deviceUid,
+        updatedByUserId: user?.id ?? '',
+      });
+    },
+    [deviceUid, getMachine?.id, patchMachineApi, user?.id, user?.username],
+  );
+
+  const upsertModalConfig = useMemo(() => {
+    return {
+      open: modalState.isOpenCreateModal || modalState.isOpenEditModal,
+      title: modalState.isOpenCreateModal
+        ? t('table.modals.upsert.addTitle')
+        : t('table.modals.upsert.editTitle'),
+      onSubmit: modalState.isOpenCreateModal ? onSubmitCreate : onSubmitUpdate,
+      defaultValues: {
+        name: getMachine?.name || '',
+        locationType: getMachine?.locationType || '',
+        expectedSalesPerDay: getMachine?.expectedSalesPerDay || '',
+        averageProfitMarginPercentage:
+          getMachine?.averageProfitMarginPercentage || '',
+        rentCostPerDay: getMachine?.rentCostPerDay || '',
+        electricCostPerTempPerDay: getMachine?.electricCostPerTempPerDay || '',
+      },
+    };
+  }, [
+    getMachine,
+    modalState.isOpenCreateModal,
+    modalState.isOpenEditModal,
+    onSubmitCreate,
+    onSubmitUpdate,
+    t,
+  ]);
+
+  return {
+    rows: data ?? [],
+    columns,
+    globalFilter,
+    columnFilters,
+    upsertModalConfig,
+
+    setModalState,
+    setGlobalFilter,
+    setColumnFilters,
+    onCloseModal,
+  };
+}

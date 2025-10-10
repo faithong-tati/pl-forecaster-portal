@@ -1,7 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/core/components/button';
 import ClientDataTable from '@/core/components/client-data-table';
@@ -13,22 +12,21 @@ import FormSearchMachines from '@/modules/machines/components/form-search-machin
 import FormUpsertMachines from '@/modules/machines/components/form-upsert-machine/FormUpsertMachines';
 import useTableMachines from '@/modules/machines/hooks/use-table-machines';
 
-import { CreateSchema, GetSchema } from './schema';
+import { GetSchema, UpsertSchema } from './schema';
 
-import type { CreateSchemaFormData, GetSchemaFormData } from './schema';
+import type { GetSchemaFormData, UpsertSchemaFormData } from './schema';
 
 function TableMachinesContainer() {
-  const { t } = useTranslation('machine');
   const {
     rows,
     columns,
     globalFilter,
     columnFilters,
-    modalState,
+    upsertModalConfig,
     setModalState,
     setGlobalFilter,
     setColumnFilters,
-    onSubmitCreate,
+    onCloseModal,
   } = useTableMachines();
 
   // form
@@ -38,21 +36,14 @@ function TableMachinesContainer() {
     defaultValues: { search: '', locationType: '' },
   });
 
-  const createMethods = useForm<CreateSchemaFormData>({
-    resolver: zodResolver(CreateSchema),
+  const upsertMethods = useForm<UpsertSchemaFormData>({
+    resolver: zodResolver(UpsertSchema),
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
-    defaultValues: {
-      name: '',
-      locationType: '',
-      expectedSalesPerDay: '',
-      averageProfitMarginPercentage: '',
-      rentCostPerDay: '',
-      electricCostPerTempPerDay: '',
-    },
+    values: upsertModalConfig.defaultValues,
   });
 
-  const { handleSubmit: handleCreate } = createMethods;
+  const { handleSubmit, reset } = upsertMethods;
 
   return (
     <Panel>
@@ -92,22 +83,21 @@ function TableMachinesContainer() {
       </FormProvider>
 
       <ModalInfo
-        open={modalState.isOpenCreateModal}
+        open={upsertModalConfig.open}
         sx={{
           '& .MuiDialog-paper': {
             width: rem(600),
           },
         }}
-        title={t('table.modals.upsert.addTitle')}
+        title={upsertModalConfig.title}
         fixHeight={false}
-        onClickPrimaryButton={() => handleCreate(onSubmitCreate)()}
-        onClickSecondaryButton={() =>
-          setModalState((draft) => {
-            draft.isOpenCreateModal = false;
-          })
-        }
+        onClickPrimaryButton={handleSubmit(upsertModalConfig.onSubmit)}
+        onClickSecondaryButton={() => {
+          onCloseModal();
+          reset();
+        }}
       >
-        <FormProvider {...createMethods}>
+        <FormProvider {...upsertMethods}>
           <form noValidate>
             <FormUpsertMachines />
           </form>
