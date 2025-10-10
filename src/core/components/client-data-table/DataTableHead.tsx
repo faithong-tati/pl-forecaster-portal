@@ -9,10 +9,7 @@ function DataTableHead({ table }: DataTableHeadProps) {
   return (
     <TableHead>
       {table.getHeaderGroups().map((headerGroup) => (
-        <TableRow
-          key={headerGroup.id}
-          sx={{ '& th': { whiteSpace: 'nowrap' } }}
-        >
+        <TableRow key={headerGroup.id}>
           {headerGroup.headers.map((header) => {
             const canSort = header.column.getCanSort();
             const sorted = header.column.getIsSorted();

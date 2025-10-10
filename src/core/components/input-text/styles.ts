@@ -9,4 +9,8 @@ export const BaseTextField = styled(TextField)(({ theme }) => ({
   '& .MuiFormLabel-asterisk': {
     color: theme.palette.error.main,
   },
+  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+    WebkitAppearance: 'none',
+    margin: 0,
+  },
 }));

@@ -13,5 +13,9 @@
       "title": "Are you sure you want to sign out?",
       "subtitle": "You can sign in again at any time :)"
     }
+  },
+  "units": {
+    "baht": "Baht",
+    "bahtPerTempPerDay": "Baht/°C/day"
   }
 }

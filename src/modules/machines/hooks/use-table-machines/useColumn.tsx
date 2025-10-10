@@ -26,7 +26,7 @@ export function useColumn({
       {
         accessorKey: 'name',
         header: t('table.columns.name'),
-        minSize: 170,
+        minSize: 150,
         cell: ({ getValue }) => {
           return <TextTruncate>{getValue<string>() || '-'}</TextTruncate>;
         },
@@ -34,6 +34,7 @@ export function useColumn({
       {
         accessorKey: 'locationType',
         header: t('table.columns.locationType'),
+        minSize: 150,
         cell: ({ getValue }) => {
           const targetOption = locationTypeOptions.find(
             (option) => option.value === getValue<LocationType>(),
@@ -47,6 +48,7 @@ export function useColumn({
       {
         accessorKey: 'expectedSalesPerDay',
         header: t('table.columns.expectedSalesPerDay'),
+        minSize: 150,
         cell: ({ getValue }) => {
           return (
             <TextTruncate>{formatNumber(getValue<string>() || 0)}</TextTruncate>
@@ -56,10 +58,11 @@ export function useColumn({
       {
         accessorKey: 'averageProfitMarginPercentage',
         header: t('table.columns.averageProfitMarginPercentage'),
+        minSize: 150,
         cell: ({ getValue }) => {
           return (
             <TextTruncate>
-              {formatNumber(getValue<string>() || 0, 2)}
+              {formatNumber(getValue<string>() || 0)} %
             </TextTruncate>
           );
         },
@@ -67,22 +70,20 @@ export function useColumn({
       {
         accessorKey: 'rentCostPerDay',
         header: t('table.columns.rentCostPerDay'),
+        minSize: 150,
         cell: ({ getValue }) => {
           return (
-            <TextTruncate>
-              {formatNumber(getValue<string>() || 0, 2)}
-            </TextTruncate>
+            <TextTruncate>{formatNumber(getValue<string>() || 0)}</TextTruncate>
           );
         },
       },
       {
         accessorKey: 'electricCostPerTempPerDay',
         header: t('table.columns.electricCostPerTempPerDay'),
+        minSize: 150,
         cell: ({ getValue }) => {
           return (
-            <TextTruncate>
-              {formatNumber(getValue<string>() || 0, 2)}
-            </TextTruncate>
+            <TextTruncate>{formatNumber(getValue<string>() || 0)}</TextTruncate>
           );
         },
       },
