@@ -12,8 +12,7 @@ import type { CriteriaGroupProps } from './types';
 function CriteriaGroup({ criteria, onChangeCriteria }: CriteriaGroupProps) {
   const options = [
     { value: Criteria.ALL_TIME, label: 'All Time' },
-    { value: Criteria.WEEKLY, label: 'Weekly' },
-    { value: Criteria.MONTHLY, label: 'Monthly' },
+    { value: Criteria.LAST_SEVEN_DAYS, label: 'Last 7 Days' },
   ];
 
   return (

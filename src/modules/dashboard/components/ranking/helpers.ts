@@ -49,7 +49,7 @@ export function rankingConfig(item: SummarizeMachine) {
     },
     {
       alignItems: 'end',
-      label: 'Total Sales',
+      label: 'Total Expected Sales Per Day',
       value: formatNumber(item.totalExpectedSalesPerDay),
     },
   ];

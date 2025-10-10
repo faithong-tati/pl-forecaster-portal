@@ -14,8 +14,7 @@ export interface SummarizeMachine {
 
 export enum Criteria {
   ALL_TIME = 'all-time',
-  MONTHLY = 'monthly',
-  WEEKLY = 'weekly',
+  LAST_SEVEN_DAYS = 'last-7',
 }
 
 export type ICriteria = `${Criteria}`;

@@ -23,18 +23,10 @@ export default function useBestSellingLocationType() {
         const sales = Decimal(machine.expectedSalesPerDay).toNumber();
         const createdAt = dayjs(machine.createdAt);
 
-        if (criteria === 'weekly') {
-          const startOfWeek = dayjs().startOf('week');
+        if (criteria === 'last-7') {
+          const startOfWeek = dayjs().subtract(1, 'week');
 
           if (createdAt.isBefore(startOfWeek)) {
-            acc[key] = { totalCount: 0, totalExpectedSalesPerDay: 0 };
-          }
-        }
-
-        if (criteria === 'monthly') {
-          const startOfMonth = dayjs().startOf('month');
-
-          if (createdAt.isBefore(startOfMonth)) {
             acc[key] = { totalCount: 0, totalExpectedSalesPerDay: 0 };
           }
         }
@@ -68,13 +60,11 @@ export default function useBestSellingLocationType() {
 
   // grouped
   const allTime = initialSummary('all-time');
-  const monthly = initialSummary('monthly');
-  const weekly = initialSummary('weekly');
+  const lastSevenDays = initialSummary('last-7');
 
   return {
     allTime: summarize(allTime),
-    monthly: summarize(monthly),
-    weekly: summarize(weekly),
+    lastSevenDays: summarize(lastSevenDays),
     dataUpdatedAt,
   };
 }

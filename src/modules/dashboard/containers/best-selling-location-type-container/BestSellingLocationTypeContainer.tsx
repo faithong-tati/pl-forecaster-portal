@@ -23,7 +23,7 @@ function BestSellingLocationTypeContainer() {
     [criteria],
   );
 
-  const { weekly, allTime, monthly, dataUpdatedAt } =
+  const { allTime, lastSevenDays, dataUpdatedAt } =
     useBestSellingLocationType();
 
   return (
@@ -38,8 +38,7 @@ function BestSellingLocationTypeContainer() {
       <Ranking
         items={match(criteria)
           .with('all-time', () => allTime)
-          .with('weekly', () => weekly)
-          .with('monthly', () => monthly)
+          .with('last-7', () => lastSevenDays)
           .exhaustive()}
       />
 
