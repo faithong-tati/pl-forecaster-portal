@@ -1,3 +1,4 @@
+import type { OptionT } from '@/core/types';
 import type { Updater } from 'use-immer';
 
 export interface UseTableMachinesState {
@@ -8,5 +9,6 @@ export interface UseTableMachinesState {
 }
 
 export interface UseColumnProps {
+  locationTypeOptions: OptionT[];
   setModalState: Updater<UseTableMachinesState>;
 }

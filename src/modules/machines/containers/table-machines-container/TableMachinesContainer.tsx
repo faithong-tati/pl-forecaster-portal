@@ -23,6 +23,7 @@ function TableMachinesContainer() {
     globalFilter,
     columnFilters,
     upsertModalConfig,
+    deleteModelConfig,
     setModalState,
     setGlobalFilter,
     setColumnFilters,
@@ -103,6 +104,15 @@ function TableMachinesContainer() {
           </form>
         </FormProvider>
       </ModalInfo>
+
+      <ModalInfo
+        open={deleteModelConfig.open}
+        title={deleteModelConfig.title}
+        fixHeight={false}
+        contents={deleteModelConfig.contents}
+        onClickPrimaryButton={deleteModelConfig.onSubmit}
+        onClickSecondaryButton={onCloseModal}
+      />
     </Panel>
   );
 }

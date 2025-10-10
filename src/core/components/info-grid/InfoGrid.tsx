@@ -17,7 +17,7 @@ function InfoGrid({ datasource }: InfoGridProps) {
             datum.styleConfig?.textKeyFontColor || 'text.primary',
           textKeyFontWeight: datum.styleConfig?.textKeyFontWeight || 700,
           textValueFontColor:
-            datum.styleConfig?.textValueFontColor || 'grey.400',
+            datum.styleConfig?.textValueFontColor || 'primary.main',
           textValueFontWeight: datum.styleConfig?.textValueFontWeight || 400,
         };
 

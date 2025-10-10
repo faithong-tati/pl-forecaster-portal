@@ -55,7 +55,9 @@
         }
       },
       "delete": {
-        "title": "Are you sure you want to delete this machine ?"
+        "title": "Are you sure you want to delete this machine ?",
+        "name": "Name",
+        "locationType": "Location Type"
       }
     }
   },

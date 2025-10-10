@@ -9,16 +9,17 @@ import { formatDisplayDate } from '@/core/lib/helpers/format';
 import { ButtonIcon } from '@/core/styles/common';
 import { LocationType } from '@/core/types/models/machine.model';
 import { formatNumber } from '@/core/utils';
-import useOptions from '@/modules/machines/hooks/use-options';
 
 import type { UseColumnProps } from './types';
 import type { Locale } from '@/core/types';
 import type { TableMachineColumnDef } from '@/modules/machines/containers/table-machines-container/types';
 import type { ColumnDef } from '@tanstack/react-table';
 
-export function useColumn({ setModalState }: UseColumnProps) {
+export function useColumn({
+  locationTypeOptions,
+  setModalState,
+}: UseColumnProps) {
   const { t, i18n } = useTranslation('machine');
-  const { locationTypeOptions } = useOptions();
   // const
   const columns = useMemo<Array<ColumnDef<TableMachineColumnDef>>>(() => {
     return [
@@ -86,35 +87,11 @@ export function useColumn({ setModalState }: UseColumnProps) {
         },
       },
       {
-        accessorKey: 'createdAt',
-        header: t('table.columns.createdAt'),
-        minSize: 170,
-        cell: ({ getValue }) => {
-          return formatDisplayDate(getValue<string>(), i18n.language as Locale);
-        },
-      },
-      {
-        accessorKey: 'createdBy',
-        header: t('table.columns.createdBy'),
-        minSize: 170,
-        cell: ({ getValue }) => {
-          return <TextTruncate>{getValue<string>() || '-'}</TextTruncate>;
-        },
-      },
-      {
         accessorKey: 'updatedAt',
         header: t('table.columns.updatedAt'),
         minSize: 170,
         cell: ({ getValue }) => {
           return formatDisplayDate(getValue<string>(), i18n.language as Locale);
-        },
-      },
-      {
-        accessorKey: 'updatedBy',
-        header: t('table.columns.updatedBy'),
-        minSize: 170,
-        cell: ({ getValue }) => {
-          return <TextTruncate>{getValue<string>() || '-'}</TextTruncate>;
         },
       },
       {
@@ -141,7 +118,7 @@ export function useColumn({ setModalState }: UseColumnProps) {
                   onClick={() => {
                     setModalState((draft) => {
                       draft.currentId = getValue<string>();
-                      draft.isOpenEditModal = true;
+                      draft.isOpenDeleteModal = true;
                     });
                   }}
                 />
