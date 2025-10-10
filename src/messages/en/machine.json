@@ -16,10 +16,10 @@
       "updatedBy": "Updated By",
       "name": "Name",
       "locationType": "Location Type",
-      "expectedSalesPerDay": "Expected Sales Per Day",
-      "averageProfitMarginPercentage": "Average Profit Margin Percentage",
-      "rentCostPerDay": "Rent Cost Per Day",
-      "electricCostPerTempPerDay": "Electric Cost Per Temp Per Day"
+      "expectedSalesPerDay": "Expected Sales/Day (Baht)",
+      "averageProfitMarginPercentage": "Average Profit Margin (%)",
+      "rentCostPerDay": "Rent Cost/Day (Baht)",
+      "electricCostPerTempPerDay": "Electric Cost/Temp/Day (Baht/°C/day)"
     },
     "modals": {
       "upsert": {
@@ -28,10 +28,10 @@
         "fields": {
           "name": "Name",
           "location": "Location Type",
-          "expectedSalesPerDay": "Expected Sales Per Day",
-          "averageProfitMarginPercentage": "Average Profit Margin Percentage",
-          "rentCostPerDay": "Rent Cost Per Day",
-          "electricCostPerTempPerDay": "Electric Cost Per Temp Per Day"
+          "expectedSalesPerDay": "Expected Sales/Day",
+          "averageProfitMarginPercentage": "Average Profit Margin",
+          "rentCostPerDay": "Rent Cost/Day",
+          "electricCostPerTempPerDay": "Electric Cost/Temp/Day"
         },
         "errors": {
           "name": {
@@ -41,16 +41,20 @@
             "required": "Location Type is required"
           },
           "expectedSalesPerDay": {
-            "required": "Expected Sales Per Day is required"
+            "required": "Expected Sales/Day is required",
+            "invalid": "Expected Sales/Day must be an integer"
           },
           "averageProfitMarginPercentage": {
-            "required": "Average Profit Margin Percentage is required"
+            "required": "Average Profit Margin is required",
+            "invalid": "Average Profit Margin must be an integer"
           },
           "rentCostPerDay": {
-            "required": "Rent Cost Per Day is required"
+            "required": "Rent Cost/Day is required",
+            "invalid": "Rent Cost/Day must be an integer"
           },
           "electricCostPerTempPerDay": {
-            "required": "Electric Cost Per Temp Per Da is required"
+            "required": "Electric Cost/Temp/Day is required",
+            "invalid": "Electric Cost/Temp/Day must be an integer"
           }
         }
       },

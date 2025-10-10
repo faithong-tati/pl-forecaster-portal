@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { InputAdornment, Stack } from '@mui/material';
 import { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -9,36 +9,44 @@ import useOptions from '@/modules/machines/hooks/use-options';
 
 function FormUpsertMachines() {
   const { t } = useTranslation('machine');
+  const { t: tCore } = useTranslation('core');
   const { clearErrors } = useFormContext();
   const { locationTypeOptions } = useOptions();
 
   return (
     <Stack gap={rem(16)} mt={rem(8)}>
+      <Stack direction="row" gap={rem(16)}>
+        <FormGenerator
+          items={[
+            {
+              name: 'name',
+              required: true,
+              component: 'input-text',
+              type: 'text',
+              label: t('table.modals.upsert.fields.name'),
+              t,
+              onChange: () => {
+                clearErrors('name');
+              },
+            },
+            {
+              name: 'locationType',
+              required: true,
+              component: 'input-select',
+              type: 'text',
+              label: t('table.filters.locationType'),
+              t,
+              options: locationTypeOptions.filter((option) => option.value),
+              onChange: () => {
+                clearErrors('locationType');
+              },
+            },
+          ]}
+        />
+      </Stack>
+
       <FormGenerator
         items={[
-          {
-            name: 'name',
-            required: true,
-            component: 'input-text',
-            type: 'text',
-            label: t('table.modals.upsert.fields.name'),
-            t,
-            onChange: () => {
-              clearErrors('name');
-            },
-          },
-          {
-            name: 'locationType',
-            required: true,
-            component: 'input-select',
-            type: 'text',
-            label: t('table.filters.locationType'),
-            t,
-            options: locationTypeOptions.filter((option) => option.value),
-            onChange: () => {
-              clearErrors('locationType');
-            },
-          },
           {
             name: 'expectedSalesPerDay',
             required: true,
@@ -48,6 +56,15 @@ function FormUpsertMachines() {
             t,
             onChange: () => {
               clearErrors('expectedSalesPerDay');
+            },
+            slotProps: {
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {tCore('units.baht')}
+                  </InputAdornment>
+                ),
+              },
             },
           },
           {
@@ -62,6 +79,11 @@ function FormUpsertMachines() {
             onChange: () => {
               clearErrors('averageProfitMarginPercentage');
             },
+            slotProps: {
+              input: {
+                endAdornment: <InputAdornment position="end">%</InputAdornment>,
+              },
+            },
           },
           {
             name: 'rentCostPerDay',
@@ -73,6 +95,15 @@ function FormUpsertMachines() {
             onChange: () => {
               clearErrors('rentCostPerDay');
             },
+            slotProps: {
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {tCore('units.baht')}
+                  </InputAdornment>
+                ),
+              },
+            },
           },
           {
             name: 'electricCostPerTempPerDay',
@@ -83,6 +114,15 @@ function FormUpsertMachines() {
             t,
             onChange: () => {
               clearErrors('electricCostPerTempPerDay');
+            },
+            slotProps: {
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {tCore('units.bahtPerTempPerDay')}
+                  </InputAdornment>
+                ),
+              },
             },
           },
         ]}
