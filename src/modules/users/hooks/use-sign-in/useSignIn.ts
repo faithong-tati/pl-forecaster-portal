@@ -1,10 +1,7 @@
 import { useGoogleLogin } from '@react-oauth/google';
-import { useNavigate } from '@tanstack/react-router';
 import dayjs from 'dayjs';
 import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 
-import { Routes } from '@/core/constants';
 import { getGoogleUser } from '@/core/lib/api/get-google-user';
 import { CookieAuth } from '@/core/lib/constants';
 import { setCookie } from '@/core/lib/helpers';
@@ -18,8 +15,6 @@ import type { GoogleJwtPayload } from '@/core/lib/types';
 import type { SchemaFormData } from '@/modules/users/containers/sign-in-container/schema';
 
 export default function useSignIn() {
-  const { i18n } = useTranslation();
-  const navigate = useNavigate();
   const toast = useToast();
   const { deviceUid } = useDeviceUid();
   // async hooks
@@ -42,12 +37,9 @@ export default function useSignIn() {
 
       toast.onOpen('signIn.success', 'success');
 
-      navigate({
-        to: `/$locale${Routes.dashboard.path}`,
-        params: { locale: i18n.language },
-      });
+      window.location.reload();
     },
-    [deviceUid, i18n.language, navigate, postUserApi, toast],
+    [deviceUid, postUserApi, toast],
   );
 
   const onSignInWithGoogle = useGoogleLogin({
