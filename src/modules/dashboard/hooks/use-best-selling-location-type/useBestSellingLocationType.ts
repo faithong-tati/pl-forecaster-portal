@@ -1,18 +1,14 @@
 import dayjs from 'dayjs';
 import Decimal from 'decimal.js';
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 
-import { useGetMachines } from '@/modules/machines/hooks/api/use-get-machines';
+import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
 
 import type { ICriteria, InitialSummary } from './types';
 import type { ILocationType } from '@/core/types/models/machine.model';
 
 export default function useBestSellingLocationType() {
-  const { data: machines, dataUpdatedAt } = useGetMachines({
-    refetchInterval: 60_000,
-    refetchIntervalInBackground: false,
-  });
-
+  const { machines, lastUpdated } = useContext(DashboardContext);
   // computed
   const initialSummary = useCallback(
     (criteria: ICriteria) => {
@@ -65,6 +61,6 @@ export default function useBestSellingLocationType() {
   return {
     allTime: summarize(allTime),
     lastSevenDays: summarize(lastSevenDays),
-    dataUpdatedAt,
+    lastUpdated,
   };
 }
