@@ -24,6 +24,7 @@ export function useSubmitEvent() {
     isOpenEditModal: false,
     isOpenDeleteModal: false,
     currentId: '',
+    isClone: false,
   });
 
   const onCloseModal = useCallback(() => {
@@ -32,6 +33,7 @@ export function useSubmitEvent() {
       draft.isOpenCreateModal = false;
       draft.isOpenEditModal = false;
       draft.isOpenDeleteModal = false;
+      draft.isClone = false;
     });
   }, [setModalState]);
 

@@ -279,6 +279,21 @@
       "updatedBy": "system",
       "createdByUserId": "sys",
       "updatedByUserId": "sys"
+    },
+    {
+      "id": "69f2",
+      "name": "Mall-02_copy_xHGY",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "1000",
+      "averageProfitMarginPercentage": "60",
+      "rentCostPerDay": "40",
+      "electricCostPerTempPerDay": "12",
+      "createdAt": "2025-10-11T19:27:06.676Z",
+      "updatedAt": "2025-10-11T19:27:06.676Z",
+      "createdBy": "superadmin@example.com",
+      "updatedBy": "superadmin@example.com",
+      "createdByUserId": "f15a",
+      "updatedByUserId": "f15a"
     }
   ]
 }
