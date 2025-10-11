@@ -22,5 +22,6 @@
     "title": "Screen Not Supported",
     "subtitle": "This screen is not supported on your current device.\nPlease access the site from a computer for the best experience :)"
   },
-  "copyright": "Copyright © 2025 faithongtati. All rights reserved."
+  "copyright": "Copyright © 2025 faithongtati. All rights reserved.",
+  "notfound": "Page Not Found"
 }

@@ -1,5 +1,6 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import EmptyState from '@/core/components/empty-state';
 import { useAuth } from '@/core/providers/auth-provider/useAuth';
@@ -10,6 +11,7 @@ import './App.css';
 
 function App() {
   const { authState } = useAuth();
+  const { t } = useTranslation('core');
 
   return (
     <RouterProvider
@@ -20,7 +22,7 @@ function App() {
             <EmptyState
               alt="404-error"
               iconPath="/404-error.png"
-              title="Page Not Found"
+              title={t('notfound')}
               height={500}
               fadeInTimeout={500}
               size="large"

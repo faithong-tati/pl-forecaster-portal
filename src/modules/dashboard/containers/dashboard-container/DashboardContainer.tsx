@@ -1,6 +1,7 @@
 import SyncIcon from '@mui/icons-material/Sync';
 import { Grid } from '@mui/material';
 import { memo, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Button from '@/core/components/button';
 import ContentHeader from '@/core/components/content-header';
@@ -13,18 +14,19 @@ import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
 
 function DashboardContainer() {
   const { refetchMachines } = useContext(DashboardContext);
+  const { t } = useTranslation('dashboard');
 
   return (
     <Panel sx={{ overflow: 'auto' }}>
       <ContentHeader
-        title="Forecaster Dashboard"
+        title={t('title')}
         renderNode={
           <Button
             color="info"
             startIcon={<SyncIcon />}
             onClick={() => refetchMachines?.()}
           >
-            Sync
+            {t('sync')}
           </Button>
         }
       />

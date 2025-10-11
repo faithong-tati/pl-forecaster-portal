@@ -7,6 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { match } from 'ts-pattern';
 
 import ContentSection from '@/core/components/content-section';
@@ -25,6 +26,7 @@ function BestSellingLocationTypeContainer() {
   const { allTime, lastSevenDays, lastUpdated } = useBestSellingLocationType();
   const { isLoading } = useContext(DashboardContext);
   const { locationTypeOptions } = useOptions();
+  const { t } = useTranslation('dashboard');
   // state
   const [criteria, setCriteria] = useState<ICriteria>('all-time');
   const onChangeCriteria = useCallback(
@@ -64,7 +66,7 @@ function BestSellingLocationTypeContainer() {
 
   return (
     <InfoCard
-      title="Best-selling location type"
+      title={t('bestSellingLocationType.title')}
       render={
         <CriteriaGroup
           criteria={criteria}
@@ -76,7 +78,7 @@ function BestSellingLocationTypeContainer() {
         hasData={hasData}
         alt="no-ranking"
         iconPath="/top-three.png"
-        emptyStateText="No ranking yet"
+        emptyStateText={t('bestSellingLocationType.notfound')}
         height={300}
         isLoading={isLoading}
       >
@@ -92,7 +94,7 @@ function BestSellingLocationTypeContainer() {
       </ContentSection>
 
       <Typography variant="caption" textAlign="right" color="secondary">
-        Last updated: {lastUpdated}
+        {t('shared.lastUpdated', { date: lastUpdated })}
       </Typography>
     </InfoCard>
   );

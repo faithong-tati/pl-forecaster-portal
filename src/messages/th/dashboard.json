@@ -1,6 +1,35 @@
 {
   "title": "Forecaster Dashboard",
+  "sync": "Sync",
   "bestSellingLocationType": {
-    
+    "title": "Best-selling location type",
+    "toggleGroup": {
+      "allTime": "All Time",
+      "lastSevenDays": "Last 7 Days"
+    },
+    "units": {
+      "machines": "Machines",
+      "bahtPerDay": "Baht/Day"
+    },
+    "notfound": "No ranking yet"
+  },
+  "sevenDayForecast": {
+    "title": "7-day Forecast",
+    "legends": {
+      "electricity": "Electricity cost",
+      "profitLoss": "P/L"
+    }
+  },
+  "cumulativeWeeklyForecast": {
+    "title": "Cumulative Weekly Forecast (7 days)",
+    "cards": {
+      "revenue": "Total Revenue",
+      "totalRent": "Total Rent",
+      "totalElectricityCost": "Total Electricity Cost",
+      "netProfitLoss": "Net P/L for the week"
+    }
+  },
+  "shared": {
+    "lastUpdated": "Last updated: {{date}}"
   }
 }
