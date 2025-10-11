@@ -45,7 +45,7 @@ function LineChart({ series, xAxisData }: LineChartProps) {
           },
         },
       },
-      grid: { left: 56, right: 24, top: 64, bottom: 48 },
+      grid: { left: 56, right: 56, top: 64, bottom: 48 },
       xAxis: {
         type: 'category',
         boundaryGap: true,

@@ -7,6 +7,7 @@ import ContentHeader from '@/core/components/content-header';
 import { Panel } from '@/core/styles/common';
 import rem from '@/core/utils/rem';
 import BestSellingLocationType from '@/modules/dashboard/containers/best-selling-location-type-container';
+import CumulativeWeeklyForecastContainer from '@/modules/dashboard/containers/cumulative-weekly-forecast-container';
 import SevenDaysForecastContainer from '@/modules/dashboard/containers/seven-days-forecast-container';
 import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
 
@@ -35,6 +36,10 @@ function DashboardContainer() {
 
         <Grid size={{ xs: 12 }}>
           <SevenDaysForecastContainer />
+        </Grid>
+
+        <Grid size={{ xs: 12 }}>
+          <CumulativeWeeklyForecastContainer />
         </Grid>
       </Grid>
     </Panel>
