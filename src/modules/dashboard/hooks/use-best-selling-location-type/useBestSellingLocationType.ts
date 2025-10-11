@@ -1,16 +1,28 @@
 import dayjs from 'dayjs';
 import Decimal from 'decimal.js';
-import { useCallback, useContext } from 'react';
+import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
+import { formatDisplayDate } from '@/core/lib/helpers/format';
+import { useGetMachines } from '@/modules/machines/hooks/api/use-get-machines';
 
 import { baseSummary } from './helpers';
 
 import type { ICriteria, InitialSummary } from './types';
+import type { Locale } from '@/core/types';
 import type { ILocationType } from '@/core/types/models/machine.model';
 
 export default function useBestSellingLocationType() {
-  const { machines, lastUpdated } = useContext(DashboardContext);
+  const { i18n } = useTranslation();
+  const {
+    data: machines,
+    dataUpdatedAt,
+    isFetching,
+  } = useGetMachines({
+    refetchInterval: 60_000,
+    refetchIntervalInBackground: false,
+  });
+
   const initialSummary = useCallback(
     (criteria: ICriteria) => {
       if (!machines) return {};
@@ -64,6 +76,10 @@ export default function useBestSellingLocationType() {
   return {
     allTime: summarize(allTime),
     lastSevenDays: summarize(lastSevenDays),
-    lastUpdated,
+    lastUpdated: formatDisplayDate(
+      dayjs(dataUpdatedAt),
+      i18n.language as Locale,
+    ),
+    isLoading: isFetching,
   };
 }
