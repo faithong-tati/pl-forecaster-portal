@@ -6,7 +6,7 @@
       "providerRef": "8FUtM4ByQWnz",
       "imageUrl": "https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png",
       "username": "superadmin@example.com",
-      "createdAt": "2025-10-09T10:31:41.743Z"
+      "createdAt": "2024-10-09T10:31:41.743Z"
     }
   ],
   "machines": [
@@ -18,8 +18,8 @@
       "averageProfitMarginPercentage": "44",
       "rentCostPerDay": "2",
       "electricCostPerTempPerDay": "66",
-      "createdAt": "2025-10-11T02:01:51.601Z",
-      "updatedAt": "2025-10-11T02:35:15.719Z",
+      "createdAt": "2024-10-11T02:01:51.601Z",
+      "updatedAt": "2024-10-11T02:35:15.719Z",
       "createdBy": "superadmin@example.com",
       "updatedBy": "superadmin@example.com",
       "createdByUserId": "f15a",
@@ -44,7 +44,7 @@
       "id": "fa7c",
       "name": "test3",
       "locationType": "SHOPPING_MALL",
-      "expectedSalesPerDay": "33",
+      "expectedSalesPerDay": "1000",
       "averageProfitMarginPercentage": "111",
       "rentCostPerDay": "444",
       "electricCostPerTempPerDay": "2222",
@@ -74,7 +74,7 @@
       "id": "5a9f",
       "name": "test5",
       "locationType": "HOSPITAL",
-      "expectedSalesPerDay": "333333",
+      "expectedSalesPerDay": "3000",
       "averageProfitMarginPercentage": "1",
       "rentCostPerDay": "1",
       "electricCostPerTempPerDay": "1",

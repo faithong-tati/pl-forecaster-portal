@@ -42,6 +42,7 @@
     "react-hook-form": "7.64.0",
     "react-i18next": "16.0.0",
     "react-use": "17.6.0",
+    "recharts": "3.2.1",
     "ts-pattern": "5.8.0",
     "use-immer": "0.11.0",
     "zod": "4.1.12"

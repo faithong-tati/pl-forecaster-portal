@@ -15,6 +15,7 @@ function DataTableEmptyState({ title, table }: DataTableEmptyStateProps) {
             alt="vending-machine"
             iconPath="/vending-machine.png"
             title={title}
+            fadeInTimeout={300}
           />
         </TableCell>
       </TableRow>
