@@ -30,7 +30,7 @@ export interface DataTablePaginationProps<T = any> {
   table: Table<any>;
 }
 
-export interface EmptyStateProps {
+export interface DataTableEmptyStateProps {
   table: Table<any>;
   title: string;
 }

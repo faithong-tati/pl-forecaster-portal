@@ -1,20 +1,31 @@
-import { Box, Typography } from '@mui/material';
-import dayjs from 'dayjs';
-import { memo, MouseEvent, useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Grid, Typography } from '@mui/material';
+import {
+  memo,
+  MouseEvent,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import { match } from 'ts-pattern';
 
-import { formatDisplayDate } from '@/core/lib/helpers/format';
-import { BorderStack } from '@/core/styles/common';
+import ContentSection from '@/core/components/content-section';
+import InfoCard from '@/core/components/info-card';
+import useOptions from '@/core/hooks/use-options';
+import rem from '@/core/utils/rem';
 import CriteriaGroup from '@/modules/dashboard/components/criteria-group';
+import PieChart from '@/modules/dashboard/components/pie-chart';
 import SalesRanking from '@/modules/dashboard/components/sales-ranking';
+import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
 import useBestSellingLocationType from '@/modules/dashboard/hooks/use-best-selling-location-type';
 
-import type { Locale } from '@/core/types';
 import type { ICriteria } from '@/modules/dashboard/hooks/use-best-selling-location-type/types';
 
 function BestSellingLocationTypeContainer() {
-  const { i18n } = useTranslation();
+  const { allTime, lastSevenDays, lastUpdated } = useBestSellingLocationType();
+  const { isLoading } = useContext(DashboardContext);
+  const { locationTypeOptions } = useOptions();
+  // state
   const [criteria, setCriteria] = useState<ICriteria>('all-time');
   const onChangeCriteria = useCallback(
     (_: MouseEvent<HTMLElement>, nextCriteria: ICriteria) => {
@@ -23,34 +34,67 @@ function BestSellingLocationTypeContainer() {
     [criteria],
   );
 
-  const { allTime, lastSevenDays, dataUpdatedAt } =
-    useBestSellingLocationType();
+  // const
+  const data = useMemo(() => {
+    return match(criteria)
+      .with('all-time', () => allTime)
+      .with('last-7', () => lastSevenDays)
+      .exhaustive();
+  }, [allTime, criteria, lastSevenDays]);
+
+  const pieChartDate = useMemo(() => {
+    return data
+      .sort((a, b) => a.locationType.localeCompare(b.locationType))
+      .map((datum) => {
+        const location =
+          locationTypeOptions.find(
+            (option) => option.value === datum.locationType,
+          )?.label ?? '';
+
+        return {
+          value: datum.totalExpectedSalesPerDay,
+          name: location,
+        };
+      });
+  }, [data, locationTypeOptions]);
+
+  const hasData = useMemo(() => {
+    return !!data.reduce((acc, datum) => (acc += datum.totalCount), 0);
+  }, [data]);
 
   return (
-    <BorderStack>
-      <Box display="flex" justifyContent="space-between">
-        <Typography variant="h6" fontWeight={500}>
-          Best-selling location type
-        </Typography>
-
+    <InfoCard
+      title="Best-selling location type"
+      render={
         <CriteriaGroup
           criteria={criteria}
           onChangeCriteria={onChangeCriteria}
         />
-      </Box>
+      }
+    >
+      <ContentSection
+        hasData={hasData}
+        alt="no-ranking"
+        iconPath="/top-three.png"
+        emptyStateText="No ranking yet"
+        height={300}
+        isLoading={isLoading}
+      >
+        <Grid container spacing={rem(24)}>
+          <Grid size={{ xs: 8 }}>
+            <SalesRanking items={data} />
+          </Grid>
 
-      <SalesRanking
-        items={match(criteria)
-          .with('all-time', () => allTime)
-          .with('last-7', () => lastSevenDays)
-          .exhaustive()}
-      />
+          <Grid size={{ xs: 4 }}>
+            <PieChart data={pieChartDate} />
+          </Grid>
+        </Grid>
+      </ContentSection>
 
       <Typography variant="caption" textAlign="right" color="secondary">
-        Last updated:{' '}
-        {formatDisplayDate(dayjs(dataUpdatedAt), i18n.language as Locale)}
+        Last updated: {lastUpdated}
       </Typography>
-    </BorderStack>
+    </InfoCard>
   );
 }
 

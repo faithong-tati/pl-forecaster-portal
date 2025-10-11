@@ -1,4 +1,5 @@
 import { Decimal } from 'decimal.js';
+import { match, P } from 'ts-pattern';
 
 export function formatNumber(
   input: number | string,
@@ -12,4 +13,17 @@ export function formatNumber(
   } catch {
     return '-';
   }
+}
+
+export function formatMetricNumber(value: number): string {
+  return match(value)
+    .with(
+      P.when((v) => v >= 1_000_000),
+      (v) => formatNumber(v / 1_000_000) + ' M',
+    )
+    .with(
+      P.when((v) => v >= 1_000),
+      (v) => formatNumber(v / 1_000) + ' K',
+    )
+    .otherwise((v) => `${v}`);
 }

@@ -5,6 +5,7 @@ import Image from '@/core/components/image';
 import useOptions from '@/core/hooks/use-options';
 import { generateId } from '@/core/lib/helpers';
 import { Panel } from '@/core/styles/common';
+import { formatMetricNumber } from '@/core/utils/format';
 import rem from '@/core/utils/rem';
 
 import { rankingConfig, swapItems } from './helpers';
@@ -14,10 +15,6 @@ import type { SalesRankingProps } from './types';
 
 function SalesRanking({ items }: SalesRankingProps) {
   const { locationTypeOptions } = useOptions();
-
-  if (!items.length) {
-    return <Stack height={rem(100)}>temp</Stack>;
-  }
 
   return (
     <Stack direction="row" width="100%" mt={rem(40)}>
@@ -69,11 +66,8 @@ function SalesRanking({ items }: SalesRankingProps) {
                         justifyContent="center"
                         alignItems="center"
                       >
-                        <Typography
-                          variant={item.rank === 1 ? 'h5' : 'body1'}
-                          fontWeight={700}
-                        >
-                          {sc.value}
+                        <Typography fontWeight={700}>
+                          {formatMetricNumber(sc.value)}
                         </Typography>
                         <Typography variant="body2">{sc.label}</Typography>
                       </Stack>

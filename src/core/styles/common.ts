@@ -66,4 +66,5 @@ export const BorderStack = styled(Stack)<StackProps>(({ theme }) => ({
   borderRadius: rem(8),
   padding: rem(32),
   gap: rem(32),
+  height: '100%',
 }));
