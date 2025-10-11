@@ -1,4 +1,3 @@
-import { SearchOffRounded } from '@mui/icons-material';
 import {
   Stack,
   TableBody,
@@ -7,6 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 
+import Image from '@/core/components/image';
 import rem from '@/core/utils/rem';
 
 import type { EmptyStateProps } from './types';
@@ -21,11 +21,15 @@ function EmptyState({ title, table }: EmptyStateProps) {
           <Stack
             alignItems="center"
             justifyContent="center"
-            gap={rem(4)}
+            gap={rem(16)}
             sx={{ minHeight: 320, py: rem(32), color: 'text.secondary' }}
           >
-            <SearchOffRounded sx={{ fontSize: 40 }} />
-            <Typography>{title}</Typography>
+            <Image
+              alt="vending-machine"
+              src="/vending-machine.png"
+              sx={{ width: rem(50) }}
+            />
+            <Typography variant="caption">{title}</Typography>
           </Stack>
         </TableCell>
       </TableRow>

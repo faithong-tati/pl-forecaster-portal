@@ -2,10 +2,10 @@ import { Divider, Grid, Stack, Typography } from '@mui/material';
 import { memo } from 'react';
 
 import Image from '@/core/components/image';
+import useOptions from '@/core/hooks/use-options';
 import { generateId } from '@/core/lib/helpers';
 import { Panel } from '@/core/styles/common';
 import rem from '@/core/utils/rem';
-import useOptions from '@/modules/machines/hooks/use-options';
 
 import { rankingConfig, swapItems } from './helpers';
 import { Styles } from './styles';
@@ -14,6 +14,10 @@ import type { SalesRankingProps } from './types';
 
 function SalesRanking({ items }: SalesRankingProps) {
   const { locationTypeOptions } = useOptions();
+
+  if (!items.length) {
+    return <Stack height={rem(100)}>temp</Stack>;
+  }
 
   return (
     <Stack direction="row" width="100%" mt={rem(40)}>

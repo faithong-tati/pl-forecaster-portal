@@ -3,6 +3,9 @@
     "title": "Machine Management",
     "notFound": "Machine not found",
     "noData": "No machines added yet",
+    "noResultFor": "No results for \"{{global}}\"",
+    "noResultForColumn": "No results for locationType \"{{column}}\"",
+    "noResultForGlobalAndColumn": "No results for \"{{global}}\" in location type \"{{column}}\"",
     "buttons": {
       "add": "Add Machine"
     },

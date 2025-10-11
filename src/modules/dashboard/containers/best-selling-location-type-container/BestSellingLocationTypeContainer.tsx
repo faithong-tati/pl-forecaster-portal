@@ -28,7 +28,11 @@ function BestSellingLocationTypeContainer() {
 
   return (
     <BorderStack>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="space-between">
+        <Typography variant="h6" fontWeight={500}>
+          Best-selling location type
+        </Typography>
+
         <CriteriaGroup
           criteria={criteria}
           onChangeCriteria={onChangeCriteria}

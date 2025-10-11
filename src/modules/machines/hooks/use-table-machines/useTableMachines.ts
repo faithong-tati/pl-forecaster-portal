@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import useOptions from '@/modules/machines/hooks/use-options';
+import useOptions from '@/core/hooks/use-options';
 
 import { useColumn } from './useColumn';
 import { useSubmitEvent } from './useSubmitEvent';

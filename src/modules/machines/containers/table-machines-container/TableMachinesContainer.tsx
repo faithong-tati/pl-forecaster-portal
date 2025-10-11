@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import AddIcon from '@mui/icons-material/Add';
 import { memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -53,6 +54,7 @@ function TableMachinesContainer() {
         renderNode={
           <Button
             variant="contained"
+            startIcon={<AddIcon />}
             onClick={() =>
               setModalState((draft) => {
                 draft.isOpenCreateModal = true;

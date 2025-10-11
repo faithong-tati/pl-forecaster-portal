@@ -34,3 +34,5 @@ export interface EmptyStateProps {
   table: Table<any>;
   title: string;
 }
+
+export type NativeFilter = string | null;

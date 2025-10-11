@@ -5,8 +5,9 @@ import { useTranslation } from 'react-i18next';
 import rem from '@/core/utils/rem';
 
 import EmptyState from './EmptyState';
+import { getEmptyStateText } from './helpers';
 
-import type { DataTableBodyProps } from './types';
+import type { DataTableBodyProps, NativeFilter } from './types';
 
 function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
   const { t } = useTranslation('machine');
@@ -17,7 +18,16 @@ function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
   }
 
   if (!rows.length) {
-    return <EmptyState title={t('table.notFound')} table={table} />;
+    const globalFilter: NativeFilter = table.getState().globalFilter || null;
+    const columnFilter: NativeFilter =
+      (table
+        .getState()
+        .columnFilters.find((filter) => filter.id === 'locationType')
+        ?.value as string) || null;
+
+    const emptyStateText = getEmptyStateText(globalFilter, columnFilter, t);
+
+    return <EmptyState title={emptyStateText} table={table} />;
   }
 
   return (
