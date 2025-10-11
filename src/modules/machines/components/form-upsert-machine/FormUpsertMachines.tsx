@@ -1,17 +1,22 @@
 import { InputAdornment, Stack } from '@mui/material';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import FormGenerator from '@/core/components/form-generator';
+import useOptions from '@/core/hooks/use-options';
 import rem from '@/core/utils/rem';
-import useOptions from '@/modules/machines/hooks/use-options';
 
 function FormUpsertMachines() {
   const { t } = useTranslation('machine');
   const { t: tCore } = useTranslation('core');
-  const { clearErrors } = useFormContext();
+  const { clearErrors, reset } = useFormContext();
   const { locationTypeOptions } = useOptions();
+
+  useEffect(() => {
+    reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Stack gap={rem(16)} mt={rem(8)}>

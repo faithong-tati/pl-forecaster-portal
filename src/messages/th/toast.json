@@ -11,12 +11,15 @@
     "success": "Create Machine Successfully",
     "failed": "Create Machine Failed"
   },
-  "updateMachine": {
-    "success": "Update Machine Successfully",
-    "failed": "Update Machine Failed"
+  "editMachine": {
+    "success": "Edit Machine Successfully",
+    "failed": "Edit Machine Failed"
   },
   "deleteMachine": {
     "success": "Delete Machine Successfully",
     "failed": "Delete Machine Failed"
+  },
+  "duplicateMachine": {
+    "failed": "This machine name already exists"
   }
 }

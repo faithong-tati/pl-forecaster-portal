@@ -3,8 +3,8 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormGenerator from '@/core/components/form-generator';
+import useOptions from '@/core/hooks/use-options';
 import rem from '@/core/utils/rem';
-import useOptions from '@/modules/machines/hooks/use-options';
 
 import type { FormSearchMachinesProps } from './types';
 import type { ChangeEvent } from 'react';

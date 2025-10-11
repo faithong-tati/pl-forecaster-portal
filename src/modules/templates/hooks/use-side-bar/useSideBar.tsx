@@ -1,9 +1,8 @@
 import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useImmer } from 'use-immer';
 
 import { Routes } from '@/core/constants';
 import { CookieAuth } from '@/core/lib/constants';
@@ -13,18 +12,14 @@ import {
   CollapsedWidth,
   ExpandedWidth,
 } from '@/modules/templates/components/sidebar/constants';
+import SidebarContext from '@/modules/templates/contexts/auth-context';
 
 export default function useSidebar() {
   const toast = useToast();
   const { t, i18n } = useTranslation('sidebar');
   const routerState = useRouterState();
   const navigate = useNavigate();
-  // state
-  const [state, setState] = useImmer({
-    isOpenSideBar: false,
-    isOpenConfirmSignOutModal: false,
-  });
-
+  const { state, setState } = useContext(SidebarContext);
   // const
   const width = useMemo(() => {
     return state.isOpenSideBar ? ExpandedWidth : CollapsedWidth;

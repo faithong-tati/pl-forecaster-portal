@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import AddIcon from '@mui/icons-material/Add';
 import { memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -24,6 +25,7 @@ function TableMachinesContainer() {
     columnFilters,
     upsertModalConfig,
     deleteModelConfig,
+    panelWidth,
     setModalState,
     setGlobalFilter,
     setColumnFilters,
@@ -44,15 +46,16 @@ function TableMachinesContainer() {
     values: upsertModalConfig.defaultValues,
   });
 
-  const { handleSubmit, reset } = upsertMethods;
+  const { handleSubmit } = upsertMethods;
 
   return (
-    <Panel>
+    <Panel sx={{ width: panelWidth }}>
       <ContentHeader
         title="Machine Management"
         renderNode={
           <Button
             variant="contained"
+            startIcon={<AddIcon />}
             onClick={() =>
               setModalState((draft) => {
                 draft.isOpenCreateModal = true;
@@ -92,14 +95,8 @@ function TableMachinesContainer() {
         }}
         title={upsertModalConfig.title}
         fixHeight={false}
-        onClickPrimaryButton={() => {
-          handleSubmit(upsertModalConfig.onSubmit)();
-          reset();
-        }}
-        onClickSecondaryButton={() => {
-          onCloseModal();
-          reset();
-        }}
+        onClickPrimaryButton={handleSubmit(upsertModalConfig.onSubmit)}
+        onClickSecondaryButton={onCloseModal}
       >
         <FormProvider {...upsertMethods}>
           <form noValidate>

@@ -30,26 +30,26 @@ export function rankingConfig(item: SummarizeMachine) {
     .otherwise(() => '');
 
   const height = match(item.rank)
-    .with(1, () => rem(220))
-    .with(2, () => rem(200))
-    .with(3, () => rem(180))
+    .with(1, () => rem(190))
+    .with(2, () => rem(170))
+    .with(3, () => rem(160))
     .otherwise(() => '');
 
   const bgColor = match(item.rank)
-    .with(1, () => 'linear-gradient(135deg, #F6E8B1 0%, #F2D16B 100%)')
-    .with(2, () => 'linear-gradient(135deg, #F5F5F5 0%, #E1E1E1 100%);')
-    .with(3, () => 'linear-gradient(135deg, #F1D1A1 0%, #E6B17C 100%)')
+    .with(1, () => 'linear-gradient(135deg, #FCF8E3 0%, #F8EFC6 100%)')
+    .with(2, () => 'linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%)')
+    .with(3, () => 'linear-gradient(135deg, #FAEFE3 0%, #F5DCC5 100%)')
     .otherwise(() => '');
 
   const stat = [
     {
-      alignItems: 'start',
-      label: 'Total Machines',
+      id: 'machine',
+      label: 'Machines',
       value: formatNumber(item.totalCount),
     },
     {
-      alignItems: 'end',
-      label: 'Total Sales',
+      id: 'sales',
+      label: 'Baht/Day',
       value: formatNumber(item.totalExpectedSalesPerDay),
     },
   ];

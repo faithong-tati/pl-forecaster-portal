@@ -7,7 +7,7 @@ import { match } from 'ts-pattern';
 import { formatDisplayDate } from '@/core/lib/helpers/format';
 import { BorderStack } from '@/core/styles/common';
 import CriteriaGroup from '@/modules/dashboard/components/criteria-group';
-import Ranking from '@/modules/dashboard/components/ranking';
+import SalesRanking from '@/modules/dashboard/components/sales-ranking';
 import useBestSellingLocationType from '@/modules/dashboard/hooks/use-best-selling-location-type';
 
 import type { Locale } from '@/core/types';
@@ -23,23 +23,26 @@ function BestSellingLocationTypeContainer() {
     [criteria],
   );
 
-  const { weekly, allTime, monthly, dataUpdatedAt } =
+  const { allTime, lastSevenDays, dataUpdatedAt } =
     useBestSellingLocationType();
 
   return (
     <BorderStack>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="space-between">
+        <Typography variant="h6" fontWeight={500}>
+          Best-selling location type
+        </Typography>
+
         <CriteriaGroup
           criteria={criteria}
           onChangeCriteria={onChangeCriteria}
         />
       </Box>
 
-      <Ranking
+      <SalesRanking
         items={match(criteria)
           .with('all-time', () => allTime)
-          .with('weekly', () => weekly)
-          .with('monthly', () => monthly)
+          .with('last-7', () => lastSevenDays)
           .exhaustive()}
       />
 

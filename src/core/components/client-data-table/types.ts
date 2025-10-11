@@ -19,7 +19,9 @@ export interface DataTableHeadProps {
   table: Table<any>;
 }
 
-export type DataTableBodyProps = DataTableHeadProps;
+export interface DataTableBodyProps extends DataTableHeadProps {
+  rows: any[];
+}
 
 export interface DataTablePaginationProps<T = any> {
   pageIndex: number;
@@ -27,3 +29,10 @@ export interface DataTablePaginationProps<T = any> {
   rows: T;
   table: Table<any>;
 }
+
+export interface EmptyStateProps {
+  table: Table<any>;
+  title: string;
+}
+
+export type NativeFilter = string | null;
