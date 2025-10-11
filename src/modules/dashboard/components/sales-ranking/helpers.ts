@@ -43,12 +43,12 @@ export function rankingConfig(item: SummarizeMachine) {
   const stat = [
     {
       id: 'machine',
-      label: 'Machines',
+      label: 'bestSellingLocationType.units.machines',
       value: item.totalCount,
     },
     {
       id: 'sales',
-      label: 'Baht/Day',
+      label: 'bestSellingLocationType.units.bahtPerDay',
       value: item.totalExpectedSalesPerDay,
     },
   ];

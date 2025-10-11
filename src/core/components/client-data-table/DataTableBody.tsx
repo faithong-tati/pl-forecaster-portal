@@ -2,6 +2,7 @@ import { TableBody, TableCell, TableRow } from '@mui/material';
 import { flexRender } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
+import useOptions from '@/core/hooks/use-options';
 import rem from '@/core/utils/rem';
 
 import DataTableEmptyState from './DataTableEmptyState';
@@ -11,6 +12,7 @@ import type { DataTableBodyProps, NativeFilter } from './types';
 
 function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
   const { t } = useTranslation('machine');
+  const { locationTypeOptions } = useOptions();
   const rows = table.getRowModel().rows;
 
   if (!rawRows.length) {
@@ -25,7 +27,11 @@ function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
         .columnFilters.find((filter) => filter.id === 'locationType')
         ?.value as string) || null;
 
-    const emptyStateText = getEmptyStateText(globalFilter, columnFilter, t);
+    const locationType =
+      locationTypeOptions.find((option) => option.value === columnFilter)
+        ?.label ?? '-';
+
+    const emptyStateText = getEmptyStateText(globalFilter, locationType, t);
 
     return <DataTableEmptyState title={emptyStateText} table={table} />;
   }

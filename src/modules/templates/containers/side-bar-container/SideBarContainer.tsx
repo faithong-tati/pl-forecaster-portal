@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import Image from '@/core/components/image';
 import rem from '@/core/utils/rem';
+import ChangeLanguage from '@/modules/templates/components/change-language';
 import Sidebar from '@/modules/templates/components/sidebar';
 import SidebarProvider from '@/modules/templates/providers/sidebar-provider';
 
@@ -29,6 +30,7 @@ function SideBarContainer() {
             <Stack direction="row" alignItems="center">
               <Image alt="small-log" src="/logo.svg" sx={{ width: rem(48) }} />
               <Typography variant="h6">{t('system')}</Typography>
+              <ChangeLanguage />
             </Stack>
 
             <Divider sx={{ alignContent: 'center' }} />

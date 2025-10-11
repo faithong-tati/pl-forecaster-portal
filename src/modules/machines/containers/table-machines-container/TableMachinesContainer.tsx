@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import AddIcon from '@mui/icons-material/Add';
 import { memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import Button from '@/core/components/button';
 import ClientDataTable from '@/core/components/client-data-table';
@@ -18,6 +19,7 @@ import { GetSchema, UpsertSchema } from './schema';
 import type { GetSchemaFormData, UpsertSchemaFormData } from './schema';
 
 function TableMachinesContainer() {
+  const { t } = useTranslation('machine');
   const {
     rows,
     columns,
@@ -51,7 +53,7 @@ function TableMachinesContainer() {
   return (
     <Panel sx={{ width: panelWidth, overflow: 'auto' }}>
       <ContentHeader
-        title="Machine Management"
+        title={t('table.title')}
         renderNode={
           <Button
             variant="contained"
@@ -62,7 +64,7 @@ function TableMachinesContainer() {
               })
             }
           >
-            Add Machine
+            {t('table.buttons.add')}
           </Button>
         }
       />

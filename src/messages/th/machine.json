@@ -1,80 +1,80 @@
 {
   "table": {
-    "title": "Machine Management",
-    "notFound": "Machine not found",
-    "noData": "No machines added yet",
-    "noResultFor": "No results for \"{{global}}\"",
-    "noResultForColumn": "No results for locationType \"{{column}}\"",
-    "noResultForGlobalAndColumn": "No results for \"{{global}}\" in location type \"{{column}}\"",
+    "title": "จัดการ Machine",
+    "notFound": "ไม่พบ Machine",
+    "noData": "ยังไม่มี Machine",
+    "noResultFor": "ไม่พบผลลัพธ์สำหรับ \"{{global}}\"",
+    "noResultForColumn": "ไม่พบผลลัพธ์ของทำเล \"{{column}}\"",
+    "noResultForGlobalAndColumn": "ไม่พบผลลัพธ์ของ \"{{global}}\" ในทำเล \"{{column}}\"",
     "buttons": {
-      "add": "Add Machine"
+      "add": "เพิ่ม Machine"
     },
     "filters": {
-      "search": "Search",
-      "locationType": "Location Type"
+      "search": "ค้นหา",
+      "locationType": "ทำเล"
     },
     "columns": {
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
-      "createdBy": "Created By",
-      "updatedBy": "Updated By",
-      "name": "Name",
-      "locationType": "Location Type",
-      "expectedSalesPerDay": "Expected Sales/Day (Baht)",
-      "averageProfitMarginPercentage": "Average Profit Margin (%)",
-      "rentCostPerDay": "Rent Cost/Day (Baht)",
-      "electricCostPerTempPerDay": "Electric Cost/Temp/Day (Baht/°C/day)"
+      "createdAt": "วันที่สร้าง",
+      "updatedAt": "วันที่แก้ไข",
+      "createdBy": "สร้างโดย",
+      "updatedBy": "แก้ไขโดย",
+      "name": "ชื่อ",
+      "locationType": "ทำเล",
+      "expectedSalesPerDay": "ยอดขาย/วัน (บาท)",
+      "averageProfitMarginPercentage": "กำไรขั้นต้นเฉลี่ย (%)",
+      "rentCostPerDay": "ค่าเช่า/วัน (บาท)",
+      "electricCostPerTempPerDay": "ค่าไฟ/อุณหภูมิ/วัน (บาท/°C/วัน)"
     },
     "modals": {
       "upsert": {
-        "addTitle": "Add Machine",
-        "editTitle": "Edit Machine",
+        "addTitle": "เพิ่ม Machine",
+        "editTitle": "แก้ไข Machine",
         "fields": {
-          "name": "Name",
-          "location": "Location Type",
-          "expectedSalesPerDay": "Expected Sales/Day",
-          "averageProfitMarginPercentage": "Average Profit Margin",
-          "rentCostPerDay": "Rent Cost/Day",
-          "electricCostPerTempPerDay": "Electric Cost/Temp/Day"
+          "name": "ชื่อ",
+          "location": "ทำเล",
+          "expectedSalesPerDay": "ยอดขาย/วัน",
+          "averageProfitMarginPercentage": "กำไรขั้นต้นเฉลี่ย",
+          "rentCostPerDay": "ค่าเช่า/วัน",
+          "electricCostPerTempPerDay": "ค่าไฟ/อุณหภูมิ/วัน"
         },
         "errors": {
           "name": {
-            "required": "Name is required"
+            "required": "กรุณากรอกชื่อ"
           },
           "locationType": {
-            "required": "Location Type is required"
+            "required": "กรุณาเลือก ทำเล"
           },
           "expectedSalesPerDay": {
-            "required": "Expected Sales/Day is required",
-            "invalid": "Expected Sales/Day must be an integer"
+            "required": "กรุณากรอกยอดขาย/วัน",
+            "invalid": "ยอดขาย/วัน ต้องเป็นตัวเลขจำนวนเต็ม"
           },
           "averageProfitMarginPercentage": {
-            "required": "Average Profit Margin is required",
-            "invalid": "Average Profit Margin must be an integer"
+            "required": "กรุณากรอกกำไรขั้นต้นเฉลี่ย",
+            "invalid": "กำไรขั้นต้นเฉลี่ย ต้องเป็นตัวเลขจำนวนเต็ม"
           },
           "rentCostPerDay": {
-            "required": "Rent Cost/Day is required",
-            "invalid": "Rent Cost/Day must be an integer"
+            "required": "กรุณากรอกค่าเช่า/วัน",
+            "invalid": "ค่าเช่า/วัน ต้องเป็นตัวเลขจำนวนเต็ม"
           },
           "electricCostPerTempPerDay": {
-            "required": "Electric Cost/Temp/Day is required",
-            "invalid": "Electric Cost/Temp/Day must be an integer"
+            "required": "กรุณากรอกค่าไฟ/อุณหภูมิ/วัน",
+            "invalid": "ค่าไฟ/อุณหภูมิ/วัน ต้องเป็นตัวเลขจำนวนเต็ม"
           }
         }
       },
       "delete": {
-        "title": "Are you sure you want to delete this machine ?",
-        "name": "Name",
-        "locationType": "Location Type"
+        "title": "คุณต้องการลบ Machine นี้ใช่ไหม?",
+        "name": "ชื่อ",
+        "locationType": "ทำเล"
       }
     }
   },
   "options": {
     "locationType": {
-      "all": "All",
-      "school": "School",
-      "hospital": "Hospital",
-      "shoppingMall": "Shopping Mall"
+      "all": "ทั้งหมด",
+      "school": "โรงเรียน",
+      "hospital": "โรงพยาบาล",
+      "shoppingMall": "ห้างสรรพสินค้า"
     }
   }
 }

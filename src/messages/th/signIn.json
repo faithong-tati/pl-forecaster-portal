@@ -1,29 +1,29 @@
 {
   "form": {
-    "title": "Sign In",
-    "subtitle": "Welcome back! Sign in to continue to the Forecaster Portal",
+    "title": "เข้าสู่ระบบ",
+    "subtitle": "ยินดีต้อนรับ! เข้าสู่ระบบเพื่อใช้งาน Forecaster Portal",
     "fields": {
       "google": "Google",
-      "email": "Email",
-      "password": "Password"
+      "email": "อีเมล",
+      "password": "รหัสผ่าน"
     },
     "errors": {
       "email": {
-        "invalid": "Invalid Email",
-        "required": "Email is required"
+        "invalid": "อีเมลไม่ถูกต้อง",
+        "required": "กรุณากรอกอีเมล"
       },
       "password": {
-        "invalid": "Invalid Password",
-        "required": "Password is required"
+        "invalid": "รหัสผ่านไม่ถูกต้อง",
+        "required": "กรุณากรอกรหัสผ่าน"
       }
     },
     "buttons": {
-      "submit": "Sign In"
+      "submit": "เข้าสู่ระบบ"
     },
-    "orContinueWith": "Or Continue With"
+    "orContinueWith": "หรือเข้าสู่ระบบด้วย"
   },
   "logo": {
-    "title": "Smarter planning for every TAO BIN locations",
-    "subtitle": "Stay ahead with daily cost analysis and weekly profit forecasts"
+    "title": "วางแผนอย่างชาญฉลาดสำหรับทุกทำเล TAO BIN",
+    "subtitle": "วิเคราะห์ต้นทุนรายวันและดูพยากรณ์กำไรรายสัปดาห์ได้ล่วงหน้า"
   }
 }
