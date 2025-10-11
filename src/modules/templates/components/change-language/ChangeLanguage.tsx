@@ -1,14 +1,15 @@
 import { Stack, Typography } from '@mui/material';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { RegexRouterLocale } from '@/core/lib/constants';
 import rem from '@/core/utils/rem';
 
+import type { ChangeLanguageProps } from './types';
 import type { Locale } from '@/core/types';
 
-function ChangeLanguage() {
+function ChangeLanguage({ mode }: ChangeLanguageProps) {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const { location } = useRouterState();
@@ -39,6 +40,10 @@ function ChangeLanguage() {
     [i18n.language],
   );
 
+  const getFontColor = useMemo(() => {
+    return mode === 'dark' ? 'white' : 'black';
+  }, [mode]);
+
   return (
     <Stack
       ml="auto"
@@ -48,15 +53,17 @@ function ChangeLanguage() {
     >
       <Typography
         fontWeight={getFontWeight('en')}
+        color={getFontColor}
         onClick={() => onChangeLanguage('en')}
       >
         en
       </Typography>
 
-      <Typography>|</Typography>
+      <Typography color={getFontColor}>|</Typography>
 
       <Typography
         fontWeight={getFontWeight('th')}
+        color={getFontColor}
         onClick={() => onChangeLanguage('th')}
       >
         th

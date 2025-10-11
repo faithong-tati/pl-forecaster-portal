@@ -8,6 +8,7 @@ import Button from '@/core/components/button';
 import { GoogleIcon } from '@/core/components/icon';
 import Image from '@/core/components/image';
 import rem from '@/core/utils/rem';
+import ChangeLanguage from '@/modules/templates/components/change-language';
 import FormSignIn from '@/modules/users/components/form-sign-in';
 import SignInLogoCard from '@/modules/users/components/sign-in-logo-card';
 import useSignIn from '@/modules/users/hooks/use-sign-in';
@@ -33,12 +34,17 @@ function SignInContainer() {
 
   return (
     <Stack sx={Styles.primaryStack}>
+      <Stack position="absolute" top={20} right={20} zIndex={1}>
+        <ChangeLanguage mode="dark" />
+      </Stack>
+
       <Stack
         component="video"
         autoPlay
         loop
         muted
         playsInline
+        poster="/fallback-poster.png"
         sx={Styles.backgroundStack}
       >
         <source src="/videos/coffee.mp4" type="video/mp4" />

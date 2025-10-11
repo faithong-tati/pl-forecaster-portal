@@ -42,7 +42,7 @@
             "required": "กรุณากรอกชื่อ"
           },
           "locationType": {
-            "required": "กรุณาเลือก ทำเล"
+            "required": "กรุณาเลือกทำเล"
           },
           "expectedSalesPerDay": {
             "required": "กรุณากรอกยอดขาย/วัน",

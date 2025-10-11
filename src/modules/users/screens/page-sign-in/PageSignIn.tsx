@@ -2,8 +2,8 @@ import { memo } from 'react';
 
 import SignInContainer from '@/modules/users/containers/sign-in-container';
 
-function LoginPage() {
+function SignInPage() {
   return <SignInContainer />;
 }
 
-export default memo(LoginPage);
+export default memo(SignInPage);

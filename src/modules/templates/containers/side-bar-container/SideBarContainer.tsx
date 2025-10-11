@@ -30,7 +30,7 @@ function SideBarContainer() {
             <Stack direction="row" alignItems="center">
               <Image alt="small-log" src="/logo.svg" sx={{ width: rem(48) }} />
               <Typography variant="h6">{t('system')}</Typography>
-              <ChangeLanguage />
+              <ChangeLanguage mode="light" />
             </Stack>
 
             <Divider sx={{ alignContent: 'center' }} />
