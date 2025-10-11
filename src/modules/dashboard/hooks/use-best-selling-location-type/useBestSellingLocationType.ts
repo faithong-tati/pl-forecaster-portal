@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import Decimal from 'decimal.js';
 import { useCallback, useContext } from 'react';
 
 import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
@@ -20,7 +19,7 @@ export default function useBestSellingLocationType() {
 
       return machines.reduce<InitialSummary>((acc, machine) => {
         const key = machine.locationType;
-        const sales = Decimal(machine.expectedSalesPerDay).toNumber();
+        const sales = Number(machine.expectedSalesPerDay);
         const createdAt = dayjs(machine.createdAt);
 
         if (criteria === 'last-7') {

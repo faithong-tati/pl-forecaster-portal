@@ -1,7 +1,6 @@
-import * as echarts from 'echarts';
+import { init } from 'echarts';
 import { memo, useEffect, useRef } from 'react';
 
-import EmptyState from '@/core/components/empty-state';
 import theme from '@/core/lib/theme';
 
 import type { PieChartProps } from './types';
@@ -12,7 +11,7 @@ function PieChart({ data }: PieChartProps) {
   useEffect(() => {
     if (!chartRef.current) return;
 
-    const chart = echarts.init(chartRef.current);
+    const chart = init(chartRef.current);
     const option = {
       tooltip: {
         trigger: 'item',
@@ -71,16 +70,6 @@ function PieChart({ data }: PieChartProps) {
       chart.dispose();
     };
   }, [data]);
-
-  if (!data.reduce((acc, item) => (acc += item.value), 0)) {
-    return (
-      <EmptyState
-        alt="no-ranking"
-        iconPath="/pie-chart.png"
-        title="No ranking yet"
-      />
-    );
-  }
 
   return <div ref={chartRef} style={{ width: '100%', height: 300 }} />;
 }

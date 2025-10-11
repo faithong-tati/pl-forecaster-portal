@@ -20,6 +20,7 @@ function DashboardProvider({ children }: PropsWithChildren) {
   const {
     data: machines,
     dataUpdatedAt,
+    refetch: refetchMachines,
     isFetching: isFetchingMachines,
   } = useGetMachines({
     refetchInterval: 60_000,
@@ -43,6 +44,7 @@ function DashboardProvider({ children }: PropsWithChildren) {
         isLoading,
         dailyTemperature: dailyTemperature as GetDailyTemperatureResponse,
         machines: machines ?? [],
+        refetchMachines,
       }}
     >
       {children}

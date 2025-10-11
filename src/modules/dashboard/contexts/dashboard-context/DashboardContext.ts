@@ -8,6 +8,7 @@ const DashboardContext = createContext<IDashboardContext>({
   isLoading: false,
   lastUpdated: '',
   machines: [],
+  refetchMachines: undefined,
 });
 
 export default DashboardContext;

@@ -1,7 +1,6 @@
 import { Divider, Grid, Stack, Typography } from '@mui/material';
 import { memo } from 'react';
 
-import EmptyState from '@/core/components/empty-state';
 import Image from '@/core/components/image';
 import useOptions from '@/core/hooks/use-options';
 import { generateId } from '@/core/lib/helpers';
@@ -16,16 +15,6 @@ import type { SalesRankingProps } from './types';
 
 function SalesRanking({ items }: SalesRankingProps) {
   const { locationTypeOptions } = useOptions();
-
-  if (!items.reduce((acc, item) => (acc += item.totalCount), 0)) {
-    return (
-      <EmptyState
-        alt="no-ranking"
-        iconPath="/top-three.png"
-        title="No ranking yet"
-      />
-    );
-  }
 
   return (
     <Stack direction="row" width="100%" mt={rem(40)}>
