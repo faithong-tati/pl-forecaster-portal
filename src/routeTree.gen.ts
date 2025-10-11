@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocalecorePortalRouteImport } from './routes/$locale/(core)/portal'
+import { Route as LocalecorePortalIndexRouteImport } from './routes/$locale/(core)/portal/index'
 import { Route as LocaleauthSignInIndexRouteImport } from './routes/$locale/(auth)/sign-in/index'
 import { Route as LocalecorePortalMachinesIndexRouteImport } from './routes/$locale/(core)/portal/machines/index'
 import { Route as LocalecorePortalDashboardIndexRouteImport } from './routes/$locale/(core)/portal/dashboard/index'
@@ -30,6 +31,11 @@ const LocalecorePortalRoute = LocalecorePortalRouteImport.update({
   id: '/$locale/(core)/portal',
   path: '/$locale/portal',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LocalecorePortalIndexRoute = LocalecorePortalIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LocalecorePortalRoute,
 } as any)
 const LocaleauthSignInIndexRoute = LocaleauthSignInIndexRouteImport.update({
   id: '/$locale/(auth)/sign-in/',
@@ -54,14 +60,15 @@ export interface FileRoutesByFullPath {
   '/$locale': typeof LocaleIndexRoute
   '/$locale/portal': typeof LocalecorePortalRouteWithChildren
   '/$locale/sign-in': typeof LocaleauthSignInIndexRoute
+  '/$locale/portal/': typeof LocalecorePortalIndexRoute
   '/$locale/portal/dashboard': typeof LocalecorePortalDashboardIndexRoute
   '/$locale/portal/machines': typeof LocalecorePortalMachinesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleIndexRoute
-  '/$locale/portal': typeof LocalecorePortalRouteWithChildren
   '/$locale/sign-in': typeof LocaleauthSignInIndexRoute
+  '/$locale/portal': typeof LocalecorePortalIndexRoute
   '/$locale/portal/dashboard': typeof LocalecorePortalDashboardIndexRoute
   '/$locale/portal/machines': typeof LocalecorePortalMachinesIndexRoute
 }
@@ -71,6 +78,7 @@ export interface FileRoutesById {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/(core)/portal': typeof LocalecorePortalRouteWithChildren
   '/$locale/(auth)/sign-in/': typeof LocaleauthSignInIndexRoute
+  '/$locale/(core)/portal/': typeof LocalecorePortalIndexRoute
   '/$locale/(core)/portal/dashboard/': typeof LocalecorePortalDashboardIndexRoute
   '/$locale/(core)/portal/machines/': typeof LocalecorePortalMachinesIndexRoute
 }
@@ -81,14 +89,15 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/portal'
     | '/$locale/sign-in'
+    | '/$locale/portal/'
     | '/$locale/portal/dashboard'
     | '/$locale/portal/machines'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$locale'
-    | '/$locale/portal'
     | '/$locale/sign-in'
+    | '/$locale/portal'
     | '/$locale/portal/dashboard'
     | '/$locale/portal/machines'
   id:
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/(core)/portal'
     | '/$locale/(auth)/sign-in/'
+    | '/$locale/(core)/portal/'
     | '/$locale/(core)/portal/dashboard/'
     | '/$locale/(core)/portal/machines/'
   fileRoutesById: FileRoutesById
@@ -131,6 +141,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocalecorePortalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/(core)/portal/': {
+      id: '/$locale/(core)/portal/'
+      path: '/'
+      fullPath: '/$locale/portal/'
+      preLoaderRoute: typeof LocalecorePortalIndexRouteImport
+      parentRoute: typeof LocalecorePortalRoute
+    }
     '/$locale/(auth)/sign-in/': {
       id: '/$locale/(auth)/sign-in/'
       path: '/$locale/sign-in'
@@ -156,11 +173,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface LocalecorePortalRouteChildren {
+  LocalecorePortalIndexRoute: typeof LocalecorePortalIndexRoute
   LocalecorePortalDashboardIndexRoute: typeof LocalecorePortalDashboardIndexRoute
   LocalecorePortalMachinesIndexRoute: typeof LocalecorePortalMachinesIndexRoute
 }
 
 const LocalecorePortalRouteChildren: LocalecorePortalRouteChildren = {
+  LocalecorePortalIndexRoute: LocalecorePortalIndexRoute,
   LocalecorePortalDashboardIndexRoute: LocalecorePortalDashboardIndexRoute,
   LocalecorePortalMachinesIndexRoute: LocalecorePortalMachinesIndexRoute,
 }

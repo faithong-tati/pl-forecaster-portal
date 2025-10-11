@@ -1,4 +1,3 @@
-import CoffeeIcon from '@mui/icons-material/Coffee';
 import { Box, CssBaseline, Divider, Stack, Typography } from '@mui/material';
 import { Outlet } from '@tanstack/react-router';
 import { memo } from 'react';
@@ -32,14 +31,7 @@ function SideBarContainer() {
               <Typography variant="h6">{t('system')}</Typography>
             </Stack>
 
-            <Divider sx={{ alignContent: 'center' }}>
-              <CoffeeIcon
-                sx={{
-                  display: 'flex',
-                  color: (theme) => theme.palette.secondary.main,
-                }}
-              />
-            </Divider>
+            <Divider sx={{ alignContent: 'center' }} />
 
             <Outlet />
           </Stack>

@@ -12,6 +12,7 @@ function EmptyState({
   title,
   fadeInTimeout = 700,
   height = 250,
+  size = 'medium',
 }: EmptyStateProps) {
   return (
     <Fade in timeout={fadeInTimeout}>
@@ -22,8 +23,14 @@ function EmptyState({
         height={height}
         sx={{ color: 'text.secondary' }}
       >
-        <Image alt={alt} src={iconPath} sx={{ width: rem(50) }} />
-        <Typography variant="caption">{title}</Typography>
+        <Image
+          alt={alt}
+          src={iconPath}
+          sx={{ width: size === 'large' ? rem(200) : rem(50) }}
+        />
+        <Typography variant={size === 'large' ? 'h5' : 'caption'}>
+          {title}
+        </Typography>
       </Stack>
     </Fade>
   );
