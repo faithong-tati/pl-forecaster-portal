@@ -32,6 +32,7 @@ function Sidebar() {
     <DrawerContainer style={{ width }}>
       <Drawer open={state.isOpenSideBar}>
         <Stack flexDirection="column" height="100%">
+          {/* profile */}
           <Header>
             <IconButton size="small" onClick={onToggleDrawer}>
               <Menu sx={CoreSx.hoverIcon} />
@@ -51,6 +52,7 @@ function Sidebar() {
             )}
           </Header>
 
+          {/* menu */}
           <List
             sx={{
               px: rem(8),
@@ -73,6 +75,7 @@ function Sidebar() {
 
           <Box flex={1} />
 
+          {/* sign out */}
           <Footer>
             <List disablePadding>
               <ListItem
