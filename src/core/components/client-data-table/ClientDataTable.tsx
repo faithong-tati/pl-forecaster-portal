@@ -26,7 +26,10 @@ function ClientDataTable({
   setColumnFilters,
   setGlobalFilter,
 }: ClientDataTableProps) {
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([
+    { id: 'updatedAt', desc: true },
+  ]);
+
   const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,

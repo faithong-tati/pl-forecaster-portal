@@ -1,6 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/material';
+import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -49,6 +50,7 @@ export function useColumn({
         accessorKey: 'expectedSalesPerDay',
         header: t('table.columns.expectedSalesPerDay'),
         minSize: 150,
+        accessorFn: (row) => Number(row.expectedSalesPerDay),
         cell: ({ getValue }) => {
           return (
             <TextTruncate>{formatNumber(getValue<string>() || 0)}</TextTruncate>
@@ -59,6 +61,7 @@ export function useColumn({
         accessorKey: 'averageProfitMarginPercentage',
         header: t('table.columns.averageProfitMarginPercentage'),
         minSize: 150,
+        accessorFn: (row) => Number(row.averageProfitMarginPercentage),
         cell: ({ getValue }) => {
           return (
             <TextTruncate>
@@ -71,6 +74,7 @@ export function useColumn({
         accessorKey: 'rentCostPerDay',
         header: t('table.columns.rentCostPerDay'),
         minSize: 150,
+        accessorFn: (row) => Number(row.rentCostPerDay),
         cell: ({ getValue }) => {
           return (
             <TextTruncate>{formatNumber(getValue<string>() || 0)}</TextTruncate>
@@ -81,6 +85,7 @@ export function useColumn({
         accessorKey: 'electricCostPerTempPerDay',
         header: t('table.columns.electricCostPerTempPerDay'),
         minSize: 150,
+        accessorFn: (row) => Number(row.electricCostPerTempPerDay),
         cell: ({ getValue }) => {
           return (
             <TextTruncate>{formatNumber(getValue<string>() || 0)}</TextTruncate>
@@ -91,6 +96,8 @@ export function useColumn({
         accessorKey: 'updatedAt',
         header: t('table.columns.updatedAt'),
         minSize: 170,
+        accessorFn: (row) => dayjs(row.updatedAt).valueOf(),
+        sortingFn: 'auto',
         cell: ({ getValue }) => {
           return formatDisplayDate(getValue<string>(), i18n.language as Locale);
         },
