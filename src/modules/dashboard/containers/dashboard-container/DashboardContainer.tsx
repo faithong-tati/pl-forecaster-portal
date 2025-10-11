@@ -15,7 +15,7 @@ function DashboardContainer() {
   const { refetchMachines } = useContext(DashboardContext);
 
   return (
-    <Panel>
+    <Panel sx={{ overflow: 'auto' }}>
       <ContentHeader
         title="Forecaster Dashboard"
         renderNode={
@@ -29,7 +29,7 @@ function DashboardContainer() {
         }
       />
 
-      <Grid container spacing={rem(32)}>
+      <Grid container spacing={rem(32)} overflow="auto">
         <Grid size={{ xs: 12 }}>
           <BestSellingLocationType />
         </Grid>

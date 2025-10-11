@@ -57,8 +57,11 @@ function ClientDataTable({
   });
 
   return (
-    <Paper elevation={0} sx={{ borderRadius: rem(16), overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 600 }}>
+    <Paper
+      elevation={0}
+      sx={{ borderRadius: rem(16), overflow: 'auto', height: '100%' }}
+    >
+      <TableContainer sx={{ height: 'calc(100% - 70px)' }}>
         <Table stickyHeader size="small" aria-label="notification-grid">
           <DataTableHead table={table} />
           <DataTableBody table={table} rows={rows} />

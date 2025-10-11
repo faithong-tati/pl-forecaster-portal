@@ -49,7 +49,7 @@ function TableMachinesContainer() {
   const { handleSubmit } = upsertMethods;
 
   return (
-    <Panel sx={{ width: panelWidth }}>
+    <Panel sx={{ width: panelWidth, overflow: 'auto' }}>
       <ContentHeader
         title="Machine Management"
         renderNode={

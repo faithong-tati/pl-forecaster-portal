@@ -20,7 +20,13 @@ function SideBarContainer() {
         <Box display="flex" minHeight="100dvh">
           <Sidebar />
 
-          <Stack m={rem(32)} width="100%" gap={rem(16)}>
+          <Stack
+            p={rem(32)}
+            width="100%"
+            gap={rem(16)}
+            height="100vh"
+            overflow="hidden"
+          >
             <Stack direction="row" alignItems="center">
               <Image alt="small-log" src="/logo.svg" sx={{ width: rem(48) }} />
               <Typography variant="h6">{t('system')}</Typography>

@@ -18,7 +18,7 @@ function FormSearchMachines({
   const { locationTypeOptions } = useOptions();
 
   return (
-    <Stack direction="row" gap={rem(16)}>
+    <Stack direction={{ xs: 'column', lg: 'row' }} gap={rem(16)}>
       <FormGenerator
         items={[
           {
