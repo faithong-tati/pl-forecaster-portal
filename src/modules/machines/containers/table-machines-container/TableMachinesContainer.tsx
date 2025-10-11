@@ -25,6 +25,7 @@ function TableMachinesContainer() {
     columnFilters,
     upsertModalConfig,
     deleteModelConfig,
+    panelWidth,
     setModalState,
     setGlobalFilter,
     setColumnFilters,
@@ -48,7 +49,7 @@ function TableMachinesContainer() {
   const { handleSubmit, reset } = upsertMethods;
 
   return (
-    <Panel>
+    <Panel sx={{ width: panelWidth }}>
       <ContentHeader
         title="Machine Management"
         renderNode={

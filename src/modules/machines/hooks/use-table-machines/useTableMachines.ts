@@ -1,7 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useOptions from '@/core/hooks/use-options';
+import SidebarContext from '@/modules/templates/contexts/auth-context';
 
 import { useColumn } from './useColumn';
 import { useSubmitEvent } from './useSubmitEvent';
@@ -10,6 +11,7 @@ import type { ColumnFiltersState } from '@tanstack/react-table';
 
 export default function useTableMachines() {
   const { t } = useTranslation('machine');
+  const { state } = useContext(SidebarContext);
   // state
   const [globalFilter, setGlobalFilter] = useState<string>('');
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([
@@ -96,6 +98,12 @@ export default function useTableMachines() {
     t,
   ]);
 
+  const panelWidth = useMemo(() => {
+    if (state.isOpenSideBar) return 'calc(100vw - 344px)';
+
+    return 'calc(100vw - 144px)';
+  }, [state.isOpenSideBar]);
+
   return {
     rows: data ?? [],
     columns,
@@ -103,6 +111,7 @@ export default function useTableMachines() {
     columnFilters,
     upsertModalConfig,
     deleteModelConfig,
+    panelWidth,
 
     setModalState,
     setGlobalFilter,
