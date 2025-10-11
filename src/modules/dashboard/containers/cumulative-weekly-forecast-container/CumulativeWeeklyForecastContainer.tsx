@@ -67,7 +67,7 @@ function CumulativeWeeklyForecastContainer() {
       >
         <Grid container spacing={rem(24)}>
           {data.map((datum) => (
-            <Grid key={datum.label} size={{ xs: 3 }}>
+            <Grid key={datum.label} size={{ xs: 6, lg: 3 }}>
               <MetricCard
                 label={datum.label}
                 value={datum.value}

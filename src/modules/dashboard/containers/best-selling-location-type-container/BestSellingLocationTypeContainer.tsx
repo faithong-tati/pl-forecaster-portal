@@ -81,11 +81,11 @@ function BestSellingLocationTypeContainer() {
         isLoading={isLoading}
       >
         <Grid container spacing={rem(24)}>
-          <Grid size={{ xs: 8 }}>
+          <Grid size={{ xs: 12, lg: 8 }}>
             <SalesRanking items={data} />
           </Grid>
 
-          <Grid size={{ xs: 4 }}>
+          <Grid size={{ xs: 12, lg: 4 }}>
             <PieChart data={pieChartDate} />
           </Grid>
         </Grid>
