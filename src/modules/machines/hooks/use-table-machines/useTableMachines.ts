@@ -2,6 +2,7 @@ import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useOptions from '@/core/hooks/use-options';
+import { generateId } from '@/core/lib/helpers';
 import SidebarContext from '@/modules/templates/contexts/auth-context';
 
 import { useColumn } from './useColumn';
@@ -37,14 +38,21 @@ export default function useTableMachines() {
   const { columns } = useColumn({ locationTypeOptions, setModalState });
   // const
   const upsertModalConfig = useMemo(() => {
+    const defaultName = getMachine?.name || '';
+
     return {
       open: modalState.isOpenCreateModal || modalState.isOpenEditModal,
       title: modalState.isOpenCreateModal
         ? t('table.modals.upsert.addTitle')
         : t('table.modals.upsert.editTitle'),
-      onSubmit: modalState.isOpenCreateModal ? onSubmitCreate : onSubmitUpdate,
+      onSubmit:
+        modalState.isOpenCreateModal || modalState.isClone
+          ? onSubmitCreate
+          : onSubmitUpdate,
       defaultValues: {
-        name: getMachine?.name || '',
+        name: modalState.isClone
+          ? `${defaultName}_copy_${generateId(4)}`
+          : defaultName,
         locationType: getMachine?.locationType || '',
         expectedSalesPerDay: getMachine?.expectedSalesPerDay || '',
         averageProfitMarginPercentage:
@@ -55,6 +63,7 @@ export default function useTableMachines() {
     };
   }, [
     getMachine,
+    modalState.isClone,
     modalState.isOpenCreateModal,
     modalState.isOpenEditModal,
     onSubmitCreate,

@@ -3,6 +3,7 @@ import type { Updater } from 'use-immer';
 
 export interface UseTableMachinesState {
   currentId: string;
+  isClone: boolean;
   isOpenCreateModal: boolean;
   isOpenDeleteModal: boolean;
   isOpenEditModal: boolean;

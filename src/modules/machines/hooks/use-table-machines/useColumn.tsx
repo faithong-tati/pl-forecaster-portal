@@ -1,6 +1,7 @@
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Box } from '@mui/material';
+import { Box, Tooltip } from '@mui/material';
 import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +11,7 @@ import { formatDisplayDate } from '@/core/lib/helpers/format';
 import { ButtonIcon } from '@/core/styles/common';
 import { LocationType } from '@/core/types/models/machine.model';
 import { formatNumber } from '@/core/utils';
+import rem from '@/core/utils/rem';
 
 import type { UseColumnProps } from './types';
 import type { Locale } from '@/core/types';
@@ -112,24 +114,59 @@ export function useColumn({
               <ButtonIcon
                 onClick={() => {
                   setModalState((draft) => {
+                    draft.isClone = true;
                     draft.currentId = getValue<string>();
                     draft.isOpenEditModal = true;
                   });
                 }}
               >
-                <EditIcon sx={{ color: (theme) => theme.palette.info.main }} />
+                <Tooltip title="Clone">
+                  <ContentCopyIcon
+                    sx={{
+                      width: rem(20),
+                      height: rem(20),
+                      color: (theme) => theme.palette.info.main,
+                    }}
+                  />
+                </Tooltip>
               </ButtonIcon>
 
-              <ButtonIcon>
-                <DeleteIcon
-                  sx={{ color: (theme) => theme.palette.error.main }}
-                  onClick={() => {
-                    setModalState((draft) => {
-                      draft.currentId = getValue<string>();
-                      draft.isOpenDeleteModal = true;
-                    });
-                  }}
-                />
+              <ButtonIcon
+                onClick={() => {
+                  setModalState((draft) => {
+                    draft.currentId = getValue<string>();
+                    draft.isOpenEditModal = true;
+                  });
+                }}
+              >
+                <Tooltip title="Edit">
+                  <EditIcon
+                    sx={{
+                      width: rem(20),
+                      height: rem(20),
+                      color: (theme) => theme.palette.text.secondary,
+                    }}
+                  />
+                </Tooltip>
+              </ButtonIcon>
+
+              <ButtonIcon
+                onClick={() => {
+                  setModalState((draft) => {
+                    draft.currentId = getValue<string>();
+                    draft.isOpenDeleteModal = true;
+                  });
+                }}
+              >
+                <Tooltip title="Delete">
+                  <DeleteIcon
+                    sx={{
+                      width: rem(20),
+                      height: rem(20),
+                      color: (theme) => theme.palette.error.main,
+                    }}
+                  />
+                </Tooltip>
               </ButtonIcon>
             </Box>
           );
