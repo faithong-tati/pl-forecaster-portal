@@ -7,12 +7,10 @@ import FormGenerator from '@/core/components/form-generator';
 import useOptions from '@/core/hooks/use-options';
 import rem from '@/core/utils/rem';
 
-import type { FormUpsertMachineProps } from './types';
-
-function FormUpsertMachines({ reset }: FormUpsertMachineProps) {
+function FormUpsertMachines() {
   const { t } = useTranslation('machine');
   const { t: tCore } = useTranslation('core');
-  const { clearErrors } = useFormContext();
+  const { clearErrors, reset } = useFormContext();
   const { locationTypeOptions } = useOptions();
 
   useEffect(() => {

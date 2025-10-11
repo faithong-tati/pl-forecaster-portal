@@ -46,7 +46,7 @@ function TableMachinesContainer() {
     values: upsertModalConfig.defaultValues,
   });
 
-  const { handleSubmit, reset } = upsertMethods;
+  const { handleSubmit } = upsertMethods;
 
   return (
     <Panel sx={{ width: panelWidth }}>
@@ -100,7 +100,7 @@ function TableMachinesContainer() {
       >
         <FormProvider {...upsertMethods}>
           <form noValidate>
-            <FormUpsertMachines reset={reset} />
+            <FormUpsertMachines />
           </form>
         </FormProvider>
       </ModalInfo>
