@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import rem from '@/core/utils/rem';
 
-import EmptyState from './EmptyState';
+import DataTableEmptyState from './DataTableEmptyState';
 import { getEmptyStateText } from './helpers';
 
 import type { DataTableBodyProps, NativeFilter } from './types';
@@ -14,7 +14,7 @@ function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
   const rows = table.getRowModel().rows;
 
   if (!rawRows.length) {
-    return <EmptyState title={t('table.noData')} table={table} />;
+    return <DataTableEmptyState title={t('table.noData')} table={table} />;
   }
 
   if (!rows.length) {
@@ -27,7 +27,7 @@ function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
 
     const emptyStateText = getEmptyStateText(globalFilter, columnFilter, t);
 
-    return <EmptyState title={emptyStateText} table={table} />;
+    return <DataTableEmptyState title={emptyStateText} table={table} />;
   }
 
   return (

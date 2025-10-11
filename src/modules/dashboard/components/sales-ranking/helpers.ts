@@ -1,6 +1,5 @@
 import { match } from 'ts-pattern';
 
-import { formatNumber } from '@/core/utils';
 import rem from '@/core/utils/rem';
 
 import type { SummarizeMachine } from '@/modules/dashboard/hooks/use-best-selling-location-type/types';
@@ -45,12 +44,12 @@ export function rankingConfig(item: SummarizeMachine) {
     {
       id: 'machine',
       label: 'Machines',
-      value: formatNumber(item.totalCount),
+      value: item.totalCount,
     },
     {
       id: 'sales',
       label: 'Baht/Day',
-      value: formatNumber(item.totalExpectedSalesPerDay),
+      value: item.totalExpectedSalesPerDay,
     },
   ];
 

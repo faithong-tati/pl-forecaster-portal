@@ -4,15 +4,18 @@ import { useCallback, useContext } from 'react';
 
 import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
 
+import { baseSummary } from './helpers';
+
 import type { ICriteria, InitialSummary } from './types';
 import type { ILocationType } from '@/core/types/models/machine.model';
 
 export default function useBestSellingLocationType() {
   const { machines, lastUpdated } = useContext(DashboardContext);
-  // computed
   const initialSummary = useCallback(
     (criteria: ICriteria) => {
       if (!machines) return {};
+
+      const base = baseSummary();
 
       return machines.reduce<InitialSummary>((acc, machine) => {
         const key = machine.locationType;
@@ -23,7 +26,7 @@ export default function useBestSellingLocationType() {
           const startOfWeek = dayjs().subtract(1, 'week');
 
           if (createdAt.isBefore(startOfWeek)) {
-            acc[key] = { totalCount: 0, totalExpectedSalesPerDay: 0 };
+            return acc;
           }
         }
 
@@ -35,7 +38,7 @@ export default function useBestSellingLocationType() {
         acc[key].totalExpectedSalesPerDay += sales;
 
         return acc;
-      }, {});
+      }, base);
     },
     [machines],
   );
