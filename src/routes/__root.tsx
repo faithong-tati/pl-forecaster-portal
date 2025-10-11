@@ -5,7 +5,6 @@ function RootLayout() {
   return (
     <Fragment>
       <Outlet />
-      {/* <TanStackRouterDevtools /> */}
     </Fragment>
   );
 }
