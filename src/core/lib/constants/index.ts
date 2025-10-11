@@ -4,4 +4,4 @@ export { DateFormat } from './format';
 
 export { DeviceUid } from './local-storage';
 
-export { RegexAlphabet } from './regex';
+export { RegexAlphabet, RegexNonNumeric } from './regex';

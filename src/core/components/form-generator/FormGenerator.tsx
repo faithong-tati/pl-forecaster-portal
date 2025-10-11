@@ -3,6 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import InputSelect from '@/core/components/input-select';
 import InputText from '@/core/components/input-text';
+import { RegexNonNumeric } from '@/core/lib/constants';
 
 import type { FormGeneratorProps } from './types';
 
@@ -10,6 +11,8 @@ function FormGenerator<T extends Record<string, unknown>>({
   items,
 }: FormGeneratorProps<T>) {
   const { control } = useFormContext();
+  // const
+  const invalidKeys = ['e', 'E', '.', '-', '+', ' '];
 
   return (
     <Fragment>
@@ -33,8 +36,28 @@ function FormGenerator<T extends Record<string, unknown>>({
                   }
                   onChange={(e) => {
                     field.onChange(e);
-
                     item.onChange?.(e);
+                  }}
+                  onInput={(e) => {
+                    if (item.type === 'number') {
+                      const input = e.target as HTMLInputElement;
+
+                      input.value = input.value.replace(RegexNonNumeric, '');
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (item.type === 'number' && invalidKeys.includes(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
+                  onPaste={(e) => {
+                    if (item.type === 'number') {
+                      const clipboardValue = e.clipboardData.getData('text');
+
+                      if (invalidKeys.includes(clipboardValue)) {
+                        e.preventDefault();
+                      }
+                    }
                   }}
                   slotProps={item.slotProps ?? undefined}
                 />
