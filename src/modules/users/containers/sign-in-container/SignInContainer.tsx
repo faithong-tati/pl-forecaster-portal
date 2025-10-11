@@ -102,6 +102,15 @@ function SignInContainer() {
           </Grid>
         </Grid>
       </Paper>
+
+      <Typography
+        position="absolute"
+        bottom={20}
+        color="white"
+        variant="caption"
+      >
+        {tCore('copyright')}
+      </Typography>
     </Stack>
   );
 }

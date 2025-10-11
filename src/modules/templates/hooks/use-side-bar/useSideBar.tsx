@@ -67,7 +67,7 @@ export default function useSidebar() {
 
       toast.onOpen('signOut.success', 'success');
 
-      window.location.reload()
+      window.location.reload();
     } catch {
       toast.onOpen('signOut.failed', 'error');
     }

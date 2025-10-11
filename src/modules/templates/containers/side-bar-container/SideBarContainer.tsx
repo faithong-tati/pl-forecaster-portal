@@ -34,6 +34,10 @@ function SideBarContainer() {
             <Divider sx={{ alignContent: 'center' }} />
 
             <Outlet />
+
+            <Typography mb={rem(-20)} textAlign="center" variant="caption">
+              {t('copyright')}
+            </Typography>
           </Stack>
         </Box>
       </SidebarProvider>
