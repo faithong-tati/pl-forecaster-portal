@@ -109,6 +109,7 @@ function TableMachinesContainer() {
         open={deleteModelConfig.open}
         title={deleteModelConfig.title}
         fixHeight={false}
+        severity="warning"
         contents={deleteModelConfig.contents}
         onClickPrimaryButton={deleteModelConfig.onSubmit}
         onClickSecondaryButton={onCloseModal}

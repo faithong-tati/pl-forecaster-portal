@@ -13,11 +13,9 @@ function InfoGrid({ datasource }: InfoGridProps) {
         const styleConfig = {
           gridKeySize: datum.styleConfig?.gridKeySize || 3,
           gridValueSize: datum.styleConfig?.gridValueSize || 9,
-          textKeyFontColor:
-            datum.styleConfig?.textKeyFontColor || 'text.primary',
+          textKeyFontColor: datum.styleConfig?.textKeyFontColor || 'black',
           textKeyFontWeight: datum.styleConfig?.textKeyFontWeight || 700,
-          textValueFontColor:
-            datum.styleConfig?.textValueFontColor || 'primary.main',
+          textValueFontColor: datum.styleConfig?.textValueFontColor || 'black',
           textValueFontWeight: datum.styleConfig?.textValueFontWeight || 400,
         };
 
