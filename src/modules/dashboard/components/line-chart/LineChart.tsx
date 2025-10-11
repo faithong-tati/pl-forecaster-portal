@@ -26,6 +26,9 @@ function LineChart({ series, xAxisData }: LineChartProps) {
         valueFormatter: (value: number) => {
           return `฿ ${formatNumber(value, 2)}`;
         },
+        backgroundColor: 'rgba(33,33,33,0.9)',
+        borderWidth: 0,
+        textStyle: { color: '#ffffff' },
       },
       legend: {
         top: 24,

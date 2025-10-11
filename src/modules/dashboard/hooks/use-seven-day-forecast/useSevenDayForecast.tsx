@@ -14,7 +14,7 @@ import {
 } from './helpers';
 
 export default function useSevenDayForecast() {
-  const { dailyTemperature, lastUpdated, machines } =
+  const { dailyTemperature, lastUpdated, machines, isLoading } =
     useContext(DashboardContext);
 
   // computed
@@ -68,5 +68,6 @@ export default function useSevenDayForecast() {
     series: { electricityCostSeries, profitLossSeries },
     cumulative,
     xAisData: dates,
+    isLoading,
   };
 }

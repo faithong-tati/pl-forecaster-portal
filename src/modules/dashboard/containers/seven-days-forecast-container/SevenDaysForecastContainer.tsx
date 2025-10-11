@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import { memo, useMemo } from 'react';
 
+import ContentSection from '@/core/components/content-section';
 import InfoCard from '@/core/components/info-card';
 import LineChart from '@/modules/dashboard/components/line-chart';
 import useSevenDayForecast from '@/modules/dashboard/hooks/use-seven-day-forecast';
@@ -10,6 +11,7 @@ function SevenDaysForecastContainer() {
     series: { electricityCostSeries, profitLossSeries },
     xAisData,
     lastUpdated,
+    isLoading,
   } = useSevenDayForecast();
 
   const chartSeries = useMemo(() => {
@@ -33,7 +35,16 @@ function SevenDaysForecastContainer() {
 
   return (
     <InfoCard title="7-day Forecast">
-      <LineChart xAxisData={xAisData} series={chartSeries} />
+      <ContentSection
+        hasData
+        height={360}
+        isLoading={isLoading}
+        alt=""
+        iconPath=""
+        emptyStateText=""
+      >
+        <LineChart xAxisData={xAisData} series={chartSeries} />
+      </ContentSection>
 
       <Typography variant="caption" textAlign="right" color="secondary">
         Last updated: {lastUpdated}
