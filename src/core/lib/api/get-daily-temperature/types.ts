@@ -3,21 +3,21 @@ import type {
   UseCustomQueryResult,
 } from '@/core/types/api';
 
-type Daily = {
-  time: string[];
+export interface TemperatureDaily {
   temperature_2m_max: number[];
   temperature_2m_min: number[];
-};
+  time: string[];
+}
 
-type DailyUnits = {
-  time: string;
+interface TemperatureDailyUnits {
   temperature_2m_max: string;
   temperature_2m_min: string;
-};
+  time: string;
+}
 
 export interface GetDailyTemperatureResponse {
-  daily: Daily;
-  daily_units: DailyUnits;
+  daily: TemperatureDaily;
+  daily_units: TemperatureDailyUnits;
   elevation: number;
   generationtime_ms: number;
   latitude: number;

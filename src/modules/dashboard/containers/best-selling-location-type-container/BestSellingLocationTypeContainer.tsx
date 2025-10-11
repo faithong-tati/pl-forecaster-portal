@@ -1,19 +1,29 @@
-import { Box, Grid, Typography } from '@mui/material';
-import { memo, MouseEvent, useCallback, useMemo, useState } from 'react';
+import { Grid, Typography } from '@mui/material';
+import {
+  memo,
+  MouseEvent,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import { match } from 'ts-pattern';
 
+import ContentSection from '@/core/components/content-section';
+import InfoCard from '@/core/components/info-card';
 import useOptions from '@/core/hooks/use-options';
-import { BorderStack } from '@/core/styles/common';
 import rem from '@/core/utils/rem';
 import CriteriaGroup from '@/modules/dashboard/components/criteria-group';
 import PieChart from '@/modules/dashboard/components/pie-chart';
 import SalesRanking from '@/modules/dashboard/components/sales-ranking';
+import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
 import useBestSellingLocationType from '@/modules/dashboard/hooks/use-best-selling-location-type';
 
 import type { ICriteria } from '@/modules/dashboard/hooks/use-best-selling-location-type/types';
 
 function BestSellingLocationTypeContainer() {
   const { allTime, lastSevenDays, lastUpdated } = useBestSellingLocationType();
+  const { isLoading } = useContext(DashboardContext);
   const { locationTypeOptions } = useOptions();
   // state
   const [criteria, setCriteria] = useState<ICriteria>('all-time');
@@ -24,6 +34,7 @@ function BestSellingLocationTypeContainer() {
     [criteria],
   );
 
+  // const
   const data = useMemo(() => {
     return match(criteria)
       .with('all-time', () => allTime)
@@ -47,33 +58,43 @@ function BestSellingLocationTypeContainer() {
       });
   }, [data, locationTypeOptions]);
 
-  return (
-    <BorderStack>
-      <Box display="flex" justifyContent="space-between">
-        <Typography variant="h6" fontWeight={500}>
-          Best-selling location type
-        </Typography>
+  const hasData = useMemo(() => {
+    return !!data.reduce((acc, datum) => (acc += datum.totalCount), 0);
+  }, [data]);
 
+  return (
+    <InfoCard
+      title="Best-selling location type"
+      render={
         <CriteriaGroup
           criteria={criteria}
           onChangeCriteria={onChangeCriteria}
         />
-      </Box>
+      }
+    >
+      <ContentSection
+        hasData={hasData}
+        alt="no-ranking"
+        iconPath="/top-three.png"
+        emptyStateText="No ranking yet"
+        height={300}
+        isLoading={isLoading}
+      >
+        <Grid container spacing={rem(24)}>
+          <Grid size={{ xs: 8 }}>
+            <SalesRanking items={data} />
+          </Grid>
 
-      <Grid container spacing={rem(24)}>
-        <Grid size={{ xs: 8 }}>
-          <SalesRanking items={data} />
+          <Grid size={{ xs: 4 }}>
+            <PieChart data={pieChartDate} />
+          </Grid>
         </Grid>
-
-        <Grid size={{ xs: 4 }}>
-          <PieChart data={pieChartDate} />
-        </Grid>
-      </Grid>
+      </ContentSection>
 
       <Typography variant="caption" textAlign="right" color="secondary">
         Last updated: {lastUpdated}
       </Typography>
-    </BorderStack>
+    </InfoCard>
   );
 }
 

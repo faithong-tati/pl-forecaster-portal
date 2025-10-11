@@ -11,6 +11,7 @@ function EmptyState({
   iconPath,
   title,
   fadeInTimeout = 700,
+  height = 250,
 }: EmptyStateProps) {
   return (
     <Fade in timeout={fadeInTimeout}>
@@ -18,7 +19,7 @@ function EmptyState({
         alignItems="center"
         justifyContent="center"
         gap={rem(16)}
-        height={rem(250)}
+        height={height}
         sx={{ color: 'text.secondary' }}
       >
         <Image alt={alt} src={iconPath} sx={{ width: rem(50) }} />

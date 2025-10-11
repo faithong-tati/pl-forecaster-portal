@@ -3,4 +3,5 @@ export interface EmptyStateProps {
   iconPath: string;
   title: string;
   fadeInTimeout?: number;
+  height?: number
 }
