@@ -7,6 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { match } from 'ts-pattern';
 
 import ContentSection from '@/core/components/content-section';
@@ -25,6 +26,7 @@ function BestSellingLocationTypeContainer() {
   const { allTime, lastSevenDays, lastUpdated } = useBestSellingLocationType();
   const { isLoading } = useContext(DashboardContext);
   const { locationTypeOptions } = useOptions();
+  const { t } = useTranslation('dashboard');
   // state
   const [criteria, setCriteria] = useState<ICriteria>('all-time');
   const onChangeCriteria = useCallback(
@@ -64,7 +66,7 @@ function BestSellingLocationTypeContainer() {
 
   return (
     <InfoCard
-      title="Best-selling location type"
+      title={t('bestSellingLocationType.title')}
       render={
         <CriteriaGroup
           criteria={criteria}
@@ -76,23 +78,23 @@ function BestSellingLocationTypeContainer() {
         hasData={hasData}
         alt="no-ranking"
         iconPath="/top-three.png"
-        emptyStateText="No ranking yet"
+        emptyStateText={t('bestSellingLocationType.notfound')}
         height={300}
         isLoading={isLoading}
       >
         <Grid container spacing={rem(24)}>
-          <Grid size={{ xs: 8 }}>
+          <Grid size={{ xs: 12, lg: 8 }}>
             <SalesRanking items={data} />
           </Grid>
 
-          <Grid size={{ xs: 4 }}>
+          <Grid size={{ xs: 12, lg: 4 }}>
             <PieChart data={pieChartDate} />
           </Grid>
         </Grid>
       </ContentSection>
 
       <Typography variant="caption" textAlign="right" color="secondary">
-        Last updated: {lastUpdated}
+        {t('shared.lastUpdated', { date: lastUpdated })}
       </Typography>
     </InfoCard>
   );

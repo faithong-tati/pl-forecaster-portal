@@ -11,5 +11,6 @@ export interface ModalInfoProps extends DialogProps, PropsWithChildren {
   isLoading?: boolean;
   primaryButtonText?: string;
   secondaryButtonText?: string;
+  severity?: 'neutral' | 'warning';
   subtitle?: string;
 }

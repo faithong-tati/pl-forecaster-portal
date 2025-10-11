@@ -1,0 +1,1 @@
+export { useScreenMediaType } from './useScreenMediaType';

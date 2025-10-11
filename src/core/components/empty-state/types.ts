@@ -4,4 +4,5 @@ export interface EmptyStateProps {
   title: string;
   fadeInTimeout?: number;
   height?: number;
+  size?: 'medium' | 'large';
 }

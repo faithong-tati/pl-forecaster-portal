@@ -11,15 +11,14 @@ import './App.css';
 
 function App() {
   const { authState } = useAuth();
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation('core');
 
   return (
     <RouterProvider
       router={createRouter({
         routeTree,
-        defaultNotFoundComponent: () => {
-          window.location.href = `/${i18n.language}${Routes.dashboard.path}`;
-        },
+        defaultNotFoundComponent: () =>
+          location.replace(`/${i18n.language}${Routes.dashboard.path}`),
         context: { authState },
       })}
     />

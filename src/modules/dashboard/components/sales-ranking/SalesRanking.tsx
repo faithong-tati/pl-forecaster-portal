@@ -1,5 +1,6 @@
 import { Divider, Grid, Stack, Typography } from '@mui/material';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Image from '@/core/components/image';
 import useOptions from '@/core/hooks/use-options';
@@ -15,6 +16,7 @@ import type { SalesRankingProps } from './types';
 
 function SalesRanking({ items }: SalesRankingProps) {
   const { locationTypeOptions } = useOptions();
+  const { t } = useTranslation('dashboard');
 
   return (
     <Stack direction="row" width="100%" mt={rem(40)}>
@@ -69,7 +71,7 @@ function SalesRanking({ items }: SalesRankingProps) {
                         <Typography fontWeight={700}>
                           {formatMetricNumber(sc.value)}
                         </Typography>
-                        <Typography variant="body2">{sc.label}</Typography>
+                        <Typography variant="body2">{t(sc.label)}</Typography>
                       </Stack>
                     </Grid>
                   ))}

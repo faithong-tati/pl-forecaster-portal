@@ -1,6 +1,7 @@
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { motion, MotionStyle } from 'framer-motion';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import rem from '@/core/utils/rem';
 import { Criteria } from '@/modules/dashboard/hooks/use-best-selling-location-type/types';
@@ -10,10 +11,19 @@ import { Styles } from './styles';
 import type { CriteriaGroupProps } from './types';
 
 function CriteriaGroup({ criteria, onChangeCriteria }: CriteriaGroupProps) {
-  const options = [
-    { value: Criteria.ALL_TIME, label: 'All Time' },
-    { value: Criteria.LAST_SEVEN_DAYS, label: 'Last 7 Days' },
-  ];
+  const { t } = useTranslation('dashboard');
+  const options = useMemo(() => {
+    return [
+      {
+        value: Criteria.ALL_TIME,
+        label: t('bestSellingLocationType.toggleGroup.allTime'),
+      },
+      {
+        value: Criteria.LAST_SEVEN_DAYS,
+        label: t('bestSellingLocationType.toggleGroup.lastSevenDays'),
+      },
+    ];
+  }, [t]);
 
   return (
     <ToggleButtonGroup

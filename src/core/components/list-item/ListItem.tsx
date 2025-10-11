@@ -20,6 +20,16 @@ function ListItem({ icon, label, open, isActive, onClick }: ListItemProps) {
         sx={{
           'borderRadius': 2,
           'height': rem(50),
+          '&.Mui-selected': {
+            'color': (theme) => theme.palette.primary.main,
+            '& .MuiListItemIcon-root': {
+              color: (theme) => theme.palette.primary.main,
+            },
+            '& .MuiTypography-root': {
+              color: (theme) => theme.palette.primary.main,
+              fontWeight: 600,
+            },
+          },
           '&:hover': {
             '& .MuiListItemIcon-root': {
               transition: 'transform 0.1s ease',

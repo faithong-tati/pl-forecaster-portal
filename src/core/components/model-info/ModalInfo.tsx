@@ -24,6 +24,7 @@ function ModalInfo({
   contents,
   children,
   fixHeight = true,
+  severity = 'neutral',
 
   onClickPrimaryButton,
   onClickSecondaryButton,
@@ -35,15 +36,11 @@ function ModalInfo({
     <BaseDialog {...props}>
       <DialogTitle>
         <Stack gap={rem(4)}>
-          <Typography variant="h6" fontWeight={700} color="text.primary">
+          <Typography variant="h6" fontWeight={700}>
             {title}
           </Typography>
 
-          {!!subtitle && (
-            <Typography variant="body2" color="text.secondary">
-              {subtitle}
-            </Typography>
-          )}
+          {!!subtitle && <Typography variant="body2">{subtitle}</Typography>}
         </Stack>
       </DialogTitle>
 
@@ -64,14 +61,20 @@ function ModalInfo({
 
       <DialogActions>
         <Stack direction="row" width="100%" gap={rem(16)}>
-          <Button fullWidth variant="outlined" onClick={onClickSecondaryButton}>
+          <Button
+            fullWidth
+            variant="outlined"
+            color={severity === 'warning' ? 'error' : 'primary'}
+            onClick={onClickSecondaryButton}
+          >
             {secondaryButtonText || t('buttons.cancel')}
           </Button>
+
           <Button
             type="button"
             fullWidth
             variant="contained"
-            color="primary"
+            color={severity === 'warning' ? 'error' : 'primary'}
             disabled={isLoading}
             onClick={onClickPrimaryButton}
           >

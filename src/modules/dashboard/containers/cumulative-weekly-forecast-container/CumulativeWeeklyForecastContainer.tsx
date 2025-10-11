@@ -1,5 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import { memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ContentSection from '@/core/components/content-section';
 import Image from '@/core/components/image';
@@ -10,18 +11,19 @@ import useSevenDayForecast from '@/modules/dashboard/hooks/use-seven-day-forecas
 
 function CumulativeWeeklyForecastContainer() {
   const { cumulative, lastUpdated, isLoading } = useSevenDayForecast();
+  const { t } = useTranslation('dashboard');
   // const
   const data = useMemo(() => {
     return [
       {
-        label: 'Total Revenue',
+        label: t('cumulativeWeeklyForecast.cards.revenue'),
         value: cumulative.totalRevenue,
         icon: (
           <Image alt="revenue" src="/revenue.png" sx={{ width: rem(30) }} />
         ),
       },
       {
-        label: 'Total Rent',
+        label: t('cumulativeWeeklyForecast.cards.totalRent'),
         value: cumulative.totalRent,
         icon: (
           <Image
@@ -32,7 +34,7 @@ function CumulativeWeeklyForecastContainer() {
         ),
       },
       {
-        label: 'Total Electricity Cost',
+        label: t('cumulativeWeeklyForecast.cards.totalElectricityCost'),
         value: cumulative.totalElectricityCost,
         icon: (
           <Image
@@ -43,7 +45,7 @@ function CumulativeWeeklyForecastContainer() {
         ),
       },
       {
-        label: 'Net P/L for the week',
+        label: t('cumulativeWeeklyForecast.cards.netProfitLoss'),
         value: cumulative.netProfit,
         icon: <Image alt="profit" src="/profit.png" sx={{ width: rem(30) }} />,
       },
@@ -53,10 +55,11 @@ function CumulativeWeeklyForecastContainer() {
     cumulative.totalElectricityCost,
     cumulative.totalRent,
     cumulative.totalRevenue,
+    t,
   ]);
 
   return (
-    <InfoCard title="Cumulative Weekly Forecast (7 days)">
+    <InfoCard title={t('cumulativeWeeklyForecast.title')}>
       <ContentSection
         hasData
         height={122}
@@ -67,7 +70,7 @@ function CumulativeWeeklyForecastContainer() {
       >
         <Grid container spacing={rem(24)}>
           {data.map((datum) => (
-            <Grid key={datum.label} size={{ xs: 3 }}>
+            <Grid key={datum.label} size={{ xs: 6, lg: 3 }}>
               <MetricCard
                 label={datum.label}
                 value={datum.value}
@@ -79,7 +82,7 @@ function CumulativeWeeklyForecastContainer() {
       </ContentSection>
 
       <Typography variant="caption" textAlign="right" color="secondary">
-        Last updated: {lastUpdated}
+        {t('shared.lastUpdated', { date: lastUpdated })}
       </Typography>
     </InfoCard>
   );

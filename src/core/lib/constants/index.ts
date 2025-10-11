@@ -2,6 +2,6 @@ export { CookieAuth, CookieExpires } from './cookies';
 
 export { DateFormat } from './format';
 
-export { DeviceUid } from './local-storage';
+export { DeviceUid, Language } from './local-storage';
 
-export { RegexAlphabet } from './regex';
+export { RegexAlphabet, RegexNonNumeric, RegexRouterLocale } from './regex';

@@ -1,6 +1,35 @@
 {
-  "title": "Forecaster Dashboard",
+  "title": "แดชบอร์ด",
+  "sync": "Sync",
   "bestSellingLocationType": {
-    
+    "title": "ทำเลขายดี",
+    "toggleGroup": {
+      "allTime": "ทั้งหมด",
+      "lastSevenDays": "7 วันที่ผ่านมา"
+    },
+    "units": {
+      "machines": "ตู้",
+      "bahtPerDay": "บาท/วัน"
+    },
+    "notfound": "ยังไม่มีอันดับ"
+  },
+  "sevenDayForecast": {
+    "title": "พยากรณ์ 7 วัน",
+    "legends": {
+      "electricity": "ค่าไฟ",
+      "profitLoss": "กำไร/ขาดทุน"
+    }
+  },
+  "cumulativeWeeklyForecast": {
+    "title": "พยากรณ์รวมรายสัปดาห์ (7 วัน)",
+    "cards": {
+      "revenue": "รายได้รวม",
+      "totalRent": "ค่าเช่ารวม",
+      "totalElectricityCost": "ค่าไฟรวม",
+      "netProfitLoss": "กำไร/ขาดทุนสุทธิของสัปดาห์"
+    }
+  },
+  "shared": {
+    "lastUpdated": "อัปเดตล่าสุด: {{date}}"
   }
 }

@@ -1,5 +1,4 @@
 import { useGoogleLogin } from '@react-oauth/google';
-import { useNavigate } from '@tanstack/react-router';
 import dayjs from 'dayjs';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +18,6 @@ import type { SchemaFormData } from '@/modules/users/containers/sign-in-containe
 
 export default function useSignIn() {
   const { i18n } = useTranslation();
-  const navigate = useNavigate();
   const toast = useToast();
   const { deviceUid } = useDeviceUid();
   // async hooks
@@ -42,12 +40,9 @@ export default function useSignIn() {
 
       toast.onOpen('signIn.success', 'success');
 
-      navigate({
-        to: `/$locale${Routes.dashboard.path}`,
-        params: { locale: i18n.language },
-      });
+      location.replace(`/${i18n.language}${Routes.dashboard.path}`);
     },
-    [deviceUid, i18n.language, navigate, postUserApi, toast],
+    [deviceUid, i18n.language, postUserApi, toast],
   );
 
   const onSignInWithGoogle = useGoogleLogin({

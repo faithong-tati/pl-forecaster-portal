@@ -67,14 +67,11 @@ export default function useSidebar() {
 
       toast.onOpen('signOut.success', 'success');
 
-      navigate({
-        to: `/$locale${Routes.signIn.path}`,
-        params: { locale: i18n.language },
-      });
+      location.replace(`/${i18n.language}${Routes.signIn.path}`);
     } catch {
       toast.onOpen('signOut.failed', 'error');
     }
-  }, [i18n.language, navigate, setState, toast]);
+  }, [i18n.language, setState, toast]);
 
   return {
     state,
