@@ -3,14 +3,14 @@ import { memo, useMemo } from 'react';
 
 import InfoCard from '@/core/components/info-card';
 import LineChart from '@/modules/dashboard/components/line-chart';
-import useSevenDaysForecast from '@/modules/dashboard/hooks/use-seven-days-forecast';
+import useSevenDayForecast from '@/modules/dashboard/hooks/use-seven-day-forecast';
 
 function SevenDaysForecastContainer() {
   const {
     series: { electricityCostSeries, profitLossSeries },
     xAisData,
     lastUpdated,
-  } = useSevenDaysForecast();
+  } = useSevenDayForecast();
 
   const chartSeries = useMemo(() => {
     return [

@@ -4,21 +4,26 @@ import DashboardContext from '@/modules/dashboard/contexts/dashboard-context';
 
 import {
   getAvgDailyTemperatureList,
+  netProfit,
   sumElectricityCost,
   sumGrossProfit,
   sumRent,
+  totalElectricityCost,
+  totalRent,
+  totalRevenue,
 } from './helpers';
 
-export default function useSevenDaysForecast() {
+export default function useSevenDayForecast() {
   const { dailyTemperature, lastUpdated, machines } =
     useContext(DashboardContext);
 
   // computed
-  const avgDailyTemperatureList = getAvgDailyTemperatureList(
-    dailyTemperature?.daily ?? null,
+  const avgDailyTemperatureList = useMemo(
+    () => getAvgDailyTemperatureList(dailyTemperature?.daily ?? null),
+    [dailyTemperature?.daily],
   );
 
-  const base = useMemo(
+  const baseProfit = useMemo(
     () => sumGrossProfit(machines) - sumRent(machines),
     [machines],
   );
@@ -28,7 +33,7 @@ export default function useSevenDaysForecast() {
     [avgDailyTemperatureList],
   );
 
-  // final
+  // 7-day forecast
   const electricityCostSeries = useMemo(
     () =>
       avgDailyTemperatureList.map((data) =>
@@ -40,14 +45,28 @@ export default function useSevenDaysForecast() {
   const profitLossSeries = useMemo(
     () =>
       avgDailyTemperatureList.map((_, i) =>
-        Number((base - electricityCostSeries[i]).toFixed(2)),
+        Number((baseProfit - electricityCostSeries[i]).toFixed(2)),
       ),
-    [avgDailyTemperatureList, base, electricityCostSeries],
+    [avgDailyTemperatureList, baseProfit, electricityCostSeries],
   );
+
+  // cumulative weekly
+  const cumulative = useMemo(() => {
+    return {
+      totalRevenue: totalRevenue(machines),
+      totalRent: totalRent(machines),
+      totalElectricityCost: totalElectricityCost(
+        avgDailyTemperatureList,
+        sumElectricityCost(machines),
+      ),
+      netProfit: netProfit(profitLossSeries),
+    };
+  }, [avgDailyTemperatureList, machines, profitLossSeries]);
 
   return {
     lastUpdated,
     series: { electricityCostSeries, profitLossSeries },
+    cumulative,
     xAisData: dates,
   };
 }
