@@ -5,14 +5,15 @@ import InputSelect from '@/core/components/input-select';
 import InputText from '@/core/components/input-text';
 import { RegexNonNumeric } from '@/core/lib/constants';
 
+import { InvalidKeysTypeNumber } from './constants';
+import { clamp } from './helpers';
+
 import type { FormGeneratorProps } from './types';
 
 function FormGenerator<T extends Record<string, unknown>>({
   items,
 }: FormGeneratorProps<T>) {
   const { control } = useFormContext();
-  // const
-  const invalidKeys = ['e', 'E', '.', '-', '+', ' '];
 
   return (
     <Fragment>
@@ -42,11 +43,20 @@ function FormGenerator<T extends Record<string, unknown>>({
                     if (item.type === 'number') {
                       const input = e.target as HTMLInputElement;
 
-                      input.value = input.value.replace(RegexNonNumeric, '');
+                      let value = input.value.replace(RegexNonNumeric, '');
+
+                      if (value) {
+                        value = clamp(Number(value), 0, item.clamp).toString();
+                      }
+
+                      input.value = value;
                     }
                   }}
                   onKeyDown={(e) => {
-                    if (item.type === 'number' && invalidKeys.includes(e.key)) {
+                    if (
+                      item.type === 'number' &&
+                      InvalidKeysTypeNumber.includes(e.key)
+                    ) {
                       e.preventDefault();
                     }
                   }}
@@ -54,7 +64,7 @@ function FormGenerator<T extends Record<string, unknown>>({
                     if (item.type === 'number') {
                       const clipboardValue = e.clipboardData.getData('text');
 
-                      if (invalidKeys.includes(clipboardValue)) {
+                      if (InvalidKeysTypeNumber.includes(clipboardValue)) {
                         e.preventDefault();
                       }
                     }

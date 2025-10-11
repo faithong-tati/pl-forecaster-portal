@@ -81,6 +81,7 @@ function FormUpsertMachines() {
               'table.modals.upsert.fields.averageProfitMarginPercentage',
             ),
             t,
+            clamp: 100,
             onChange: () => {
               clearErrors('averageProfitMarginPercentage');
             },
