@@ -6,6 +6,8 @@ export function formatNumber(
   fraction: number = 0,
 ): string {
   try {
+    if (isNaN(Number(input))) return '-';
+
     return Decimal(input).toNumber().toLocaleString('en-Us', {
       minimumFractionDigits: fraction,
       maximumFractionDigits: fraction,
@@ -16,14 +18,16 @@ export function formatNumber(
 }
 
 export function formatMetricNumber(value: number): string {
+  if (isNaN(value)) return '-';
+
   return match(value)
     .with(
       P.when((v) => v >= 1_000_000),
-      (v) => formatNumber(v / 1_000_000) + ' M',
+      (v) => formatNumber(v / 1_000_000, 1) + ' M',
     )
     .with(
       P.when((v) => v >= 1_000),
-      (v) => formatNumber(v / 1_000) + ' K',
+      (v) => formatNumber(v / 1_000, 1) + ' K',
     )
     .otherwise((v) => `${v}`);
 }

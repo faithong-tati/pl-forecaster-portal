@@ -23,7 +23,7 @@ function DashboardProvider({ children }: PropsWithChildren) {
     refetch: refetchMachines,
     isFetching: isFetchingMachines,
   } = useGetMachines({
-    refetchInterval: 60_000,
+    refetchInterval: 300_000, // 5 mins
     refetchIntervalInBackground: false,
   });
 
