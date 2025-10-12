@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>JSON Server API</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Thai', sans-serif;
+      background: #0f1115;
+      color: #fff;
+      margin: 0;
+      padding: 60px;
+      line-height: 24px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 18px;
+      margin-top: 24px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+    }
+    li {
+      background: #151922;
+      border: 1px solid #222839;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    code {
+      background: #0e1219;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #FFD93D;
+    }
+    .method {
+      display: inline-block;
+      font-weight: bold;
+      width: 70px;
+      text-align: center;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .GET {
+      background: #1d3b2a;
+      color: #4ADE80;
+    }
+    .POST {
+      background: #1e2f4c;
+      color: #60A5FA;
+    }
+    .PATCH {
+      background: #4b3c22;
+      color: #FACC15;
+    }
+    .DELETE {
+      background: #4c1e1e;
+      color: #F87171;
+    }
+    .link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      color: #60A5FA;
+      text-decoration: none;
+      border-bottom: 1px dashed #60A5FA;
+    }
+    .link:hover {
+      color: #93c5fd;
+      border-color: #93c5fd;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 JSON Server API</h1>
+
+  <h2>👤 Users</h2>
+  <ul>
+    <li><span class="method POST">POST</span><code>/users</code> — Sign In</li>
+    <li><span class="method GET">GET</span><code>/users/:id</code> — Get one user</li>
+  </ul>
+
+  <link" href="/api/users" target="_blank">🔍 JSON Data (/api/users)</a>
+
+  <h2>🥤 Machines</h2>
+  <ul>
+    <li><span class="method GET">GET</span><code>/machines</code> — Get all machines</li>
+    <li><span class="method GET">GET</span><code>/machines/:id</code> — Get one machine</li>
+    <li><span class="method POST">POST</span><code>/machines</code> — Create machine</li>
+    <li><span class="method PATCH">PATCH</span><code>/machines/:id</code> — Edit machine</li>
+    <li><span class="method DELETE">DELETE</span><code>/machines/:id</code> — Delete machine</li>
+  </ul>
+
+  <link" href="/api/machines" target="_blank">🔍 JSON Data (/api/machines)</link>
+
+  <p style="margin-top: 24px; font-size: 13px; color: #9aa3b2;">
+    Base URL: <code>https://pl-forecaster-portal.onrender.com/api</code>
+  </p>
+</body>
+</html>

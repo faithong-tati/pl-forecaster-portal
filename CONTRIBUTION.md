@@ -28,19 +28,10 @@ We use Google OAuth as one of our sign-in methods. Follow these steps to create 
 
 Click **Create** and copy your **Client ID**.
 
-### 3) Add it to your env file
+### 3) Add it to your env file and we're good to go
 
 ```bash
-# Local JSON Server
-VITE_API_ENDPOINT=http://localhost:3001
-
 # Google OAuth Client ID
-VITE_GOOGLE_CLIENT_ID=
+VITE_GOOGLE_CLIENT_ID=<YOUR_CLIENT_ID>
 ```
 
-### 4) Start the app
-
-```bash
-npm run json-server   # mock API
-npm run dev           # frontend
-```
