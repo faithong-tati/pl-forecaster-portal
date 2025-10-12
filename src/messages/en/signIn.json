@@ -13,7 +13,7 @@
         "required": "Email is required"
       },
       "password": {
-        "invalid": "Invalid Password",
+        "invalid": "Password must be at least 8 characters",
         "required": "Password is required"
       }
     },
