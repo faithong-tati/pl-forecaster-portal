@@ -1,0 +1,110 @@
+{
+  "users": [
+    {
+      "id": "f15a",
+      "email": "superadmin@example.com",
+      "providerRef": "8FUtM4ByQWnz",
+      "imageUrl": "https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png",
+      "username": "superadmin@example.com",
+      "createdAt": "2024-10-09T10:31:41.743Z"
+    }
+  ],
+  "machines": [
+    {
+      "id": "m1",
+      "name": "Triam Udom School",
+      "location": "Triam Udom Suksa School",
+      "locationType": "SCHOOL",
+      "expectedSalesPerDay": "800",
+      "averageProfitMarginPercentage": "35",
+      "rentCostPerDay": "0",
+      "electricCostPerTempPerDay": "10",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m2",
+      "name": "Satit Chula",
+      "location": "Satit Chulalongkorn School",
+      "locationType": "SCHOOL",
+      "expectedSalesPerDay": "1000",
+      "averageProfitMarginPercentage": "40",
+      "rentCostPerDay": "0",
+      "electricCostPerTempPerDay": "12",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m3",
+      "name": "Siriraj Hospital",
+      "location": "Siriraj Hospital, Building 2",
+      "locationType": "HOSPITAL",
+      "expectedSalesPerDay": "2500",
+      "averageProfitMarginPercentage": "50",
+      "rentCostPerDay": "100",
+      "electricCostPerTempPerDay": "15",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m4",
+      "name": "Central World",
+      "location": "Central World, 1st Floor",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "1500",
+      "averageProfitMarginPercentage": "45",
+      "rentCostPerDay": "50",
+      "electricCostPerTempPerDay": "15",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m5",
+      "name": "Siam Paragon",
+      "location": "Siam Paragon, G Floor",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "2200",
+      "averageProfitMarginPercentage": "48",
+      "rentCostPerDay": "70",
+      "electricCostPerTempPerDay": "15",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m6",
+      "name": "Iconsiam",
+      "location": "Iconsiam, 3rd Floor",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "1800",
+      "averageProfitMarginPercentage": "42",
+      "rentCostPerDay": "60",
+      "electricCostPerTempPerDay": "14",
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    }
+  ]
+}
