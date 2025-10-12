@@ -1,5 +1,6 @@
 import { Stack } from '@mui/material';
-import { memo } from 'react';
+import { debounce } from 'lodash';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormGenerator from '@/core/components/form-generator';
@@ -16,6 +17,13 @@ function FormSearchMachines({
 }: FormSearchMachinesProps) {
   const { t } = useTranslation('machine');
   const { locationTypeOptions } = useOptions();
+  const debouncedSetGlobalFilter = useMemo(
+    () =>
+      debounce((value: string) => {
+        setGlobalFilter(value);
+      }, 500),
+    [setGlobalFilter],
+  );
 
   return (
     <Stack direction={{ xs: 'column', lg: 'row' }} gap={rem(16)}>
@@ -30,7 +38,7 @@ function FormSearchMachines({
             onChange: (
               e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
             ) => {
-              setGlobalFilter(e.target.value);
+              debouncedSetGlobalFilter(e.target.value);
             },
           },
           {

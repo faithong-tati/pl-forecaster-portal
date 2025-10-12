@@ -7,7 +7,8 @@
     "noResultForColumn": "No results for locationType \"{{column}}\"",
     "noResultForGlobalAndColumn": "No results for \"{{global}}\" in location type \"{{column}}\"",
     "buttons": {
-      "add": "Add Machine"
+      "add": "Add Machine",
+      "sync": "Sync"
     },
     "filters": {
       "search": "Search",

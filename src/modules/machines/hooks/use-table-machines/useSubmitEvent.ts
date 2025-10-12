@@ -176,5 +176,6 @@ export function useSubmitEvent() {
     onSubmitUpdate,
     onSubmitDelete,
     onCloseModal,
+    refetch,
   };
 }

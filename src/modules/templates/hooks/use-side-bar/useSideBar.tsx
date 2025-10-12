@@ -1,13 +1,13 @@
-import CoffeeMakerIcon from '@mui/icons-material/CoffeeMaker';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { useCallback, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Image from '@/core/components/image';
 import { Routes } from '@/core/constants';
 import { CookieAuth } from '@/core/lib/constants';
 import { deleteCookie } from '@/core/lib/helpers';
 import { useToast } from '@/core/providers/toast-provider/useToast';
+import rem from '@/core/utils/rem';
 import {
   CollapsedWidth,
   ExpandedWidth,
@@ -28,7 +28,9 @@ export default function useSidebar() {
   const items = useMemo(() => {
     return [
       {
-        icon: <DashboardIcon />,
+        icon: (
+          <Image alt="dashboard" src="/dashboard.png" sx={{ width: rem(25) }} />
+        ),
         label: t('dashboard'),
         isActive: routerState.location.pathname.includes(Routes.dashboard.path),
         onClick: () =>
@@ -38,7 +40,13 @@ export default function useSidebar() {
           }),
       },
       {
-        icon: <CoffeeMakerIcon />,
+        icon: (
+          <Image
+            alt="vending-machine-yellow"
+            src="/vending-machine-yellow.png"
+            sx={{ ml: rem(-2), width: rem(30) }}
+          />
+        ),
         label: t('machineMaker'),
         isActive: routerState.location.pathname.includes(Routes.machines.path),
         onClick: () =>
