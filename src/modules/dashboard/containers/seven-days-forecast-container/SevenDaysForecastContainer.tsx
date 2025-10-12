@@ -36,7 +36,10 @@ function SevenDaysForecastContainer() {
   }, [electricityCostSeries, profitLossSeries, t]);
 
   return (
-    <InfoCard title={t('sevenDayForecast.title')}>
+    <InfoCard
+      title={t('sevenDayForecast.title')}
+      iconPath="/business-chart.png"
+    >
       <ContentSection
         hasData
         height={360}

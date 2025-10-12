@@ -32,6 +32,7 @@ export default function useTableMachines() {
     onSubmitUpdate,
     onSubmitDelete,
     onCloseModal,
+    refetch,
   } = useSubmitEvent();
 
   const { locationTypeOptions } = useOptions();
@@ -127,5 +128,6 @@ export default function useTableMachines() {
     setGlobalFilter,
     setColumnFilters,
     onCloseModal,
+    refetch,
   };
 }

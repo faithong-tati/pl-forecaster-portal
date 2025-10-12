@@ -22,7 +22,7 @@ function DashboardContainer() {
         title={t('title')}
         renderNode={
           <Button
-            color="info"
+            variant="outlined"
             startIcon={<SyncIcon />}
             onClick={() => refetchMachines?.()}
           >

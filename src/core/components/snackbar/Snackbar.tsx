@@ -14,7 +14,7 @@ function Snackbar({ onClose, severity, message, ...props }: SnackbarProps) {
       <Alert
         onClose={onClose}
         severity={severity}
-        variant="filled"
+        variant="standard"
         sx={{ width: '100%' }}
       >
         {message}

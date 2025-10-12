@@ -67,6 +67,7 @@ function BestSellingLocationTypeContainer() {
   return (
     <InfoCard
       title={t('bestSellingLocationType.title')}
+      iconPath="/ranking.png"
       render={
         <CriteriaGroup
           criteria={criteria}

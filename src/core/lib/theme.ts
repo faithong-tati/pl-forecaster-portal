@@ -1,4 +1,19 @@
+import { green } from '@mui/material/colors';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    green: {
+      [key: string]: string;
+    };
+  }
+
+  interface PaletteOptions {
+    green?: {
+      [key: string]: string;
+    };
+  }
+}
 
 const theme = responsiveFontSizes(
   createTheme({
@@ -20,6 +35,10 @@ const theme = responsiveFontSizes(
       primary: { main: '#523d2e' },
       secondary: { main: '#d0d1d2' },
       background: { default: '#ffffff', paper: '#eef2f6' },
+      green: {
+        ...green,
+        500: '#44b700',
+      },
     },
   }),
 );

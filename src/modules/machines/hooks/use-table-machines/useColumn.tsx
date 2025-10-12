@@ -1,13 +1,14 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Box, Tooltip } from '@mui/material';
+import { Box, LinearProgressProps, Tooltip } from '@mui/material';
 import dayjs from 'dayjs';
 import Decimal from 'decimal.js';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { match, P } from 'ts-pattern';
 
+import LinearPercent from '@/core/components/linear-percent';
 import TextTruncate from '@/core/components/text-truncate';
 import { formatDisplayDate } from '@/core/lib/helpers/format';
 import { ButtonIcon } from '@/core/styles/common';
@@ -71,21 +72,30 @@ export function useColumn({
           const marginConfig = match(marginValue)
             .with(
               P.when((m) => m >= 50),
-              () => ({ color: 'success.main', fontWeight: 700 }),
+              () => ({
+                color: 'success.main',
+                variant: 'success',
+              }),
             )
             .with(
               P.when((m) => m < 20),
-              () => ({ color: 'error.main', fontWeight: 700 }),
+              () => ({
+                color: 'error.main',
+                variant: 'error',
+              }),
             )
-            .otherwise(() => ({ color: undefined, fontWeight: undefined }));
+            .otherwise(() => ({
+              color: undefined,
+              variant: 'secondary',
+            }));
 
           return (
-            <TextTruncate
-              color={marginConfig.color}
-              fontWeight={marginConfig.fontWeight}
-            >
-              {formatNumber(getValue<string>() || 0)} %
-            </TextTruncate>
+            <LinearPercent
+              color={marginConfig.color ?? ''}
+              variant={marginConfig.variant as LinearProgressProps['color']}
+              label={`${formatNumber(getValue<string>() || 0)} %`}
+              value={marginValue}
+            />
           );
         },
       },

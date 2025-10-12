@@ -63,10 +63,13 @@ function CumulativeWeeklyForecastContainer() {
   ]);
 
   return (
-    <InfoCard title={t('cumulativeWeeklyForecast.title')}>
+    <InfoCard
+      title={t('cumulativeWeeklyForecast.title')}
+      iconPath="/data-analysis.png"
+    >
       <ContentSection
         hasData
-        height={122}
+        height={210}
         isLoading={isLoading}
         alt=""
         iconPath=""
