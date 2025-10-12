@@ -58,6 +58,8 @@ If you prefer not to set up the project locally, you can simply access the deplo
 
 👉 [https://pl-forecaster-portal.vercel.app](https://pl-forecaster-portal.vercel.app)
 
+👉 You can sign in with Google, or use the native email & password method. Any email and password will work for testing.
+
 > The frontend’s environment is already configured to point to the backend hosted on **Render**, so everything works out of the box 🚀
 >
 > ⚠️ **Note:** On your first visit, you might need to wait around **30 seconds** for the JSON Server to spin up. This is normal for Render’s free tier.
@@ -127,6 +129,8 @@ Once both are running and we're good to go:
 
 - FE: [http://localhost:3000](http://localhost:3000)
 - Virtual DB: [http://localhost:3001/api](http://localhost:3001/api)
+
+👉 Once again, you can sign in with Google, or use the native email & password method. Any email and password will work for testing.
 
 ## 🧹 Lint & Format
 
