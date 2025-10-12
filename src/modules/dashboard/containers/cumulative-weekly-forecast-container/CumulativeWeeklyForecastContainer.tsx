@@ -16,6 +16,7 @@ function CumulativeWeeklyForecastContainer() {
   const data = useMemo(() => {
     return [
       {
+        id: 'total-revenue',
         label: t('cumulativeWeeklyForecast.cards.revenue'),
         value: cumulative.totalRevenue,
         icon: (
@@ -23,6 +24,7 @@ function CumulativeWeeklyForecastContainer() {
         ),
       },
       {
+        id: 'total-rent',
         label: t('cumulativeWeeklyForecast.cards.totalRent'),
         value: cumulative.totalRent,
         icon: (
@@ -34,6 +36,7 @@ function CumulativeWeeklyForecastContainer() {
         ),
       },
       {
+        id: 'total-electricity-cost',
         label: t('cumulativeWeeklyForecast.cards.totalElectricityCost'),
         value: cumulative.totalElectricityCost,
         icon: (
@@ -45,6 +48,7 @@ function CumulativeWeeklyForecastContainer() {
         ),
       },
       {
+        id: 'net-profit-loss',
         label: t('cumulativeWeeklyForecast.cards.netProfitLoss'),
         value: cumulative.netProfit,
         icon: <Image alt="profit" src="/profit.png" sx={{ width: rem(30) }} />,
@@ -72,6 +76,7 @@ function CumulativeWeeklyForecastContainer() {
           {data.map((datum) => (
             <Grid key={datum.label} size={{ xs: 6, lg: 3 }}>
               <MetricCard
+                criteria={datum.id}
                 label={datum.label}
                 value={datum.value}
                 icon={datum.icon}
