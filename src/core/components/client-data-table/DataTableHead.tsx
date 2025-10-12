@@ -1,7 +1,7 @@
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { flexRender } from '@tanstack/react-table';
 
-import rem from '@/core/utils/rem';
+import { Styles } from './styles';
 
 import type { DataTableHeadProps } from './types';
 
@@ -18,9 +18,7 @@ function DataTableHead({ table }: DataTableHeadProps) {
               <TableCell
                 key={header.id}
                 sx={{
-                  bgcolor: (theme) => theme.palette.secondary.main,
-                  fontWeight: 700,
-                  height: rem(50),
+                  ...Styles.tableCellHeader,
                   minWidth: header.column.columnDef.minSize,
                 }}
               >

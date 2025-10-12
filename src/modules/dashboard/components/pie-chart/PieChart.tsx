@@ -13,9 +13,11 @@ function PieChart({ data }: PieChartProps) {
 
     const chart = init(chartRef.current);
     const option = {
+      textStyle: {
+        fontFamily: 'IBM Plex Sans Thai, sans-serif',
+      },
       tooltip: {
         trigger: 'item',
-        fontFamily: 'IBM Plex Sans, sans-serif',
       },
       legend: {
         top: '5%',
@@ -23,7 +25,6 @@ function PieChart({ data }: PieChartProps) {
         textStyle: {
           fontSize: 16,
           color: theme.palette.text.secondary,
-          fontFamily: 'IBM Plex Sans, sans-serif',
         },
       },
       color: ['#4D96FF', '#6BCB77', '#FFD93D'],
@@ -44,7 +45,6 @@ function PieChart({ data }: PieChartProps) {
           label: {
             show: false,
             position: 'center',
-            fontFamily: 'IBM Plex Sans, sans-serif',
           },
           emphasis: {
             label: {
@@ -53,7 +53,6 @@ function PieChart({ data }: PieChartProps) {
               fontWeight: 'bold',
               shadowBlur: 15,
               color: theme.palette.text.secondary,
-              fontFamily: 'IBM Plex Sans, sans-serif',
             },
           },
           labelLine: {

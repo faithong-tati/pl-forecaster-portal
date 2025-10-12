@@ -16,13 +16,12 @@ function LineChart({ series, xAxisData }: LineChartProps) {
     const chart = init(ref.current);
     const option = {
       textStyle: {
-        fontFamily: 'IBM Plex Sans, sans-serif',
+        fontFamily: 'IBM Plex Sans Thai, sans-serif',
       },
       color: ['#4D96FF', '#FFD93D'],
       tooltip: {
         trigger: 'axis',
         axisPointer: { type: 'line' },
-        fontFamily: 'IBM Plex Sans, sans-serif',
         valueFormatter: (value: number) => {
           return `฿ ${formatNumber(value, 2)}`;
         },
@@ -34,7 +33,6 @@ function LineChart({ series, xAxisData }: LineChartProps) {
         top: 24,
         icon: 'circle',
         data: series.map((item) => item.name),
-        fontFamily: 'IBM Plex Sans, sans-serif',
       },
       toolbox: {
         show: true,
@@ -69,9 +67,6 @@ function LineChart({ series, xAxisData }: LineChartProps) {
         smooth: true,
         symbol: 'none',
         data: item.data,
-        label: {
-          fontFamily: 'IBM Plex Sans, sans-serif',
-        },
         markPoint: {
           data: [
             { type: 'max', name: 'Max' },

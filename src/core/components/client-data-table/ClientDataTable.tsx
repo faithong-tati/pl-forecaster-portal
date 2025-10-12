@@ -10,11 +10,10 @@ import {
 } from '@tanstack/react-table';
 import { useState } from 'react';
 
-import rem from '@/core/utils/rem';
-
 import DataTableBody from './DataTableBody';
 import DataTableHead from './DataTableHead';
 import DataTablePagination from './DataTablePagination';
+import { Styles } from './styles';
 
 import type { ClientDataTableProps } from './types';
 
@@ -57,11 +56,8 @@ function ClientDataTable({
   });
 
   return (
-    <Paper
-      elevation={0}
-      sx={{ borderRadius: rem(16), overflow: 'auto', height: '100%' }}
-    >
-      <TableContainer sx={{ height: 'calc(100% - 70px)' }}>
+    <Paper elevation={0} sx={Styles.paper}>
+      <TableContainer sx={Styles.tableContainer}>
         <Table stickyHeader size="small" aria-label="notification-grid">
           <DataTableHead table={table} />
           <DataTableBody table={table} rows={rows} />

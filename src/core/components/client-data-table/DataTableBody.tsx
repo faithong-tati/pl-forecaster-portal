@@ -3,10 +3,10 @@ import { flexRender } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
 import useOptions from '@/core/hooks/use-options';
-import rem from '@/core/utils/rem';
 
 import DataTableEmptyState from './DataTableEmptyState';
 import { getEmptyStateText } from './helpers';
+import { Styles } from './styles';
 
 import type { DataTableBodyProps, NativeFilter } from './types';
 
@@ -39,16 +39,7 @@ function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
   return (
     <TableBody>
       {rows.map((row) => (
-        <TableRow
-          key={row.id}
-          hover
-          sx={{
-            'height': rem(50),
-            '&:nth-of-type(even)': {
-              bgcolor: (theme) => theme.palette.action.hover,
-            },
-          }}
-        >
+        <TableRow key={row.id} hover sx={Styles.tableRow}>
           {row.getVisibleCells().map((cell) => (
             <TableCell
               key={cell.id}
