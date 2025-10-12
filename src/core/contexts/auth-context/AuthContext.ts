@@ -1,0 +1,15 @@
+import { createContext } from 'react';
+
+import type { IAuthContext } from './types';
+
+const AuthContext = createContext<IAuthContext>({
+  authState: {
+    isAuth: false,
+    loading: false,
+    username: null,
+  },
+  setAuthState: () => {},
+  user: null,
+});
+
+export default AuthContext;

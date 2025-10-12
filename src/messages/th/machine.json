@@ -1,0 +1,85 @@
+{
+  "table": {
+    "title": "จัดการ Machine",
+    "notFound": "ไม่พบ Machine",
+    "noData": "ยังไม่มี Machine",
+    "noResultFor": "ไม่พบผลลัพธ์สำหรับ \"{{global}}\"",
+    "noResultForColumn": "ไม่พบผลลัพธ์ของทำเล \"{{column}}\"",
+    "noResultForGlobalAndColumn": "ไม่พบผลลัพธ์ของ \"{{global}}\" ในทำเล \"{{column}}\"",
+    "buttons": {
+      "add": "เพิ่ม Machine"
+    },
+    "filters": {
+      "search": "ค้นหา",
+      "locationType": "ทำเล"
+    },
+    "columns": {
+      "createdAt": "วันที่สร้าง",
+      "updatedAt": "วันที่แก้ไข",
+      "createdBy": "สร้างโดย",
+      "updatedBy": "แก้ไขโดย",
+      "name": "ชื่อ",
+      "locationType": "ทำเล",
+      "expectedSalesPerDay": "ยอดขาย/วัน (บาท)",
+      "averageProfitMarginPercentage": "กำไรขั้นต้นเฉลี่ย (%)",
+      "rentCostPerDay": "ค่าเช่า/วัน (บาท)",
+      "electricCostPerTempPerDay": "ค่าไฟ/อุณหภูมิ/วัน (บาท/°C/วัน)"
+    },
+    "modals": {
+      "upsert": {
+        "addTitle": "เพิ่ม Machine",
+        "editTitle": "แก้ไข Machine",
+        "fields": {
+          "name": "ชื่อ",
+          "location": "ทำเล",
+          "expectedSalesPerDay": "ยอดขาย/วัน",
+          "averageProfitMarginPercentage": "กำไรขั้นต้นเฉลี่ย",
+          "rentCostPerDay": "ค่าเช่า/วัน",
+          "electricCostPerTempPerDay": "ค่าไฟ/อุณหภูมิ/วัน"
+        },
+        "errors": {
+          "name": {
+            "required": "กรุณากรอกชื่อ"
+          },
+          "locationType": {
+            "required": "กรุณาเลือกทำเล"
+          },
+          "expectedSalesPerDay": {
+            "required": "กรุณากรอกยอดขาย/วัน",
+            "invalid": "ยอดขาย/วัน ต้องเป็นตัวเลขจำนวนเต็ม"
+          },
+          "averageProfitMarginPercentage": {
+            "required": "กรุณากรอกกำไรขั้นต้นเฉลี่ย",
+            "invalid": "กำไรขั้นต้นเฉลี่ย ต้องเป็นตัวเลขจำนวนเต็ม"
+          },
+          "rentCostPerDay": {
+            "required": "กรุณากรอกค่าเช่า/วัน",
+            "invalid": "ค่าเช่า/วัน ต้องเป็นตัวเลขจำนวนเต็ม"
+          },
+          "electricCostPerTempPerDay": {
+            "required": "กรุณากรอกค่าไฟ/อุณหภูมิ/วัน",
+            "invalid": "ค่าไฟ/อุณหภูมิ/วัน ต้องเป็นตัวเลขจำนวนเต็ม"
+          }
+        }
+      },
+      "delete": {
+        "title": "คุณต้องการลบ Machine นี้ใช่ไหม?",
+        "name": "ชื่อ",
+        "locationType": "ทำเล"
+      }
+    },
+    "actions": {
+      "clone": "คัดลอก",
+      "edit": "แก้ไข",
+      "delete": "ลบ"
+    }
+  },
+  "options": {
+    "locationType": {
+      "all": "ทั้งหมด",
+      "school": "โรงเรียน",
+      "hospital": "โรงพยาบาล",
+      "shoppingMall": "ห้างสรรพสินค้า"
+    }
+  }
+}

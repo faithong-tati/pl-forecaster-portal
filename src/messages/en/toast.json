@@ -1,0 +1,25 @@
+{
+  "signIn": {
+    "success": "Sign In Successfully",
+    "failed": "Sign In Failed"
+  },
+  "signOut": {
+    "success": "Sign Out Successfully",
+    "failed": "Sign Out Failed"
+  },
+  "createMachine": {
+    "success": "Create Machine Successfully",
+    "failed": "Create Machine Failed"
+  },
+  "editMachine": {
+    "success": "Edit Machine Successfully",
+    "failed": "Edit Machine Failed"
+  },
+  "deleteMachine": {
+    "success": "Delete Machine Successfully",
+    "failed": "Delete Machine Failed"
+  },
+  "duplicateMachine": {
+    "failed": "This machine name already exists"
+  }
+}

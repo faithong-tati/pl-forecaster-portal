@@ -1,0 +1,85 @@
+{
+  "table": {
+    "title": "Machine Management",
+    "notFound": "Machine not found",
+    "noData": "No machines added yet",
+    "noResultFor": "No results for \"{{global}}\"",
+    "noResultForColumn": "No results for locationType \"{{column}}\"",
+    "noResultForGlobalAndColumn": "No results for \"{{global}}\" in location type \"{{column}}\"",
+    "buttons": {
+      "add": "Add Machine"
+    },
+    "filters": {
+      "search": "Search",
+      "locationType": "Location Type"
+    },
+    "columns": {
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "name": "Name",
+      "locationType": "Location Type",
+      "expectedSalesPerDay": "Expected Sales/Day (Baht)",
+      "averageProfitMarginPercentage": "Average Profit Margin (%)",
+      "rentCostPerDay": "Rent Cost/Day (Baht)",
+      "electricCostPerTempPerDay": "Electric Cost/Temp/Day (Baht/°C/day)"
+    },
+    "modals": {
+      "upsert": {
+        "addTitle": "Add Machine",
+        "editTitle": "Edit Machine",
+        "fields": {
+          "name": "Name",
+          "location": "Location Type",
+          "expectedSalesPerDay": "Expected Sales/Day",
+          "averageProfitMarginPercentage": "Average Profit Margin",
+          "rentCostPerDay": "Rent Cost/Day",
+          "electricCostPerTempPerDay": "Electric Cost/Temp/Day"
+        },
+        "errors": {
+          "name": {
+            "required": "Name is required"
+          },
+          "locationType": {
+            "required": "Location Type is required"
+          },
+          "expectedSalesPerDay": {
+            "required": "Expected Sales/Day is required",
+            "invalid": "Expected Sales/Day must be an integer"
+          },
+          "averageProfitMarginPercentage": {
+            "required": "Average Profit Margin is required",
+            "invalid": "Average Profit Margin must be an integer"
+          },
+          "rentCostPerDay": {
+            "required": "Rent Cost/Day is required",
+            "invalid": "Rent Cost/Day must be an integer"
+          },
+          "electricCostPerTempPerDay": {
+            "required": "Electric Cost/Temp/Day is required",
+            "invalid": "Electric Cost/Temp/Day must be an integer"
+          }
+        }
+      },
+      "delete": {
+        "title": "Are you sure you want to delete this machine ?",
+        "name": "Name",
+        "locationType": "Location Type"
+      }
+    },
+    "actions": {
+      "clone": "Clone",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  },
+  "options": {
+    "locationType": {
+      "all": "All",
+      "school": "School",
+      "hospital": "Hospital",
+      "shoppingMall": "Shopping Mall"
+    }
+  }
+}

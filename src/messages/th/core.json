@@ -1,0 +1,27 @@
+{
+  "system": "TAO BIN P/L Forecaster Portal",
+  "table": {
+    "displayItems": "แสดง {{from}} - {{to}} จากทั้งหมด {{total}} รายการ",
+    "itemsPerPage": "จำนวนรายการต่อหน้า"
+  },
+  "buttons": {
+    "confirm": "ยืนยัน",
+    "cancel": "ยกเลิก"
+  },
+  "modals": {
+    "signOut": {
+      "title": "คุณต้องการออกจากระบบใช่หรือไม่ ?",
+      "subtitle": "คุณสามารถกลับเข้าสู่ระบบใหม่ได้ทุกเมื่อ :)"
+    }
+  },
+  "units": {
+    "baht": "บาท",
+    "bahtPerTempPerDay": "บาท/°C/วัน"
+  },
+  "notSupport": {
+    "title": "ไม่รองรับหน้าจอนี้",
+    "subtitle": "หน้าจอนี้ยังไม่รองรับบนอุปกรณ์ปัจจุบันของคุณ\nกรุณาเข้าใช้งานจากคอมพิวเตอร์เพื่อประสบการณ์ที่ดีที่สุด :)"
+  },
+  "copyright": "Copyright © 2025 faithongtati. All rights reserved.",
+  "notfound": "ไม่พบหน้านี้"
+}

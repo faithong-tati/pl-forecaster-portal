@@ -1,0 +1,1 @@
+export { useGetDailyTemperature } from './useGetDailyTemperature';

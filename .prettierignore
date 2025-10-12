@@ -1,0 +1,25 @@
+# build output
+dist
+.vite
+*/routeTree.gen.ts
+
+# dependencies
+node_modules
+
+# logs
+npm-debug.log*
+
+# environment
+.env
+.env.*
+!.env.example
+
+# configs that shouldn’t be formatted
+package-lock.json
+
+# misc
+.DS_Store
+
+# optional IDE folders
+.vscode
+.idea

@@ -1,0 +1,25 @@
+{
+  "signIn": {
+    "success": "เข้าสู่ระบบสำเร็จ",
+    "failed": "เข้าสู่ระบบไม่สำเร็จ"
+  },
+  "signOut": {
+    "success": "ออกจากระบบสำเร็จ",
+    "failed": "ออกจากระบบไม่สำเร็จ"
+  },
+  "createMachine": {
+    "success": "เพิ่ม Machine สำเร็จ",
+    "failed": "เพิ่ม Machine ไม่สำเร็จ"
+  },
+  "editMachine": {
+    "success": "แก้ไข Machine สำเร็จ",
+    "failed": "แก้ไข Machine ไม่สำเร็จ"
+  },
+  "deleteMachine": {
+    "success": "ลบ Machine สำเร็จ",
+    "failed": "ลบ Machine ไม่สำเร็จ"
+  },
+  "duplicateMachine": {
+    "failed": "มีชื่อ Machine นี้ในระบบอยู่แล้ว"
+  }
+}

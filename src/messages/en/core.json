@@ -1,0 +1,27 @@
+{
+  "system": "TAO BIN P/L Forecaster Portal",
+  "table": {
+    "displayItems": "Showing {{from}} to {{to}} of {{total}} items",
+    "itemsPerPage": "Items per page"
+  },
+  "buttons": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "modals": {
+    "signOut": {
+      "title": "Are you sure you want to sign out?",
+      "subtitle": "You can sign in again at any time :)"
+    }
+  },
+  "units": {
+    "baht": "Baht",
+    "bahtPerTempPerDay": "Baht/°C/day"
+  },
+  "notSupport": {
+    "title": "Screen Not Supported",
+    "subtitle": "This screen is not supported on your current device.\nPlease access the site from a computer for the best experience :)"
+  },
+  "copyright": "Copyright © 2025 faithongtati. All rights reserved.",
+  "notfound": "Page Not Found"
+}

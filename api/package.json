@@ -1,0 +1,20 @@
+{
+  "name": "pl-forecaster-portal-json-server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "author": "Faithong Tatiyanupanwong",
+  "engines": {
+    "node": "20.19.4"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "json-server": "0.17.4"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.10"
+  }
+}
