@@ -18,6 +18,7 @@ function ListItem({ icon, label, open, isActive, onClick }: ListItemProps) {
       <ListItemButton
         selected={isActive}
         sx={{
+          'pl': rem(18),
           'borderRadius': 2,
           'height': rem(50),
           '&.Mui-selected': {

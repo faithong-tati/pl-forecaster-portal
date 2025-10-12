@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Fade, Stack, Typography } from '@mui/material';
 import { memo, useMemo } from 'react';
 
 import { BorderStack } from '@/core/styles/common';
@@ -17,15 +17,17 @@ function MetricCard({ criteria, label, value, icon }: MetricCardProps) {
   }, [criteria, value]);
 
   return (
-    <BorderStack direction="row" alignItems="center" height={rem(100)}>
-      {icon}
-      <Stack>
-        <Typography variant="body1">{label}</Typography>
-        <Typography variant="h6" color={fontColor}>
-          ฿ {formatNumber(value, 2)}
-        </Typography>
-      </Stack>
-    </BorderStack>
+    <Fade in timeout={700}>
+      <BorderStack direction="row" alignItems="center" height={rem(100)}>
+        {icon}
+        <Stack>
+          <Typography variant="body1">{label}</Typography>
+          <Typography variant="h6" color={fontColor}>
+            ฿ {formatNumber(value, 2)}
+          </Typography>
+        </Stack>
+      </BorderStack>
+    </Fade>
   );
 }
 

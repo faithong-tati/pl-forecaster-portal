@@ -29,7 +29,7 @@ function DataTableBody({ table, rows: rawRows }: DataTableBodyProps) {
 
     const locationType =
       locationTypeOptions.find((option) => option.value === columnFilter)
-        ?.label ?? '-';
+        ?.label ?? null;
 
     const emptyStateText = getEmptyStateText(globalFilter, locationType, t);
 

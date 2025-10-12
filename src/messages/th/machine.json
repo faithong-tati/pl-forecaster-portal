@@ -7,7 +7,8 @@
     "noResultForColumn": "ไม่พบผลลัพธ์ของทำเล \"{{column}}\"",
     "noResultForGlobalAndColumn": "ไม่พบผลลัพธ์ของ \"{{global}}\" ในทำเล \"{{column}}\"",
     "buttons": {
-      "add": "เพิ่ม Machine"
+      "add": "เพิ่ม Machine",
+      "sync": "Sync"
     },
     "filters": {
       "search": "ค้นหา",

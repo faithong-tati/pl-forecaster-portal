@@ -1,5 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import AddIcon from '@mui/icons-material/Add';
+import SyncIcon from '@mui/icons-material/Sync';
+import { Fade, Stack } from '@mui/material';
 import { memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -32,6 +34,7 @@ function TableMachinesContainer() {
     setGlobalFilter,
     setColumnFilters,
     onCloseModal,
+    refetch,
   } = useTableMachines();
 
   // form
@@ -51,72 +54,84 @@ function TableMachinesContainer() {
   const { handleSubmit } = upsertMethods;
 
   return (
-    <Panel sx={{ width: panelWidth, overflow: 'auto' }}>
-      <ContentHeader
-        title={t('table.title')}
-        renderNode={
-          <Button
-            variant="contained"
-            startIcon={<AddIcon />}
-            onClick={() =>
-              setModalState((draft) => {
-                draft.isOpenCreateModal = true;
-              })
-            }
-          >
-            {t('table.buttons.add')}
-          </Button>
-        }
-      />
+    <Fade in timeout={700}>
+      <Panel sx={{ width: panelWidth, overflow: 'auto' }}>
+        <ContentHeader
+          title={t('table.title')}
+          renderNode={
+            <Stack gap={rem(16)} direction={{ xs: 'column', lg: 'row' }}>
+              <Button
+                variant="outlined"
+                startIcon={<SyncIcon />}
+                onClick={() => refetch()}
+              >
+                {t('table.buttons.sync')}
+              </Button>
 
-      <FormProvider {...methods}>
-        <form noValidate>
-          <FormSearchMachines
-            columnFilters={columnFilters}
-            setColumnFilters={setColumnFilters}
-            setGlobalFilter={setGlobalFilter}
-          />
-        </form>
-
-        <ClientDataTable
-          rows={rows}
-          columns={columns}
-          globalFilter={globalFilter}
-          columnFilters={columnFilters}
-          setGlobalFilter={setGlobalFilter}
-          setColumnFilters={setColumnFilters}
+              <Button
+                variant="contained"
+                startIcon={<AddIcon />}
+                onClick={() =>
+                  setModalState((draft) => {
+                    draft.isOpenCreateModal = true;
+                  })
+                }
+              >
+                {t('table.buttons.add')}
+              </Button>
+            </Stack>
+          }
         />
-      </FormProvider>
 
-      <ModalInfo
-        open={upsertModalConfig.open}
-        sx={{
-          '& .MuiDialog-paper': {
-            width: rem(600),
-          },
-        }}
-        title={upsertModalConfig.title}
-        fixHeight={false}
-        onClickPrimaryButton={handleSubmit(upsertModalConfig.onSubmit)}
-        onClickSecondaryButton={onCloseModal}
-      >
-        <FormProvider {...upsertMethods}>
+        <FormProvider {...methods}>
           <form noValidate>
-            <FormUpsertMachines />
+            <FormSearchMachines
+              columnFilters={columnFilters}
+              setColumnFilters={setColumnFilters}
+              setGlobalFilter={setGlobalFilter}
+            />
           </form>
-        </FormProvider>
-      </ModalInfo>
 
-      <ModalInfo
-        open={deleteModelConfig.open}
-        title={deleteModelConfig.title}
-        fixHeight={false}
-        severity="warning"
-        contents={deleteModelConfig.contents}
-        onClickPrimaryButton={deleteModelConfig.onSubmit}
-        onClickSecondaryButton={onCloseModal}
-      />
-    </Panel>
+          <ClientDataTable
+            rows={rows}
+            columns={columns}
+            globalFilter={globalFilter}
+            columnFilters={columnFilters}
+            setGlobalFilter={setGlobalFilter}
+            setColumnFilters={setColumnFilters}
+          />
+        </FormProvider>
+
+        <ModalInfo
+          open={upsertModalConfig.open}
+          sx={{
+            '& .MuiDialog-paper': {
+              width: rem(600),
+            },
+          }}
+          title={upsertModalConfig.title}
+          fixHeight={false}
+          onClickPrimaryButton={handleSubmit(upsertModalConfig.onSubmit)}
+          onClickSecondaryButton={onCloseModal}
+        >
+          <FormProvider {...upsertMethods}>
+            <form noValidate>
+              <FormUpsertMachines />
+            </form>
+          </FormProvider>
+        </ModalInfo>
+
+        <ModalInfo
+          open={deleteModelConfig.open}
+          title={deleteModelConfig.title}
+          fixHeight={false}
+          severity="warning"
+          contents={deleteModelConfig.contents}
+          onClickPrimaryButton={deleteModelConfig.onSubmit}
+          onClickSecondaryButton={onCloseModal}
+        />
+      </Panel>
+    </Fade>
   );
 }
 

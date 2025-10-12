@@ -71,7 +71,7 @@ export default function useSignIn() {
         email: data.email,
         providerRef: deviceUid,
         imageUrl:
-          'https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png',
+          'https://www.google.com/url?sa=i&url=https%3A%2F%2Ftaobinsbm.com%2F&psig=AOvVaw0hSylujRhM3MxTmWOusSxQ&ust=1760366827089000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKjT0tTznpADFQAAAAAdAAAAABAE',
         username: data.email,
         createdAt: dayjs().toISOString(),
       });
