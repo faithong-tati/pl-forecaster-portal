@@ -5,7 +5,7 @@ import {
   TablePagination,
   Typography,
 } from '@mui/material';
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { formatNumber } from '@/core/utils/format';
@@ -73,4 +73,4 @@ function DataTablePagination({
   );
 }
 
-export default memo(DataTablePagination);
+export default DataTablePagination;
