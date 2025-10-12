@@ -1,4 +1,4 @@
-import { Divider, Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +19,7 @@ function SalesRanking({ items }: SalesRankingProps) {
   const { t } = useTranslation('dashboard');
 
   return (
-    <Stack direction="row" width="100%" mt={rem(40)}>
+    <Stack direction="row" width="100%" mt={rem(50)}>
       <Grid container spacing={rem(16)} width="100%">
         {swapItems(items).map((item) => {
           const locationType = locationTypeOptions.find(
@@ -53,11 +53,10 @@ function SalesRanking({ items }: SalesRankingProps) {
                   textAlign="center"
                   mt={rem(10)}
                   color="primary"
+                  sx={{ textShadow: '0px 4px 8px rgba(0, 0, 0, 0.25)' }}
                 >
                   {locationType}
                 </Typography>
-
-                <Divider />
 
                 <Grid container mt="auto">
                   {config.stat.map((sc) => (
