@@ -20,11 +20,6 @@
   <a href="https://vitejs.dev/">
     <img alt="Vite" src="https://img.shields.io/badge/vite-7.1.7-7C3AED?style=for-the-badge&logo=vite&labelColor=1a1a1a">
   </a>
-
-  <p>
-    <strong>TAO BIN P/L Forecast Portal</strong><br/>
-    Version: <code>v1.02</code>
-  </p>
 </div>
 
 ## 📦 Description
@@ -63,17 +58,21 @@ If you prefer not to set up the project locally, you can simply access the deplo
 
 👉 [https://pl-forecaster-portal.vercel.app](https://pl-forecaster-portal.vercel.app)
 
-> The frontend’s environment is already configured to point to the backend hosted on **Render** (`https://pl-forecaster-portal-json-server.onrender.com/api`), so everything works out of the box 🚀
+> The frontend’s environment is already configured to point to the backend hosted on **Render**, so everything works out of the box 🚀
+>
+> ⚠️ **Note:** On your first visit, you might need to wait around **30 seconds** for the JSON Server to spin up. This is normal for Render’s free tier.
+>
+> 📝 You can also check the server status here: [https://pl-forecaster-portal.onrender.com](https://pl-forecaster-portal.onrender.com)
 
 ## 🧰 Local Development Setup
 
 To run the project locally with both **Frontend** and **Virtual DB (JSON Server)**:
 
-### 🧱 1) FE at Root Directory
+### 1) FE at Root Directory
 
 Clone this repository and stay in the root folder for FE.
 
-### 🗄 2) Virtual DB (JSON Server) → `/api`
+### 2) Virtual DB (JSON Server) → `/api`
 
 > Acts as the mock backend for development.
 
@@ -89,20 +88,9 @@ npm run dev
 ```
 
 ✅ Uses **nodemon** to auto-restart on file changes
-✅ Runs at `http://localhost:3001`
+✅ Runs at `http://localhost:3001/api`
 
-📄 Example `package.json` in `/api`:
-
-```json
-{
-  "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
-  }
-}
-```
-
-### 💻 3) Frontend → Root Directory
+### 3) Frontend → Root Directory
 
 ```bash
 # Go back to root
@@ -117,7 +105,7 @@ npm run dev
 
 ✅ FE runs at `http://localhost:3000`
 
-### 🧪 4) Environment Variables
+### 4) Environment Variables
 
 Create a `.env` at the **root** and add:
 
@@ -130,9 +118,10 @@ VITE_GOOGLE_CLIENT_ID=
 ```
 
 > ⚠️ You can contact me for the VITE_GOOGLE_CLIENT_ID, or if you're a reviewer I've shared the repo with, **please check your email**, or create your own (see [Contribution Guidelines](./CONTRIBUTION.md))
+> 
 > 🔄 Please make sure to restart your terminal (or dev server) after changing this file
 
-### 🏁 5) Done ✅
+### 5) Done ✅
 
 Once both are running and we're good to go:
 
@@ -158,8 +147,10 @@ npm run lint:fix
 ## 📂 Folder Structure
 
 ```bash
+api/                            # JSON Server API
+public/                         # Static assets
 src/
-├── core/                       # shared layer
+├── core/                       # Global shared layer
 │   ├── api/
 │   ├── components/
 │   ├── constants/
@@ -171,9 +162,9 @@ src/
 │   ├── styles/
 │   ├── types/
 │   └── utils/
-├── i18n/                       # react-i18next config
-├── messages/                   # react-i18next JSON
-├── modules/                    # feature-based modules
+├── i18n/                       # react-i18next initialization
+├── messages/                   # i18n JSON resource files (th/en)
+├── modules/                    # Feature-based modules
 │   └── machines/
 │       ├── api/
 │       ├── components/
@@ -186,7 +177,8 @@ src/
 │       ├── styles/
 │       ├── types/
 │       └── utils/
-└── routes/                     # TanStack React Router
+└── routes/                     # TanStack Router route
+.env                            # Local environment variables
 ```
 
 ## 📝 Naming Convention
