@@ -66,7 +66,7 @@ function CumulativeWeeklyForecastContainer() {
     <InfoCard title={t('cumulativeWeeklyForecast.title')}>
       <ContentSection
         hasData
-        height={122}
+        height={210}
         isLoading={isLoading}
         alt=""
         iconPath=""
