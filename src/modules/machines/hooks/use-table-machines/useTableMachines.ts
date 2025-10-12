@@ -42,9 +42,10 @@ export default function useTableMachines() {
 
     return {
       open: modalState.isOpenCreateModal || modalState.isOpenEditModal,
-      title: modalState.isOpenCreateModal
-        ? t('table.modals.upsert.addTitle')
-        : t('table.modals.upsert.editTitle'),
+      title:
+        modalState.isOpenCreateModal || modalState.isClone
+          ? t('table.modals.upsert.addTitle')
+          : t('table.modals.upsert.editTitle'),
       onSubmit:
         modalState.isOpenCreateModal || modalState.isClone
           ? onSubmitCreate
