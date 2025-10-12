@@ -69,6 +69,10 @@ function FormGenerator<T extends Record<string, unknown>>({
                       }
                     }
                   }}
+                  onBlur={(e) => {
+                    e.target.value = e.target.value.trim();
+                    field.onChange(e);
+                  }}
                   slotProps={item.slotProps ?? undefined}
                 />
               )}
