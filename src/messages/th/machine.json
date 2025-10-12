@@ -67,6 +67,11 @@
         "name": "ชื่อ",
         "locationType": "ทำเล"
       }
+    },
+    "actions": {
+      "clone": "คัดลอก",
+      "edit": "แก้ไข",
+      "delete": "ลบ"
     }
   },
   "options": {

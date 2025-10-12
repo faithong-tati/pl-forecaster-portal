@@ -67,6 +67,11 @@
         "name": "Name",
         "locationType": "Location Type"
       }
+    },
+    "actions": {
+      "clone": "Clone",
+      "edit": "Edit",
+      "delete": "Delete"
     }
   },
   "options": {

@@ -19,12 +19,17 @@
   </a>
   <a href="https://vitejs.dev/">
     <img alt="Vite" src="https://img.shields.io/badge/vite-7.1.7-7C3AED?style=for-the-badge&logo=vite&labelColor=1a1a1a">
-  </a>  
+  </a>
+
+  <p>
+    <strong>TAO BIN P/L Forecast Portal</strong><br/>
+    Version: <code>v1.02</code>
+  </p>
 </div>
 
 ## 📦 Description
 
-This project is the **Frontend of the TAO BIN P/L Forecast Portal**, built with **React** and a modular code structure. It integrates with a **local JSON Server** as the data source, supports **multi-language (th/en)**, and uses **TanStack React Query** for efficient data fetching and caching.
+The **TAO BIN P/L Forecast Portal** is built with React, designed for scalability and maintainability. It uses a JSON Server as a mock backend, supports multi-language (th/en), and leverages TanStack React Query for efficient data fetching and caching.
 
 ## 📚 Important Packages
 
@@ -52,66 +57,91 @@ Make sure your Node.js version matches:
 }
 ```
 
-## 🚀 Quick Start
+## 🌐 Online Access (No Local Setup Needed)
+
+If you prefer not to set up the project locally, you can simply access the deployed frontend directly via the link below:
+
+👉 [https://pl-forecaster-portal.vercel.app](https://pl-forecaster-portal.vercel.app)
+
+> The frontend’s environment is already configured to point to the backend hosted on **Render** (`https://pl-forecaster-portal-json-server.onrender.com/api`), so everything works out of the box 🚀
+
+## 🧰 Local Development Setup
+
+To run the project locally with both **Frontend** and **Virtual DB (JSON Server)**:
+
+### 🧱 1) FE at Root Directory
+
+Clone this repository and stay in the root folder for FE.
+
+### 🗄 2) Virtual DB (JSON Server) → `/api`
+
+> Acts as the mock backend for development.
 
 ```bash
-# install dependencies
-npm i
+# Go to /api directory
+cd api
 
-# start the local JSON Server (acts as the API)
-npm run json-server
+# Install dependencies
+npm install
 
-# start the dev server
+# Start server (nodemon for real-time reload)
 npm run dev
-
-# FYI: build and run for production
-npm run build
-npm run start
 ```
 
-## 🧪 Environment Setup
+✅ Uses **nodemon** to auto-restart on file changes
+✅ Runs at `http://localhost:3001`
 
-Create a `.env` file in the project root and add required environment variables:
+📄 Example `package.json` in `/api`:
+
+```json
+{
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  }
+}
+```
+
+### 💻 3) Frontend → Root Directory
+
+```bash
+# Go back to root
+cd ..
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+```
+
+✅ FE runs at `http://localhost:3000`
+
+### 🧪 4) Environment Variables
+
+Create a `.env` at the **root** and add:
 
 ```bash
 # Local JSON Server
-VITE_API_ENDPOINT=http://localhost:3001
+VITE_API_ENDPOINT=http://localhost:3001/api
 
 # Google OAuth Client ID
 VITE_GOOGLE_CLIENT_ID=
 ```
 
-> ⚠️ You can contact me for the `VITE_GOOGLE_CLIENT_ID` or create your own (see [Contribution Guidelines](./CONTRIBUTION.md))
+> ⚠️ You can contact me for the VITE_GOOGLE_CLIENT_ID, or if you're a reviewer I've shared the repo with, **please check your email**, or create your own (see [Contribution Guidelines](./CONTRIBUTION.md))
 > 🔄 Please make sure to restart your terminal (or dev server) after changing this file
 
-## 🌍 i18n
+### 🏁 5) Done ✅
 
-This project uses [i18next](https://www.i18next.com/) for multi-language support (th/en).
+Once both are running and we're good to go:
 
-- Translation files are stored in:
-  - `src/messages/th/*.json`
-  - `src/messages/en/*.json`
-
-- Example usage:
-
-```tsx
-import { Typography } from '@mui/material';
-import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
-
-function Page() {
-  const { t } = useTranslation('core');
-
-  return <Typography>{t('title')}</Typography>;
-}
-
-export default memo(Page);
-```
+- FE: [http://localhost:3000](http://localhost:3000)
+- Virtual DB: [http://localhost:3001/api](http://localhost:3001/api)
 
 ## 🧹 Lint & Format
 
 - ESLint v9 + Prettier v3
-- Husky pre-commit hook included
 - Husky pre-push hook
 
 ```text
@@ -170,34 +200,32 @@ src/
 | Env vars                       | SCREAMING_SNAKE_CASE | `VITE_API_ENDPOINT`                |
 | Event handlers                 | on + PascalCase      | `onClickButton`, `onDelete`        |
 
-## ☁️ Deployment
+## 🌍 i18n
 
-We deploy this project on [Vercel](https://vercel.com/).
+This project uses [i18next](https://www.i18next.com/) for multi-language support (th/en).
 
-### 1) Merge to `develop` to deploy  
-Only **merges or commits pushed to the `develop` branch** will trigger a **production deployment**.
+- Translation files are stored in:
+  - `src/messages/th/*.json`
+  - `src/messages/en/*.json`
 
-👉 https://pl-forecaster-portal.vercel.app
+- Example usage:
 
-### 2) Preview Deploys for feature branches  
-Pushing to any other branch (e.g. `feat/...`) will trigger a **Preview Deployment**, accessible at a temporary URL like:
+```tsx
+import { Typography } from '@mui/material';
+import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
-👉 `https://pl-forecaster-portal-git-<branch-name>-faithongs-projects.vercel.app`
+function Page() {
+  const { t } = useTranslation('core');
 
-This is perfect for testing before merging into `develop`.
+  return <Typography>{t('title')}</Typography>;
+}
 
-### 3) Environment variables  
-Make sure the following are set in **Vercel → Project Settings → Environment Variables**:
-
-- `VITE_API_ENDPOINT`  
-- `VITE_GOOGLE_CLIENT_ID`
-
-### 4) Manual redeploy (optional)  
-You can trigger a redeploy from the [Vercel dashboard](https://vercel.com/dashboard) if needed.  
-> 🔐 Please contact me for manual redeploys — only I can authorize them.
+export default memo(Page);
+```
 
 ## 📬 Contact
 
-Have questions or need support? Reach out! 🚀  
+Have questions or need support? Reach out! 🚀
 
 📧 **Email:** [faithong.tati@gmail.com](mailto:faithong.tati@gmail.com)

@@ -1,0 +1,119 @@
+{
+  "users": [
+    {
+      "id": "f15a",
+      "email": "superadmin@example.com",
+      "providerRef": "8FUtM4ByQWnz",
+      "imageUrl": "https://static.wixstatic.com/media/6dd24e_4e6cb95702e641efa5cf4a7e317a3dea~mv2.png/v1/fill/w_280,h_257,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/TAMATiAN.png",
+      "username": "superadmin@example.com",
+      "createdAt": "2025-10-09T10:31:41.743Z"
+    }
+  ],
+  "machines": [
+    {
+      "id": "m1",
+      "name": "Mall-01",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "2000",
+      "averageProfitMarginPercentage": "45",
+      "rentCostPerDay": "50",
+      "electricCostPerTempPerDay": "25",
+      "createdAt": "2025-05-10T10:30:00.000Z",
+      "updatedAt": "2025-09-20T15:45:10.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m2",
+      "name": "Hospital-01",
+      "locationType": "HOSPITAL",
+      "expectedSalesPerDay": "2500",
+      "averageProfitMarginPercentage": "50",
+      "rentCostPerDay": "60",
+      "electricCostPerTempPerDay": "30",
+      "createdAt": "2025-06-25T08:00:00.000Z",
+      "updatedAt": "2025-06-25T08:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m3",
+      "name": "School-01",
+      "locationType": "SCHOOL",
+      "expectedSalesPerDay": "1500",
+      "averageProfitMarginPercentage": "35",
+      "rentCostPerDay": "60",
+      "electricCostPerTempPerDay": "35",
+      "createdAt": "2025-07-01T14:15:00.000Z",
+      "updatedAt": "2025-10-10T09:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m4",
+      "name": "Mall-02",
+      "locationType": "SHOPPING_MALL",
+      "expectedSalesPerDay": "1500",
+      "averageProfitMarginPercentage": "60",
+      "rentCostPerDay": "50",
+      "electricCostPerTempPerDay": "20",
+      "createdAt": "2025-08-12T19:20:00.000Z",
+      "updatedAt": "2025-08-12T19:20:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m5",
+      "name": "Hospital-02",
+      "locationType": "HOSPITAL",
+      "expectedSalesPerDay": "1500",
+      "averageProfitMarginPercentage": "40",
+      "rentCostPerDay": "40",
+      "electricCostPerTempPerDay": "28",
+      "createdAt": "2025-09-05T09:45:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m6",
+      "name": "School-02",
+      "locationType": "SCHOOL",
+      "expectedSalesPerDay": "1430",
+      "averageProfitMarginPercentage": "51",
+      "rentCostPerDay": "40",
+      "electricCostPerTempPerDay": "22",
+      "createdAt": "2025-04-15T16:00:00.000Z",
+      "updatedAt": "2025-04-15T16:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    },
+    {
+      "id": "m7",
+      "name": "School-04",
+      "locationType": "SCHOOL",
+      "expectedSalesPerDay": "1200",
+      "averageProfitMarginPercentage": "34",
+      "rentCostPerDay": "35",
+      "electricCostPerTempPerDay": "21",
+      "createdAt": "2025-10-09T16:00:00.000Z",
+      "updatedAt": "2025-10-11T16:00:00.000Z",
+      "createdBy": "system",
+      "updatedBy": "system",
+      "createdByUserId": "sys",
+      "updatedByUserId": "sys"
+    }
+  ]
+}

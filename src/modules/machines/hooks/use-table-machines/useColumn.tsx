@@ -120,7 +120,7 @@ export function useColumn({
                   });
                 }}
               >
-                <Tooltip title="Clone">
+                <Tooltip title={t('table.actions.clone')}>
                   <ContentCopyIcon
                     sx={{
                       width: rem(20),
@@ -139,7 +139,7 @@ export function useColumn({
                   });
                 }}
               >
-                <Tooltip title="Edit">
+                <Tooltip title={t('table.actions.edit')}>
                   <EditIcon
                     sx={{
                       width: rem(20),
@@ -158,7 +158,7 @@ export function useColumn({
                   });
                 }}
               >
-                <Tooltip title="Delete">
+                <Tooltip title={t('table.actions.delete')}>
                   <DeleteIcon
                     sx={{
                       width: rem(20),

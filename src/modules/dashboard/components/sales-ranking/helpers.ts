@@ -5,20 +5,22 @@ import rem from '@/core/utils/rem';
 import type { SummarizeMachine } from '@/modules/dashboard/hooks/use-best-selling-location-type/types';
 
 export function swapItems(items: SummarizeMachine[]) {
-  return items.reduce(
-    (acc, curr) => {
-      if (curr.rank === 2) {
-        acc.unshift(curr);
+  return items
+    .sort((a, b) => b.totalExpectedSalesPerDay - a.totalExpectedSalesPerDay)
+    .reduce(
+      (acc, curr) => {
+        if (curr.rank === 2) {
+          acc.unshift(curr);
+
+          return acc;
+        }
+
+        acc.push(curr);
 
         return acc;
-      }
-
-      acc.push(curr);
-
-      return acc;
-    },
-    [] as typeof items,
-  );
+      },
+      [] as typeof items,
+    );
 }
 
 export function rankingConfig(item: SummarizeMachine) {

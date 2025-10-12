@@ -9,9 +9,9 @@ import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { formatNumber } from '@/core/utils/format';
-import rem from '@/core/utils/rem';
 
 import { RowsPerPageOptions } from './constants';
+import { Styles } from './styles';
 
 import type { DataTablePaginationProps } from './types';
 
@@ -39,17 +39,7 @@ function DataTablePagination({
   }, [from, t, to, totalItems]);
 
   return (
-    <Box
-      sx={{
-        px: rem(16),
-        py: rem(8),
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        bgcolor: (theme) => theme.palette.grey[50],
-        borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-      }}
-    >
+    <Box sx={Styles.paginationBox}>
       <Typography variant="body2">{displayItems}</Typography>
 
       <Stack direction="row" spacing={2} alignItems="center">
