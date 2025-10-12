@@ -36,16 +36,16 @@ export default function useSevenDayForecast() {
   // 7-day forecast
   const electricityCostSeries = useMemo(
     () =>
-      avgDailyTemperatureList.map((data) =>
-        Number((data.avg * sumElectricityCost(machines)).toFixed(2)),
+      avgDailyTemperatureList.map(
+        (data) => data.avg * sumElectricityCost(machines),
       ),
     [avgDailyTemperatureList, machines],
   );
 
   const profitLossSeries = useMemo(
     () =>
-      avgDailyTemperatureList.map((_, i) =>
-        Number((baseProfit - electricityCostSeries[i]).toFixed(2)),
+      avgDailyTemperatureList.map(
+        (_, i) => baseProfit - electricityCostSeries[i],
       ),
     [avgDailyTemperatureList, baseProfit, electricityCostSeries],
   );

@@ -3,8 +3,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Box, Tooltip } from '@mui/material';
 import dayjs from 'dayjs';
+import Decimal from 'decimal.js';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { match, P } from 'ts-pattern';
 
 import TextTruncate from '@/core/components/text-truncate';
 import { formatDisplayDate } from '@/core/lib/helpers/format';
@@ -65,8 +67,23 @@ export function useColumn({
         minSize: 150,
         accessorFn: (row) => Number(row.averageProfitMarginPercentage),
         cell: ({ getValue }) => {
+          const marginValue = new Decimal(getValue<string>()).toNumber();
+          const marginConfig = match(marginValue)
+            .with(
+              P.when((m) => m >= 50),
+              () => ({ color: 'success.main', fontWeight: 700 }),
+            )
+            .with(
+              P.when((m) => m < 20),
+              () => ({ color: 'error.main', fontWeight: 700 }),
+            )
+            .otherwise(() => ({ color: undefined, fontWeight: undefined }));
+
           return (
-            <TextTruncate>
+            <TextTruncate
+              color={marginConfig.color}
+              fontWeight={marginConfig.fontWeight}
+            >
               {formatNumber(getValue<string>() || 0)} %
             </TextTruncate>
           );

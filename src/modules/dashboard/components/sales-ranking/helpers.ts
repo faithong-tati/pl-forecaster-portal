@@ -31,9 +31,9 @@ export function rankingConfig(item: SummarizeMachine) {
     .otherwise(() => '');
 
   const height = match(item.rank)
-    .with(1, () => rem(190))
-    .with(2, () => rem(170))
-    .with(3, () => rem(160))
+    .with(1, () => rem(170))
+    .with(2, () => rem(150))
+    .with(3, () => rem(140))
     .otherwise(() => '');
 
   const bgColor = match(item.rank)
